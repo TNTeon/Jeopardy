@@ -23,6 +23,10 @@
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8rd0d"]
 bg_color = Color(0.027451, 0.0705882, 0.388235, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
 border_color = Color(0.0253638, 0.0253638, 0.0253638, 1)
 
 [sub_resource type="ImageTexture" id="ImageTexture_75jir"]
@@ -33,6 +37,7 @@ Button/styles/focus = SubResource("StyleBoxEmpty_syqbr")
 Button/styles/hover = SubResource("StyleBoxEmpty_n7382")
 Button/styles/normal = SubResource("StyleBoxEmpty_pbhgs")
 Button/styles/pressed = SubResource("StyleBoxEmpty_rgej7")
+HBoxContainer/constants/separation = 0
 HSplitContainer/constants/separation = 0
 HSplitContainer/icons/grabber = SubResource("ImageTexture_4iocg")
 HSplitContainer/icons/h_grabber = SubResource("ImageTexture_oanf6")
@@ -54,5 +59,6 @@ RichTextLabel/fonts/bold_font = ExtResource("1_75jir")
 RichTextLabel/fonts/bold_italics_font = ExtResource("2_4iocg")
 RichTextLabel/fonts/italics_font = ExtResource("3_oanf6")
 RichTextLabel/fonts/normal_font = ExtResource("4_ke3p6")
+VBoxContainer/constants/separation = 0
 VSplitContainer/constants/separation = 0
 VSplitContainer/icons/grabber = SubResource("ImageTexture_75jir")
