@@ -1,0 +1,36 @@
+[gd_scene load_steps=3 format=3 uid="uid://y10b8tepf30m"]
+
+[ext_resource type="Script" uid="uid://bosu2hjrafceo" path="res://Classes/TileQuestion/question_tile.gd" id="1_ssvs3"]
+[ext_resource type="Theme" uid="uid://dpeodv265m7jd" path="res://Art/Theme/QuestionTileTheme.tres" id="2_54ayr"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ssvs3")
+
+[node name="Tile" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_54ayr")
+
+[node name="Score" type="RichTextLabel" parent="Tile"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.8
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1, 1.25)
+theme = ExtResource("2_54ayr")
+bbcode_enabled = true
+text = "[b]$100"
+horizontal_alignment = 1
+vertical_alignment = 1
