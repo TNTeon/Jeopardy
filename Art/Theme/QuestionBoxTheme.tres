@@ -1,0 +1,58 @@
+[gd_resource type="Theme" load_steps=15 format=3 uid="uid://bseckuk4rs2ug"]
+
+[ext_resource type="FontFile" uid="uid://dhre6q3jedsgc" path="res://Art/Font/Korinna/ITC Korinna Bold.otf" id="1_75jir"]
+[ext_resource type="FontFile" uid="uid://dyp1h7o0ubfsd" path="res://Art/Font/Korinna/ITC Korinna LT Bold.otf" id="2_4iocg"]
+[ext_resource type="FontFile" uid="uid://xp0twsj4ophn" path="res://Art/Font/Korinna/Korinna Italic.ttf" id="3_oanf6"]
+[ext_resource type="FontFile" uid="uid://bnbl4yc6qjmwq" path="res://Art/Font/Korinna/ITC Korinna Regular.otf" id="4_ke3p6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8rd0d"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_syqbr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_n7382"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pbhgs"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rgej7"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_4iocg"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_oanf6"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_ke3p6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8rd0d"]
+bg_color = Color(0.027451, 0.0705882, 0.388235, 1)
+border_color = Color(0.0253638, 0.0253638, 0.0253638, 1)
+
+[sub_resource type="ImageTexture" id="ImageTexture_75jir"]
+
+[resource]
+Button/styles/disabled = SubResource("StyleBoxEmpty_8rd0d")
+Button/styles/focus = SubResource("StyleBoxEmpty_syqbr")
+Button/styles/hover = SubResource("StyleBoxEmpty_n7382")
+Button/styles/normal = SubResource("StyleBoxEmpty_pbhgs")
+Button/styles/pressed = SubResource("StyleBoxEmpty_rgej7")
+HSplitContainer/constants/separation = 0
+HSplitContainer/icons/grabber = SubResource("ImageTexture_4iocg")
+HSplitContainer/icons/h_grabber = SubResource("ImageTexture_oanf6")
+HSplitContainer/icons/v_grabber = SubResource("ImageTexture_ke3p6")
+Panel/styles/panel = SubResource("StyleBoxFlat_8rd0d")
+RichTextLabel/colors/default_color = Color(1, 1, 1, 1)
+RichTextLabel/colors/font_outline_color = Color(1, 1, 1, 1)
+RichTextLabel/colors/font_shadow_color = Color(0, 0, 0, 1)
+RichTextLabel/constants/outline_size = 2
+RichTextLabel/constants/shadow_offset_x = 5
+RichTextLabel/constants/shadow_offset_y = 2
+RichTextLabel/constants/shadow_outline_size = 5
+RichTextLabel/font_sizes/bold_font_size = 50
+RichTextLabel/font_sizes/bold_italics_font_size = 16
+RichTextLabel/font_sizes/italics_font_size = 16
+RichTextLabel/font_sizes/mono_font_size = 16
+RichTextLabel/font_sizes/normal_font_size = 50
+RichTextLabel/fonts/bold_font = ExtResource("1_75jir")
+RichTextLabel/fonts/bold_italics_font = ExtResource("2_4iocg")
+RichTextLabel/fonts/italics_font = ExtResource("3_oanf6")
+RichTextLabel/fonts/normal_font = ExtResource("4_ke3p6")
+VSplitContainer/constants/separation = 0
+VSplitContainer/icons/grabber = SubResource("ImageTexture_75jir")

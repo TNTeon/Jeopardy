@@ -1,9 +1,19 @@
-[gd_resource type="Theme" load_steps=6 format=3 uid="uid://dpeodv265m7jd"]
+[gd_resource type="Theme" load_steps=11 format=3 uid="uid://dpeodv265m7jd"]
 
 [ext_resource type="FontFile" uid="uid://dhre6q3jedsgc" path="res://Art/Font/Korinna/ITC Korinna Bold.otf" id="1_8rd0d"]
 [ext_resource type="FontFile" uid="uid://dyp1h7o0ubfsd" path="res://Art/Font/Korinna/ITC Korinna LT Bold.otf" id="2_syqbr"]
 [ext_resource type="FontFile" uid="uid://xp0twsj4ophn" path="res://Art/Font/Korinna/Korinna Italic.ttf" id="3_n7382"]
 [ext_resource type="FontFile" uid="uid://bnbl4yc6qjmwq" path="res://Art/Font/Korinna/ITC Korinna Regular.otf" id="4_pbhgs"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8rd0d"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_syqbr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_n7382"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pbhgs"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rgej7"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8rd0d"]
 bg_color = Color(0.027451, 0.0705882, 0.466667, 1)
@@ -14,6 +24,11 @@ border_width_bottom = 13
 border_color = Color(0.0253638, 0.0253638, 0.0253638, 1)
 
 [resource]
+Button/styles/disabled = SubResource("StyleBoxEmpty_8rd0d")
+Button/styles/focus = SubResource("StyleBoxEmpty_syqbr")
+Button/styles/hover = SubResource("StyleBoxEmpty_n7382")
+Button/styles/normal = SubResource("StyleBoxEmpty_pbhgs")
+Button/styles/pressed = SubResource("StyleBoxEmpty_rgej7")
 Panel/styles/panel = SubResource("StyleBoxFlat_8rd0d")
 RichTextLabel/colors/default_color = Color(0.843137, 0.619608, 0.298039, 1)
 RichTextLabel/colors/font_shadow_color = Color(0, 0, 0, 1)
