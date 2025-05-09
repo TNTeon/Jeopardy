@@ -1,5 +1,31 @@
 extends Control
 class_name QuestionTile
+## QuestionTile
+##
+##--Description--
+## A tile for a single question. Click the tile to open the clue and play the tile.
+## Disapears after use
+##
+##--Use--
+## The tile will take up as much space as possible. Limit it by putting it into a control node
+##	with a set size
+
+## --Important-Functions--
+##
+## initialize(pv, qu)
+##	Description: Use when exported variables aren't set
+##	pv: point value of the question
+##	qu: quesiton
+##
+## plrBuzzes(name)
+##	Description: Adds the player who buzzed to a queue. Deals with the lastest player
+##	name: name of the player who buzzed (This will be displayed)
+##
+## correctAnswer()
+##	Description: Counts the question as correct and stops any new buzzes
+##
+## incorrectAnswer()
+##	Description: Counts the players response as wrong and allows new answers
 
 #region Variables
 @export var point_value : int = 100
@@ -36,7 +62,7 @@ var buzzers = []
 var pastBuzzers = []
 #endregion
 
-
+#region CreatedFunctions
 func initialize(pv : int, qu : String):
 	point_value = pv
 	question = qu
@@ -110,6 +136,7 @@ func timer_up():
 		currState = state.ANSWERED
 	if currState == state.ANSWERING:
 		currState = state.JUDGEMENT
+#endregion
 
 #region BaseFunctions
 
