@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://b0fu6wq8jjyyw"]
 
-[ext_resource type="Script" uid="uid://b8hytml2jwy5u" path="res://websocketConnection.gd" id="1_yrg3r"]
+[ext_resource type="Script" uid="uid://b8hytml2jwy5u" path="res://Tests/PhoneAppTests/websocketConnection.gd" id="1_yrg3r"]
 
 [node name="Node" type="Node"]
 script = ExtResource("1_yrg3r")
