@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://rib2gtn4nejr"]
+
+[ext_resource type="Script" uid="uid://c1kba8ucre2xy" path="res://multiplayer_test.gd" id="1_nhrq5"]
+[ext_resource type="PackedScene" uid="uid://ckdp72001dn6g" path="res://godotMultiplayerTutorial.tscn" id="2_40i6d"]
+
+[node name="MultiplayerTest" type="Node2D"]
+script = ExtResource("1_nhrq5")
+player_scene = ExtResource("2_40i6d")
+
+[node name="Host" type="Button" parent="."]
+offset_top = 538.0
+offset_right = 44.0
+offset_bottom = 569.0
+text = "Host"
+
+[node name="Join" type="Button" parent="."]
+offset_left = 1.0
+offset_top = 589.0
+offset_right = 39.0
+offset_bottom = 620.0
+text = "Join"
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("uid://ckdp72001dn6g")
+spawn_path = NodePath("..")
+
+[connection signal="pressed" from="Host" to="." method="_on_host_pressed"]
+[connection signal="pressed" from="Join" to="." method="_on_join_pressed"]
