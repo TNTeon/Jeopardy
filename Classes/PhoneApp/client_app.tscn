@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://bltllxglv3i8s"]
+[gd_scene load_steps=2 format=3 uid="uid://bltllxglv3i8s"]
+
+[ext_resource type="Script" uid="uid://cg2yfnvvy6bou" path="res://Classes/PhoneApp/client_app.gd" id="1_0s22c"]
 
 [node name="Client_app" type="Control"]
 layout_mode = 3
@@ -8,6 +10,8 @@ offset_bottom = 0.0878906
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
+script = ExtResource("1_0s22c")
+startTimer = true
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -56,3 +60,5 @@ text = "Press Me!"
 anchor_mode = 0
 ignore_rotation = false
 zoom = Vector2(0.405, 0.405)
+
+[connection signal="pressed" from="ColorRect/VBoxContainer/Button" to="." method="_on_button_pressed"]
