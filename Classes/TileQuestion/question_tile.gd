@@ -30,6 +30,7 @@ class_name QuestionTile
 #region Variables
 @export var point_value : int = 100
 @export var question : String = ""
+@export var answer : String = ""
 
 #region References
 @onready var tile : Panel = $Tile
