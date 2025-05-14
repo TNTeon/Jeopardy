@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://dm83yrycpieb4"]
+
+[ext_resource type="Script" uid="uid://y5j6lm84mbem" path="res://Classes/Player/basic_player.gd" id="1_ffn7p"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_t48j1"]
+properties/0/path = NodePath(".:isPressed")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+
+[node name="basic_player" type="Button"]
+offset_right = 180.0
+offset_bottom = 141.0
+text = "Buzzzz"
+script = ExtResource("1_ffn7p")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_t48j1")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]
