@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://dic8pkvk2s25n"]
+
+[ext_resource type="Script" uid="uid://xalfdl0mrnyo" path="res://Classes/Player/player_app.gd" id="1_ik77l"]
+[ext_resource type="PackedScene" uid="uid://dm83yrycpieb4" path="res://Classes/Player/basic_player.tscn" id="2_cirlr"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_ik77l"]
+properties/0/path = NodePath("1:isPressed")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+
+[node name="PlayerApp" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ik77l")
+
+[node name="1" parent="." instance=ExtResource("2_cirlr")]
+layout_mode = 0
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_ik77l")

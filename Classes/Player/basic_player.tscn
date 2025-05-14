@@ -2,18 +2,53 @@
 
 [ext_resource type="Script" uid="uid://y5j6lm84mbem" path="res://Classes/Player/basic_player.gd" id="1_ffn7p"]
 
-[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_t48j1"]
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_wnt18"]
 properties/0/path = NodePath(".:isPressed")
 properties/0/spawn = true
 properties/0/replication_mode = 1
 
-[node name="basic_player" type="Button"]
+[node name="basic_player" type="Control"]
+layout_mode = 3
+anchors_preset = 0
 offset_right = 180.0
 offset_bottom = 141.0
-text = "Buzzzz"
 script = ExtResource("1_ffn7p")
 
-[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
-replication_config = SubResource("SceneReplicationConfig_t48j1")
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 540.0
+offset_bottom = 1459.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.14705, 0, 0.955444, 1)
 
-[connection signal="pressed" from="." to="." method="_on_pressed"]
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect"]
+custom_minimum_size = Vector2(720, 1600)
+layout_mode = 0
+offset_right = 720.0
+offset_bottom = 1600.0
+
+[node name="TextEdit" type="TextEdit" parent="ColorRect/VBoxContainer"]
+custom_minimum_size = Vector2(50, 10)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Label" type="Label" parent="ColorRect/VBoxContainer"]
+layout_mode = 2
+text = "[NAME]"
+
+[node name="1" type="Button" parent="ColorRect/VBoxContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 2
+text = "BUZZ"
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+root_path = NodePath("../ColorRect/VBoxContainer/1")
+replication_config = SubResource("SceneReplicationConfig_wnt18")
+
+[connection signal="pressed" from="ColorRect/VBoxContainer/1" to="." method="_on_pressed"]
