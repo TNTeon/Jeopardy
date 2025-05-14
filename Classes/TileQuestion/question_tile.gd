@@ -36,18 +36,18 @@ class_name QuestionTile
 @onready var tile : Panel = $Tile
 @onready var score : RichTextLabel = $Tile/Score
 
-@onready var question_canvas = $QuestionCanvas
-@onready var question_text = $QuestionCanvas/Background/VSplit/QuestionBox/QuestionText
-@onready var background = $QuestionCanvas/Background
-@onready var button = $Tile/Button
-@onready var buzzerPanel = $QuestionCanvas/Background/VSplit/Buzzer
-@onready var pointsPanel = $QuestionCanvas/Background/VSplit/Points
-@onready var extra_point_panel = $QuestionCanvas/Background/VSplit/Points/PointsText
-@onready var nameText = $QuestionCanvas/Background/VSplit/Buzzer/Name
-@onready var gradient = $QuestionCanvas/Background/VSplit/Buzzer/Timer/Gradient
+@onready var _question_canvas = $QuestionCanvas
+@onready var _question_text = $QuestionCanvas/Background/VSplit/QuestionBox/QuestionText
+@onready var _background = $QuestionCanvas/Background
+@onready var _button = $Tile/Button
+@onready var _buzzerPanel = $QuestionCanvas/Background/VSplit/Buzzer
+@onready var _pointsPanel = $QuestionCanvas/Background/VSplit/Points
+@onready var _extra_point_panel = $QuestionCanvas/Background/VSplit/Points/PointsText
+@onready var _nameText = $QuestionCanvas/Background/VSplit/Buzzer/Name
+@onready var _gradient = $QuestionCanvas/Background/VSplit/Buzzer/Timer/Gradient
 
-@onready var timer = $QuestionCanvas/Timer
-@onready var time_out_sound = $QuestionCanvas/Timer/timeOutSound
+@onready var _timer = $QuestionCanvas/Timer
+@onready var _time_out_sound = $QuestionCanvas/Timer/timeOutSound
 #endregion
 
 enum state{
@@ -64,44 +64,45 @@ var pastBuzzers = []
 #endregion
 
 #region CreatedFunctions
-func initialize(pv : int, qu : String):
+func initialize(pv : int, qu : String, an : String):
 	point_value = pv
 	question = qu
+	answer = an
 	
-	extra_point_panel.text = "[b]"+str(point_value)
+	_extra_point_panel.text = "[b]"+str(point_value)
 	score.text = "[b]"+str(point_value)
 	point_value
 	
-	question_text.text = question
+	_question_text.text = question
 	
-	background.scale = Vector2.ZERO
-	question_canvas.visible = true
-	buzzerPanel.visible = false
-	pointsPanel.visible = false
+	_background.scale = Vector2.ZERO
+	_question_canvas.visible = true
+	_buzzerPanel.visible = false
+	_pointsPanel.visible = false
 
 func tile_clicked():
 	currState = state.VIEWING
-	button.release_focus()
+	_button.release_focus()
 	
 	#Animate
 	tile.set_meta("midpoint",tile.position+tile.size/2)
-	background.global_position = tile.get_meta("midpoint")+tile.global_position
+	_background.global_position = tile.get_meta("midpoint")+tile.global_position
 	var tween = create_tween()
-	tween.parallel().tween_property(background,"scale",Vector2.ONE,0.5)
-	tween.parallel().tween_property(background,"position",Vector2.ZERO,0.5)
+	tween.parallel().tween_property(_background,"scale",Vector2.ONE,0.5)
+	tween.parallel().tween_property(_background,"position",Vector2.ZERO,0.5)
 	
 func startTimer():
-	timer.start(5)
+	_timer.start(5)
 	#TODO just make the question answered if no players left
 	if currState == state.VIEWING:
 		currState = state.WAITING
-		pointsPanel.visible = true
+		_pointsPanel.visible = true
 	
 func plrBuzzes(name):
 	if !buzzers.has(name) and !pastBuzzers.has(name):
-		buzzerPanel.visible = true
+		_buzzerPanel.visible = true
 		buzzers.append(name)
-		if !timer.is_stopped():
+		if !_timer.is_stopped():
 			waitForAnswer()
 
 func waitForAnswer():
@@ -109,30 +110,30 @@ func waitForAnswer():
 	var currentPlr = buzzers[0]
 	pastBuzzers.append(currentPlr)
 	buzzers.pop_front()
-	nameText.text = currentPlr
+	_nameText.text = currentPlr
 	startTimer()
 	
 func closeQuestion():
 	#Animate
-	button.visible = false
+	_button.visible = false
 	score.visible = false
 	var tween = create_tween()
-	tween.parallel().tween_property(background,"scale",Vector2.ZERO,0.5)
-	tween.parallel().tween_property(background,"position",tile.get_meta("midpoint")+tile.global_position,0.5)
+	tween.parallel().tween_property(_background,"scale",Vector2.ZERO,0.5)
+	tween.parallel().tween_property(_background,"position",tile.get_meta("midpoint")+tile.global_position,0.5)
 
 func correctAnswer():
 	#TODO Add points to player
-	timer.paused = true
+	_timer.paused = true
 	currState = state.ANSWERED
 	
 func incorrectAnswer():
 	#TODO Remove points from player
-	buzzerPanel.visible = false
+	_buzzerPanel.visible = false
 	currState = state.VIEWING
 	startTimer()
 
 func timer_up():
-	time_out_sound.play()
+	_time_out_sound.play()
 	if currState == state.WAITING:
 		currState = state.ANSWERED
 	if currState == state.ANSWERING:
@@ -143,12 +144,12 @@ func timer_up():
 
 func _ready():
 	if point_value != -1:
-		initialize(point_value,question)
+		initialize(point_value,question,answer)
 	
 func _process(delta):
 	#Shink the timer when answering
-	if !timer.is_stopped() and currState == state.ANSWERING:
-		gradient.scale.x = timer.time_left/5
+	if !_timer.is_stopped() and currState == state.ANSWERING:
+		_gradient.scale.x = _timer.time_left/5
 	
 	#TODO Change temp input actions to real ones.
 	#Allow Answering
