@@ -1,11 +1,11 @@
 [gd_scene load_steps=3 format=3 uid="uid://rib2gtn4nejr"]
 
 [ext_resource type="Script" uid="uid://c1kba8ucre2xy" path="res://Tests/PhoneAppTests/multiplayer_test.gd" id="1_nhrq5"]
-[ext_resource type="PackedScene" uid="uid://ckdp72001dn6g" path="res://Tests/PhoneAppTests/godotMultiplayerTutorial.tscn" id="2_40i6d"]
+[ext_resource type="PackedScene" uid="uid://bltllxglv3i8s" path="res://Classes/PhoneApp/client_app.tscn" id="2_u43r2"]
 
 [node name="MultiplayerTest" type="Node2D"]
 script = ExtResource("1_nhrq5")
-player_scene = ExtResource("2_40i6d")
+player_scene = ExtResource("2_u43r2")
 
 [node name="Host" type="Button" parent="."]
 offset_top = 538.0
@@ -21,7 +21,7 @@ offset_bottom = 620.0
 text = "Join"
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
-_spawnable_scenes = PackedStringArray("uid://ckdp72001dn6g")
+_spawnable_scenes = PackedStringArray("uid://bltllxglv3i8s")
 spawn_path = NodePath("..")
 
 [connection signal="pressed" from="Host" to="." method="_on_host_pressed"]
