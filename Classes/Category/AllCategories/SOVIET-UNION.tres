@@ -1,0 +1,45 @@
+[gd_resource type="Resource" script_class="categoryResource" load_steps=8 format=3 uid="uid://58xw0jgwuhhp"]
+
+[ext_resource type="Script" uid="uid://dsbkiyn7uvjg2" path="res://Classes/TileQuestion/tileResource.gd" id="1_musfw"]
+[ext_resource type="Script" uid="uid://b8cm45wue2am8" path="res://Classes/Category/categoryResource.gd" id="2_6ti68"]
+
+[sub_resource type="Resource" id="Resource_musfw"]
+script = ExtResource("1_musfw")
+pointValue = 100
+Question = "Largest Soviet newspaper, its name means \"Truth\""
+Answer = "Pravda"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[sub_resource type="Resource" id="Resource_6ti68"]
+script = ExtResource("1_musfw")
+pointValue = 200
+Question = "Daughter of this Soviet ruler has been living in America since 1967"
+Answer = "Stalin"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[sub_resource type="Resource" id="Resource_xalt4"]
+script = ExtResource("1_musfw")
+pointValue = 300
+Question = "Soviet republic that has same name as an American state"
+Answer = "Georgia"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[sub_resource type="Resource" id="Resource_5ieda"]
+script = ExtResource("1_musfw")
+pointValue = 400
+Question = "Soviet official who advocated using gasoline-filled bottles against Nazi tanks"
+Answer = "Molotov"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[sub_resource type="Resource" id="Resource_x136b"]
+script = ExtResource("1_musfw")
+pointValue = 500
+Question = "Kenny Ball did this jazzed up version of an old Russian folk song"
+Answer = "\"Midnight In Moscow\""
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[resource]
+script = ExtResource("2_6ti68")
+title = "SOVIET UNION"
+questionTile = Array[ExtResource("1_musfw")]([SubResource("Resource_musfw"), SubResource("Resource_6ti68"), SubResource("Resource_xalt4"), SubResource("Resource_5ieda"), SubResource("Resource_x136b")])
+metadata/_custom_type_script = "uid://b8cm45wue2am8"

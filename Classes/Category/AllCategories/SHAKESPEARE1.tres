@@ -1,0 +1,45 @@
+[gd_resource type="Resource" script_class="categoryResource" load_steps=8 format=3 uid="uid://xgdsnq08eua7"]
+
+[ext_resource type="Script" uid="uid://dsbkiyn7uvjg2" path="res://Classes/TileQuestion/tileResource.gd" id="1_xpq33"]
+[ext_resource type="Script" uid="uid://b8cm45wue2am8" path="res://Classes/Category/categoryResource.gd" id="2_202xn"]
+
+[sub_resource type="Resource" id="Resource_xpq33"]
+script = ExtResource("1_xpq33")
+pointValue = 100
+Question = "Shakespeare's only comedy with \"comedy\" in the title"
+Answer = "Comedy of Errors"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[sub_resource type="Resource" id="Resource_202xn"]
+script = ExtResource("1_xpq33")
+pointValue = 200
+Question = "In it, Puck comments: \"Lord, what fools these mortals be!\""
+Answer = "A Midsummer Night's Dream"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[sub_resource type="Resource" id="Resource_6lb5i"]
+script = ExtResource("1_xpq33")
+pointValue = 300
+Question = "What Shylock demanded instead of interest"
+Answer = "a pound of flesh"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[sub_resource type="Resource" id="Resource_5riml"]
+script = ExtResource("1_xpq33")
+pointValue = 400
+Question = "Completes the line \"If music be the food of love...\""
+Answer = "play on"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[sub_resource type="Resource" id="Resource_gne5n"]
+script = ExtResource("1_xpq33")
+pointValue = 500
+Question = "Hamlet's closest friend, only major character left alive at play's end"
+Answer = "Horatio"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[resource]
+script = ExtResource("2_202xn")
+title = "SHAKESPEARE"
+questionTile = Array[ExtResource("1_xpq33")]([SubResource("Resource_xpq33"), SubResource("Resource_202xn"), SubResource("Resource_6lb5i"), SubResource("Resource_5riml"), SubResource("Resource_gne5n")])
+metadata/_custom_type_script = "uid://b8cm45wue2am8"

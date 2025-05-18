@@ -1,0 +1,45 @@
+[gd_resource type="Resource" script_class="categoryResource" load_steps=8 format=3 uid="uid://x8m66smqonxl"]
+
+[ext_resource type="Script" uid="uid://dsbkiyn7uvjg2" path="res://Classes/TileQuestion/tileResource.gd" id="1_1q463"]
+[ext_resource type="Script" uid="uid://b8cm45wue2am8" path="res://Classes/Category/categoryResource.gd" id="2_hsf00"]
+
+[sub_resource type="Resource" id="Resource_1q463"]
+script = ExtResource("1_1q463")
+pointValue = 100
+Question = "Condition associated with London & pea soup"
+Answer = "fog"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[sub_resource type="Resource" id="Resource_hsf00"]
+script = ExtResource("1_1q463")
+pointValue = 200
+Question = "Mt. Waialeale in Hawaii gets the most, while Calama, Chile, usually gets none"
+Answer = "rain"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[sub_resource type="Resource" id="Resource_e54a4"]
+script = ExtResource("1_1q463")
+pointValue = 300
+Question = "Its winds can reach 400 MPH"
+Answer = "a tornado"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[sub_resource type="Resource" id="Resource_jj1dy"]
+script = ExtResource("1_1q463")
+pointValue = 400
+Question = "Some hygrometers use a human hair to measure this"
+Answer = "(relative) humidity"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[sub_resource type="Resource" id="Resource_idfi6"]
+script = ExtResource("1_1q463")
+pointValue = 500
+Question = "Region near Equator that took the wind out of Sinbad's sails"
+Answer = "the doldrums"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[resource]
+script = ExtResource("2_hsf00")
+title = "WEATHER"
+questionTile = Array[ExtResource("1_1q463")]([SubResource("Resource_1q463"), SubResource("Resource_hsf00"), SubResource("Resource_e54a4"), SubResource("Resource_jj1dy"), SubResource("Resource_idfi6")])
+metadata/_custom_type_script = "uid://b8cm45wue2am8"

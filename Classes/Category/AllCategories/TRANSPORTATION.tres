@@ -1,0 +1,45 @@
+[gd_resource type="Resource" script_class="categoryResource" load_steps=8 format=3 uid="uid://djh1xpceg65s7"]
+
+[ext_resource type="Script" uid="uid://dsbkiyn7uvjg2" path="res://Classes/TileQuestion/tileResource.gd" id="1_4gfl3"]
+[ext_resource type="Script" uid="uid://b8cm45wue2am8" path="res://Classes/Category/categoryResource.gd" id="2_uhuw4"]
+
+[sub_resource type="Resource" id="Resource_4gfl3"]
+script = ExtResource("1_4gfl3")
+pointValue = 100
+Question = "Type of auto engine, or a tomato cocktail"
+Answer = "V8"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[sub_resource type="Resource" id="Resource_uhuw4"]
+script = ExtResource("1_4gfl3")
+pointValue = 200
+Question = "Lindbergh was not first to fly the Atlantic, but first to do it this way"
+Answer = "solo"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[sub_resource type="Resource" id="Resource_k8lu7"]
+script = ExtResource("1_4gfl3")
+pointValue = 300
+Question = "Derived from words \"American\", \"travel\", & \"track\", it provides most U.S. passenger rail service"
+Answer = "Amtrak"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[sub_resource type="Resource" id="Resource_6s0fo"]
+script = ExtResource("1_4gfl3")
+pointValue = 400
+Question = "London's, not New York's, was the first ever built"
+Answer = "the underground (or the metro or subway system)"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[sub_resource type="Resource" id="Resource_4c6ki"]
+script = ExtResource("1_4gfl3")
+pointValue = 500
+Question = "Changing lines, you could have at one time ridden these from Freeport, IL to Utica, NY"
+Answer = "streetcars"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[resource]
+script = ExtResource("2_uhuw4")
+title = "TRANSPORTATION"
+questionTile = Array[ExtResource("1_4gfl3")]([SubResource("Resource_4gfl3"), SubResource("Resource_uhuw4"), SubResource("Resource_k8lu7"), SubResource("Resource_6s0fo"), SubResource("Resource_4c6ki")])
+metadata/_custom_type_script = "uid://b8cm45wue2am8"

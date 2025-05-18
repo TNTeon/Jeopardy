@@ -1,0 +1,45 @@
+[gd_resource type="Resource" script_class="categoryResource" load_steps=8 format=3 uid="uid://dhqch3ah3plec"]
+
+[ext_resource type="Script" uid="uid://dsbkiyn7uvjg2" path="res://Classes/TileQuestion/tileResource.gd" id="1_4ojqw"]
+[ext_resource type="Script" uid="uid://b8cm45wue2am8" path="res://Classes/Category/categoryResource.gd" id="2_n2tyu"]
+
+[sub_resource type="Resource" id="Resource_4ojqw"]
+script = ExtResource("1_4ojqw")
+pointValue = 100
+Question = "Hebrew word traditionally used to end the prayer"
+Answer = "amen"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[sub_resource type="Resource" id="Resource_n2tyu"]
+script = ExtResource("1_4ojqw")
+pointValue = 200
+Question = "Running race named for battleground 26 miles from Athens"
+Answer = "the marathon"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[sub_resource type="Resource" id="Resource_n2wbc"]
+script = ExtResource("1_4ojqw")
+pointValue = 300
+Question = "Though originally confused with Turkish guinea fowl, this bird's an American original"
+Answer = "a turkey"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[sub_resource type="Resource" id="Resource_oyywo"]
+script = ExtResource("1_4ojqw")
+pointValue = 400
+Question = "From the Arabic amir-al-bahr, meaning \"commander of the sea\""
+Answer = "an admiral"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[sub_resource type="Resource" id="Resource_of447"]
+script = ExtResource("1_4ojqw")
+pointValue = 500
+Question = "The Irish call this drink uisce beatha, meaning \"water of life\""
+Answer = "whiskey"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[resource]
+script = ExtResource("2_n2tyu")
+title = "WORD ORIGINS"
+questionTile = Array[ExtResource("1_4ojqw")]([SubResource("Resource_4ojqw"), SubResource("Resource_n2tyu"), SubResource("Resource_n2wbc"), SubResource("Resource_oyywo"), SubResource("Resource_of447")])
+metadata/_custom_type_script = "uid://b8cm45wue2am8"

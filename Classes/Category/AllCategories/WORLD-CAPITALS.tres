@@ -1,0 +1,45 @@
+[gd_resource type="Resource" script_class="categoryResource" load_steps=8 format=3 uid="uid://bxeru765exj1p"]
+
+[ext_resource type="Script" uid="uid://dsbkiyn7uvjg2" path="res://Classes/TileQuestion/tileResource.gd" id="1_ca40f"]
+[ext_resource type="Script" uid="uid://b8cm45wue2am8" path="res://Classes/Category/categoryResource.gd" id="2_me4k7"]
+
+[sub_resource type="Resource" id="Resource_ca40f"]
+script = ExtResource("1_ca40f")
+pointValue = 100
+Question = "Costa Rican capital people might know the way to"
+Answer = "San Jose"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[sub_resource type="Resource" id="Resource_me4k7"]
+script = ExtResource("1_ca40f")
+pointValue = 200
+Question = "It's divided into the Kanda, Marunoucki, Asakusa & Ginza districts"
+Answer = "Tokyo"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[sub_resource type="Resource" id="Resource_y3gl2"]
+script = ExtResource("1_ca40f")
+pointValue = 300
+Question = "Home to NATO & little green sprouts"
+Answer = "Brussels"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[sub_resource type="Resource" id="Resource_xf7sr"]
+script = ExtResource("1_ca40f")
+pointValue = 400
+Question = "This capital's street signs are in English, Arabic & Hebrew"
+Answer = "Jerusalem"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[sub_resource type="Resource" id="Resource_tpb05"]
+script = ExtResource("1_ca40f")
+pointValue = 500
+Question = "If the other twin had founded it, it might have been called \"Reme\""
+Answer = "Rome"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[resource]
+script = ExtResource("2_me4k7")
+title = "WORLD CAPITALS"
+questionTile = Array[ExtResource("1_ca40f")]([SubResource("Resource_ca40f"), SubResource("Resource_me4k7"), SubResource("Resource_y3gl2"), SubResource("Resource_xf7sr"), SubResource("Resource_tpb05")])
+metadata/_custom_type_script = "uid://b8cm45wue2am8"

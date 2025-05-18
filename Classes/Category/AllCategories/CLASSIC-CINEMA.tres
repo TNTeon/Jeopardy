@@ -1,0 +1,45 @@
+[gd_resource type="Resource" script_class="categoryResource" load_steps=8 format=3 uid="uid://bp26dcm8lm5bq"]
+
+[ext_resource type="Script" uid="uid://dsbkiyn7uvjg2" path="res://Classes/TileQuestion/tileResource.gd" id="1_8cs2c"]
+[ext_resource type="Script" uid="uid://b8cm45wue2am8" path="res://Classes/Category/categoryResource.gd" id="2_5mvca"]
+
+[sub_resource type="Resource" id="Resource_8cs2c"]
+script = ExtResource("1_8cs2c")
+pointValue = 100
+Question = "In this epic, an angry Scarlett sees Rhett"
+Answer = "Gone with the Wind"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[sub_resource type="Resource" id="Resource_5mvca"]
+script = ExtResource("1_8cs2c")
+pointValue = 200
+Question = "Supposed to have starred Ronald Reagan & Anne Sheridan instead of Bogie & Bergman"
+Answer = "Casablanca"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[sub_resource type="Resource" id="Resource_3o2yu"]
+script = ExtResource("1_8cs2c")
+pointValue = 300
+Question = "Chaplin finds fascism funny"
+Answer = "The Great Dictator"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[sub_resource type="Resource" id="Resource_atnmg"]
+script = ExtResource("1_8cs2c")
+pointValue = 400
+Question = "Hitchcock tells Cary Grant where to go"
+Answer = "North by Northwest"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[sub_resource type="Resource" id="Resource_w57fu"]
+script = ExtResource("1_8cs2c")
+pointValue = 500
+Question = "Often acclaimed as the best American film ever, but lost Oscar in '41 to \"How Green Was My Valley\""
+Answer = "Citizen Kane"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[resource]
+script = ExtResource("2_5mvca")
+title = "CLASSIC CINEMA"
+questionTile = Array[ExtResource("1_8cs2c")]([SubResource("Resource_8cs2c"), SubResource("Resource_5mvca"), SubResource("Resource_3o2yu"), SubResource("Resource_atnmg"), SubResource("Resource_w57fu")])
+metadata/_custom_type_script = "uid://b8cm45wue2am8"

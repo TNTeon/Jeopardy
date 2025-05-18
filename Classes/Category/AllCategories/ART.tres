@@ -1,0 +1,45 @@
+[gd_resource type="Resource" script_class="categoryResource" load_steps=8 format=3 uid="uid://b5e5qlsw23f7m"]
+
+[ext_resource type="Script" uid="uid://dsbkiyn7uvjg2" path="res://Classes/TileQuestion/tileResource.gd" id="1_u3kn6"]
+[ext_resource type="Script" uid="uid://b8cm45wue2am8" path="res://Classes/Category/categoryResource.gd" id="2_r0rws"]
+
+[sub_resource type="Resource" id="Resource_u3kn6"]
+script = ExtResource("1_u3kn6")
+pointValue = 100
+Question = "Pope Julius II ordered him to paint the Sistine Chapel"
+Answer = "Michelangelo"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[sub_resource type="Resource" id="Resource_r0rws"]
+script = ExtResource("1_u3kn6")
+pointValue = 200
+Question = "Name for the Virgin Mary in many paintings"
+Answer = "the Madonna"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[sub_resource type="Resource" id="Resource_bwg4j"]
+script = ExtResource("1_u3kn6")
+pointValue = 300
+Question = "Born on Crete, Domenicos Theotocopoulos was called \"The Greek\" by Spaniards"
+Answer = "El Greco"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[sub_resource type="Resource" id="Resource_spi24"]
+script = ExtResource("1_u3kn6")
+pointValue = 400
+Question = "Rodin's sculptured tribute to eggheads"
+Answer = "The Thinker"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[sub_resource type="Resource" id="Resource_wsia5"]
+script = ExtResource("1_u3kn6")
+pointValue = 500
+Question = "It's combined with pigment to make tempera paint"
+Answer = "egg yolk"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[resource]
+script = ExtResource("2_r0rws")
+title = "ART"
+questionTile = Array[ExtResource("1_u3kn6")]([SubResource("Resource_u3kn6"), SubResource("Resource_r0rws"), SubResource("Resource_bwg4j"), SubResource("Resource_spi24"), SubResource("Resource_wsia5")])
+metadata/_custom_type_script = "uid://b8cm45wue2am8"

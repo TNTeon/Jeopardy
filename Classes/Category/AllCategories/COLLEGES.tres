@@ -1,0 +1,45 @@
+[gd_resource type="Resource" script_class="categoryResource" load_steps=8 format=3 uid="uid://b6ociwlqadi1i"]
+
+[ext_resource type="Script" uid="uid://dsbkiyn7uvjg2" path="res://Classes/TileQuestion/tileResource.gd" id="1_iylxv"]
+[ext_resource type="Script" uid="uid://b8cm45wue2am8" path="res://Classes/Category/categoryResource.gd" id="2_qswy8"]
+
+[sub_resource type="Resource" id="Resource_iylxv"]
+script = ExtResource("1_iylxv")
+pointValue = 100
+Question = "A type of shoe or cloth, or where a Rhodes scholarship will get you"
+Answer = "Oxford"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[sub_resource type="Resource" id="Resource_qswy8"]
+script = ExtResource("1_iylxv")
+pointValue = 200
+Question = "Home of over 52,000 Buckeyes"
+Answer = "Ohio State University"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[sub_resource type="Resource" id="Resource_et7kw"]
+script = ExtResource("1_iylxv")
+pointValue = 300
+Question = "Latin for field, or college grounds"
+Answer = "campus"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[sub_resource type="Resource" id="Resource_3vx3r"]
+script = ExtResource("1_iylxv")
+pointValue = 400
+Question = "In 1934, Gerald Ford was voted MVP of this school's football team"
+Answer = "(University of) Michigan"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[sub_resource type="Resource" id="Resource_afatn"]
+script = ExtResource("1_iylxv")
+pointValue = 500
+Question = "Women's college that shares Harvard's classes, housing & facilities but still is separate"
+Answer = "Radcliffe"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[resource]
+script = ExtResource("2_qswy8")
+title = "COLLEGES"
+questionTile = Array[ExtResource("1_iylxv")]([SubResource("Resource_iylxv"), SubResource("Resource_qswy8"), SubResource("Resource_et7kw"), SubResource("Resource_3vx3r"), SubResource("Resource_afatn")])
+metadata/_custom_type_script = "uid://b8cm45wue2am8"

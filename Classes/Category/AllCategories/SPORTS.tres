@@ -1,0 +1,45 @@
+[gd_resource type="Resource" script_class="categoryResource" load_steps=8 format=3 uid="uid://dnn1dcnwthrss"]
+
+[ext_resource type="Script" uid="uid://dsbkiyn7uvjg2" path="res://Classes/TileQuestion/tileResource.gd" id="1_0un5y"]
+[ext_resource type="Script" uid="uid://b8cm45wue2am8" path="res://Classes/Category/categoryResource.gd" id="2_f08wu"]
+
+[sub_resource type="Resource" id="Resource_0un5y"]
+script = ExtResource("1_0un5y")
+pointValue = 100
+Question = "It's the Run for the Roses in the Bluegrass State"
+Answer = "the Kentucky Derby"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[sub_resource type="Resource" id="Resource_f08wu"]
+script = ExtResource("1_0un5y")
+pointValue = 200
+Question = "In Japan its name is sumo, in nightclubs its name is mud"
+Answer = "wrestling"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[sub_resource type="Resource" id="Resource_q2fbd"]
+script = ExtResource("1_0un5y")
+pointValue = 300
+Question = "Legendary site of first baseball game"
+Answer = "Cooperstown"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[sub_resource type="Resource" id="Resource_twufu"]
+script = ExtResource("1_0un5y")
+pointValue = 400
+Question = "Her hairstyle & style on the ice made her famous in the '76 Olympics"
+Answer = "Dorothy Hamill"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[sub_resource type="Resource" id="Resource_wd4cy"]
+script = ExtResource("1_0un5y")
+pointValue = 500
+Question = "Great-Grandson of Chief Black Hawk & 1 of 1st in NFL Hall of Fame"
+Answer = "Jim Thorpe"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[resource]
+script = ExtResource("2_f08wu")
+title = "SPORTS"
+questionTile = Array[ExtResource("1_0un5y")]([SubResource("Resource_0un5y"), SubResource("Resource_f08wu"), SubResource("Resource_q2fbd"), SubResource("Resource_twufu"), SubResource("Resource_wd4cy")])
+metadata/_custom_type_script = "uid://b8cm45wue2am8"

@@ -1,0 +1,45 @@
+[gd_resource type="Resource" script_class="categoryResource" load_steps=8 format=3 uid="uid://2gv1b26gb5k7"]
+
+[ext_resource type="Script" uid="uid://dsbkiyn7uvjg2" path="res://Classes/TileQuestion/tileResource.gd" id="1_6won8"]
+[ext_resource type="Script" uid="uid://b8cm45wue2am8" path="res://Classes/Category/categoryResource.gd" id="2_5vhla"]
+
+[sub_resource type="Resource" id="Resource_6won8"]
+script = ExtResource("1_6won8")
+pointValue = 100
+Question = "The only reptiles with shells"
+Answer = "turtles"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[sub_resource type="Resource" id="Resource_5vhla"]
+script = ExtResource("1_6won8")
+pointValue = 200
+Question = "Boy George's karma camouflager"
+Answer = "a chameleon"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[sub_resource type="Resource" id="Resource_4sm2w"]
+script = ExtResource("1_6won8")
+pointValue = 300
+Question = "Charmed, but not charming, it kills 10,000 in India each year"
+Answer = "a cobra"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[sub_resource type="Resource" id="Resource_w0lpf"]
+script = ExtResource("1_6won8")
+pointValue = 400
+Question = "Greek for \"terrible lizard\", most were gentle vegetarians"
+Answer = "dinosaur"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[sub_resource type="Resource" id="Resource_uw7g4"]
+script = ExtResource("1_6won8")
+pointValue = 500
+Question = "In Tennessee Williams' play, it was his big night"
+Answer = "an iguana"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[resource]
+script = ExtResource("2_5vhla")
+title = "REPTILES"
+questionTile = Array[ExtResource("1_6won8")]([SubResource("Resource_6won8"), SubResource("Resource_5vhla"), SubResource("Resource_4sm2w"), SubResource("Resource_w0lpf"), SubResource("Resource_uw7g4")])
+metadata/_custom_type_script = "uid://b8cm45wue2am8"

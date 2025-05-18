@@ -1,0 +1,45 @@
+[gd_resource type="Resource" script_class="categoryResource" load_steps=8 format=3 uid="uid://ceg0pe7qw6djs"]
+
+[ext_resource type="Script" uid="uid://dsbkiyn7uvjg2" path="res://Classes/TileQuestion/tileResource.gd" id="1_0uev5"]
+[ext_resource type="Script" uid="uid://b8cm45wue2am8" path="res://Classes/Category/categoryResource.gd" id="2_a8kji"]
+
+[sub_resource type="Resource" id="Resource_0uev5"]
+script = ExtResource("1_0uev5")
+pointValue = 100
+Question = "Pasadena's post-parade pigskin party"
+Answer = "the Rose Bowl (game)"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[sub_resource type="Resource" id="Resource_a8kji"]
+script = ExtResource("1_0uev5")
+pointValue = 200
+Question = "It's futbol in South America"
+Answer = "soccer"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[sub_resource type="Resource" id="Resource_a5pf4"]
+script = ExtResource("1_0uev5")
+pointValue = 300
+Question = "Member of Dirty Dozen who wants to act like a fullback again"
+Answer = "Jimmy Brown"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[sub_resource type="Resource" id="Resource_ose0j"]
+script = ExtResource("1_0uev5")
+pointValue = 400
+Question = "University nicknamed \"The Bulldogs\" where Gerald Ford was assistant coach"
+Answer = "Yale"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[sub_resource type="Resource" id="Resource_2nkg4"]
+script = ExtResource("1_0uev5")
+pointValue = 500
+Question = "Famous halfback now on the Supreme Court's bench"
+Answer = "Byron \"Whizzer\" White"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[resource]
+script = ExtResource("2_a8kji")
+title = "TOUCHDOWN TOPICS"
+questionTile = Array[ExtResource("1_0uev5")]([SubResource("Resource_0uev5"), SubResource("Resource_a8kji"), SubResource("Resource_a5pf4"), SubResource("Resource_ose0j"), SubResource("Resource_2nkg4")])
+metadata/_custom_type_script = "uid://b8cm45wue2am8"

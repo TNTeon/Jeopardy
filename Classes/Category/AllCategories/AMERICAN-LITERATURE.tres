@@ -1,0 +1,45 @@
+[gd_resource type="Resource" script_class="categoryResource" load_steps=8 format=3 uid="uid://dyl5fo0qutr4u"]
+
+[ext_resource type="Script" uid="uid://dsbkiyn7uvjg2" path="res://Classes/TileQuestion/tileResource.gd" id="1_2ypin"]
+[ext_resource type="Script" uid="uid://b8cm45wue2am8" path="res://Classes/Category/categoryResource.gd" id="2_mw062"]
+
+[sub_resource type="Resource" id="Resource_2ypin"]
+script = ExtResource("1_2ypin")
+pointValue = 100
+Question = "Melville's white whale tale"
+Answer = "Moby-Dick"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[sub_resource type="Resource" id="Resource_mw062"]
+script = ExtResource("1_2ypin")
+pointValue = 200
+Question = "Lincoln called it \"the book that caused the big war\""
+Answer = "Uncle Tom's Cabin"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[sub_resource type="Resource" id="Resource_x1ufs"]
+script = ExtResource("1_2ypin")
+pointValue = 300
+Question = "Steinbeck novel dubbed \"the Uncle Tom's Cabin of the Depression\""
+Answer = "The Grapes of Wrath"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[sub_resource type="Resource" id="Resource_51mor"]
+script = ExtResource("1_2ypin")
+pointValue = 400
+Question = "He gave Hester a scarlet \"A\""
+Answer = "Nathaniel Hawthorne"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[sub_resource type="Resource" id="Resource_kff3q"]
+script = ExtResource("1_2ypin")
+pointValue = 500
+Question = "Great-grand nephew of Francis Scott Key, he was the voice of the Jazz Age"
+Answer = "F. Scott Fitzgerald"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[resource]
+script = ExtResource("2_mw062")
+title = "AMERICAN LITERATURE"
+questionTile = Array[ExtResource("1_2ypin")]([SubResource("Resource_2ypin"), SubResource("Resource_mw062"), SubResource("Resource_x1ufs"), SubResource("Resource_51mor"), SubResource("Resource_kff3q")])
+metadata/_custom_type_script = "uid://b8cm45wue2am8"

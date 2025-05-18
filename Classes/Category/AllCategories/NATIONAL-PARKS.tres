@@ -1,0 +1,45 @@
+[gd_resource type="Resource" script_class="categoryResource" load_steps=8 format=3 uid="uid://dyicbics2fu5h"]
+
+[ext_resource type="Script" uid="uid://dsbkiyn7uvjg2" path="res://Classes/TileQuestion/tileResource.gd" id="1_gvyxr"]
+[ext_resource type="Script" uid="uid://b8cm45wue2am8" path="res://Classes/Category/categoryResource.gd" id="2_u22ik"]
+
+[sub_resource type="Resource" id="Resource_gvyxr"]
+script = ExtResource("1_gvyxr")
+pointValue = 100
+Question = "Due to earthquakes, this Yellowstone geyser no longer erupts on time"
+Answer = "Old Faithful"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[sub_resource type="Resource" id="Resource_u22ik"]
+script = ExtResource("1_gvyxr")
+pointValue = 200
+Question = "Logs in this forest may be 150 million years old"
+Answer = "the Petrified Forest"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[sub_resource type="Resource" id="Resource_s7ls6"]
+script = ExtResource("1_gvyxr")
+pointValue = 300
+Question = "There are still unexplored areas of these New Mexico caves"
+Answer = "Carlsbad Caverns"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[sub_resource type="Resource" id="Resource_0eb6p"]
+script = ExtResource("1_gvyxr")
+pointValue = 400
+Question = "Mount Whitney, highest point in lower 48 states, is in this park named for its trees"
+Answer = "Sequoia National Park"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[sub_resource type="Resource" id="Resource_ymg6p"]
+script = ExtResource("1_gvyxr")
+pointValue = 500
+Question = "This southern subtropical wilderness is home to manatees & TV's \"Gentle Ben\""
+Answer = "the Everglades"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[resource]
+script = ExtResource("2_u22ik")
+title = "NATIONAL PARKS"
+questionTile = Array[ExtResource("1_gvyxr")]([SubResource("Resource_gvyxr"), SubResource("Resource_u22ik"), SubResource("Resource_s7ls6"), SubResource("Resource_0eb6p"), SubResource("Resource_ymg6p")])
+metadata/_custom_type_script = "uid://b8cm45wue2am8"

@@ -1,0 +1,45 @@
+[gd_resource type="Resource" script_class="categoryResource" load_steps=8 format=3 uid="uid://bmy6tpvvjmapk"]
+
+[ext_resource type="Script" uid="uid://dsbkiyn7uvjg2" path="res://Classes/TileQuestion/tileResource.gd" id="1_mr20c"]
+[ext_resource type="Script" uid="uid://b8cm45wue2am8" path="res://Classes/Category/categoryResource.gd" id="2_78adf"]
+
+[sub_resource type="Resource" id="Resource_mr20c"]
+script = ExtResource("1_mr20c")
+pointValue = 100
+Question = "It's where I came from with a banjo on my knee"
+Answer = "Alabama"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[sub_resource type="Resource" id="Resource_78adf"]
+script = ExtResource("1_mr20c")
+pointValue = 200
+Question = "According to Beach Boys' hit, state with the cutest girls in the world"
+Answer = "California"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[sub_resource type="Resource" id="Resource_sb8kg"]
+script = ExtResource("1_mr20c")
+pointValue = 300
+Question = "State where you'd find Elvis' rain & Diamond's woman"
+Answer = "Kentucky"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[sub_resource type="Resource" id="Resource_fdh76"]
+script = ExtResource("1_mr20c")
+pointValue = 400
+Question = "The alternate lyrics to \"I've Been Working On The Railroad\""
+Answer = "\"The Eyes Of Texas\""
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[sub_resource type="Resource" id="Resource_ycbfh"]
+script = ExtResource("1_mr20c")
+pointValue = 500
+Question = "Patti Page hit that is official song of a southern state"
+Answer = "\"The Tennessee Waltz\""
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[resource]
+script = ExtResource("2_78adf")
+title = "STATES IN SONG"
+questionTile = Array[ExtResource("1_mr20c")]([SubResource("Resource_mr20c"), SubResource("Resource_78adf"), SubResource("Resource_sb8kg"), SubResource("Resource_fdh76"), SubResource("Resource_ycbfh")])
+metadata/_custom_type_script = "uid://b8cm45wue2am8"

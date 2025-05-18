@@ -1,0 +1,45 @@
+[gd_resource type="Resource" script_class="categoryResource" load_steps=8 format=3 uid="uid://dmnqv706hd3iw"]
+
+[ext_resource type="Script" uid="uid://dsbkiyn7uvjg2" path="res://Classes/TileQuestion/tileResource.gd" id="1_fhp2u"]
+[ext_resource type="Script" uid="uid://b8cm45wue2am8" path="res://Classes/Category/categoryResource.gd" id="2_u3hm6"]
+
+[sub_resource type="Resource" id="Resource_fhp2u"]
+script = ExtResource("1_fhp2u")
+pointValue = 100
+Question = "In '61 movie, Audrey Hepburn's alternative to brunch in bed"
+Answer = "Breakfast at Tiffany's"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[sub_resource type="Resource" id="Resource_u3hm6"]
+script = ExtResource("1_fhp2u")
+pointValue = 200
+Question = "Burt Lancaster film in which his only friends were feathered"
+Answer = "Birdman of Alcatraz"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[sub_resource type="Resource" id="Resource_kla4g"]
+script = ExtResource("1_fhp2u")
+pointValue = 300
+Question = "Poignant movie in which Peter Sellers turned on the TV & tuned out the world"
+Answer = "Being There"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[sub_resource type="Resource" id="Resource_gyg5p"]
+script = ExtResource("1_fhp2u")
+pointValue = 400
+Question = "This title describes Carroll Baker's thumb-sucking character & nightie she wore"
+Answer = "Baby Doll"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[sub_resource type="Resource" id="Resource_qffs1"]
+script = ExtResource("1_fhp2u")
+pointValue = 500
+Question = "Sensitive Mart Crowley treatment of gays marching to a different drummer"
+Answer = "The Boys in the Band"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[resource]
+script = ExtResource("2_u3hm6")
+title = "\"B\" MOVIES"
+questionTile = Array[ExtResource("1_fhp2u")]([SubResource("Resource_fhp2u"), SubResource("Resource_u3hm6"), SubResource("Resource_kla4g"), SubResource("Resource_gyg5p"), SubResource("Resource_qffs1")])
+metadata/_custom_type_script = "uid://b8cm45wue2am8"

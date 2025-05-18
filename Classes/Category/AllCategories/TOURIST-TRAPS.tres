@@ -1,0 +1,45 @@
+[gd_resource type="Resource" script_class="categoryResource" load_steps=8 format=3 uid="uid://cmw8s7m0i535w"]
+
+[ext_resource type="Script" uid="uid://dsbkiyn7uvjg2" path="res://Classes/TileQuestion/tileResource.gd" id="1_f34vq"]
+[ext_resource type="Script" uid="uid://b8cm45wue2am8" path="res://Classes/Category/categoryResource.gd" id="2_006i6"]
+
+[sub_resource type="Resource" id="Resource_f34vq"]
+script = ExtResource("1_f34vq")
+pointValue = 100
+Question = "Both Ferde Grofe' & the Colorado River dug this national park"
+Answer = "the Grand Canyon"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[sub_resource type="Resource" id="Resource_006i6"]
+script = ExtResource("1_f34vq")
+pointValue = 200
+Question = "Seaside resort that has a monopoly on East Coast gambling"
+Answer = "Atlantic City, New Jersey"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[sub_resource type="Resource" id="Resource_8srqw"]
+script = ExtResource("1_f34vq")
+pointValue = 300
+Question = "Since '27, stars have made good impressions at this Hollywood site"
+Answer = "Mann's Chinese Theatre"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[sub_resource type="Resource" id="Resource_8mien"]
+script = ExtResource("1_f34vq")
+pointValue = 400
+Question = "A thrilling destination for tight-rope walkers & honeymooners"
+Answer = "Niagara Falls"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[sub_resource type="Resource" id="Resource_m6yi6"]
+script = ExtResource("1_f34vq")
+pointValue = 500
+Question = "Tourists know this Catholic mission as Davy Crockett's last stand"
+Answer = "the Alamo"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[resource]
+script = ExtResource("2_006i6")
+title = "TOURIST TRAPS"
+questionTile = Array[ExtResource("1_f34vq")]([SubResource("Resource_f34vq"), SubResource("Resource_006i6"), SubResource("Resource_8srqw"), SubResource("Resource_8mien"), SubResource("Resource_m6yi6")])
+metadata/_custom_type_script = "uid://b8cm45wue2am8"

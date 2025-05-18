@@ -1,0 +1,45 @@
+[gd_resource type="Resource" script_class="categoryResource" load_steps=8 format=3 uid="uid://c2sc6tw3lnsta"]
+
+[ext_resource type="Script" uid="uid://dsbkiyn7uvjg2" path="res://Classes/TileQuestion/tileResource.gd" id="1_u7kda"]
+[ext_resource type="Script" uid="uid://b8cm45wue2am8" path="res://Classes/Category/categoryResource.gd" id="2_v66bd"]
+
+[sub_resource type="Resource" id="Resource_u7kda"]
+script = ExtResource("1_u7kda")
+pointValue = 100
+Question = "His sister LaToya is following in his dance steps"
+Answer = "Michael Jackson"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[sub_resource type="Resource" id="Resource_v66bd"]
+script = ExtResource("1_u7kda")
+pointValue = 200
+Question = "Loretta Lynn's sister, she's a country music long-hair"
+Answer = "Crystal Gayle"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[sub_resource type="Resource" id="Resource_gqne2"]
+script = ExtResource("1_u7kda")
+pointValue = 300
+Question = "Your mother's father's son"
+Answer = "your uncle"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[sub_resource type="Resource" id="Resource_p2tcm"]
+script = ExtResource("1_u7kda")
+pointValue = 400
+Question = "The Carringtons were shocked to find out she was part of the family dynasty"
+Answer = "Dominique Deveraux"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[sub_resource type="Resource" id="Resource_p0bka"]
+script = ExtResource("1_u7kda")
+pointValue = 500
+Question = "In French, beau-pere & belle-mere are these relatives"
+Answer = "mother-in-law & father-in-law"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[resource]
+script = ExtResource("2_v66bd")
+title = "RELATIVES"
+questionTile = Array[ExtResource("1_u7kda")]([SubResource("Resource_u7kda"), SubResource("Resource_v66bd"), SubResource("Resource_gqne2"), SubResource("Resource_p2tcm"), SubResource("Resource_p0bka")])
+metadata/_custom_type_script = "uid://b8cm45wue2am8"

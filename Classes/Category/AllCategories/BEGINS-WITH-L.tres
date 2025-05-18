@@ -1,0 +1,45 @@
+[gd_resource type="Resource" script_class="categoryResource" load_steps=8 format=3 uid="uid://24nqbtpnqwmk"]
+
+[ext_resource type="Script" uid="uid://dsbkiyn7uvjg2" path="res://Classes/TileQuestion/tileResource.gd" id="1_7g0hd"]
+[ext_resource type="Script" uid="uid://b8cm45wue2am8" path="res://Classes/Category/categoryResource.gd" id="2_yhyee"]
+
+[sub_resource type="Resource" id="Resource_7g0hd"]
+script = ExtResource("1_7g0hd")
+pointValue = 100
+Question = "Erich Segal's \"story\""
+Answer = "Love Story"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[sub_resource type="Resource" id="Resource_yhyee"]
+script = ExtResource("1_7g0hd")
+pointValue = 200
+Question = "An air bubble tells a carpenter if he's on it"
+Answer = "a level"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[sub_resource type="Resource" id="Resource_gddjf"]
+script = ExtResource("1_7g0hd")
+pointValue = 300
+Question = "The L in L.P.G.A."
+Answer = "Ladies\\'"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[sub_resource type="Resource" id="Resource_c5357"]
+script = ExtResource("1_7g0hd")
+pointValue = 400
+Question = "A, B, M, P, or Z, for example"
+Answer = "letters"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[sub_resource type="Resource" id="Resource_iv661"]
+script = ExtResource("1_7g0hd")
+pointValue = 500
+Question = "It's what bread has & matzo hasn't"
+Answer = "leaven"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[resource]
+script = ExtResource("2_yhyee")
+title = "BEGINS WITH \"L\""
+questionTile = Array[ExtResource("1_7g0hd")]([SubResource("Resource_7g0hd"), SubResource("Resource_yhyee"), SubResource("Resource_gddjf"), SubResource("Resource_c5357"), SubResource("Resource_iv661")])
+metadata/_custom_type_script = "uid://b8cm45wue2am8"

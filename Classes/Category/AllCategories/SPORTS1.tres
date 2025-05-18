@@ -1,0 +1,45 @@
+[gd_resource type="Resource" script_class="categoryResource" load_steps=8 format=3 uid="uid://b457bv6q045md"]
+
+[ext_resource type="Script" uid="uid://dsbkiyn7uvjg2" path="res://Classes/TileQuestion/tileResource.gd" id="1_rtibn"]
+[ext_resource type="Script" uid="uid://b8cm45wue2am8" path="res://Classes/Category/categoryResource.gd" id="2_skydj"]
+
+[sub_resource type="Resource" id="Resource_rtibn"]
+script = ExtResource("1_rtibn")
+pointValue = 100
+Question = "Sport which uses epees, foils & sabres"
+Answer = "fencing"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[sub_resource type="Resource" id="Resource_skydj"]
+script = ExtResource("1_rtibn")
+pointValue = 200
+Question = "Name given to annual competition among U.S. amateur boxers"
+Answer = "the Golden Gloves"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[sub_resource type="Resource" id="Resource_5tcgb"]
+script = ExtResource("1_rtibn")
+pointValue = 300
+Question = "Number of downs allowed in Canadian football to advance the ball 10 yards"
+Answer = "3"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[sub_resource type="Resource" id="Resource_d5cxm"]
+script = ExtResource("1_rtibn")
+pointValue = 400
+Question = "Because of WWII, these 2 NFL teams combined squads in '43 to become the \"Stegles\""
+Answer = "the Steelers and Eagles"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[sub_resource type="Resource" id="Resource_bn7xm"]
+script = ExtResource("1_rtibn")
+pointValue = 500
+Question = "Ex-Boston Celtics' star who has refused induction into Basketball Hall of Fame"
+Answer = "Bill Russell"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[resource]
+script = ExtResource("2_skydj")
+title = "SPORTS"
+questionTile = Array[ExtResource("1_rtibn")]([SubResource("Resource_rtibn"), SubResource("Resource_skydj"), SubResource("Resource_5tcgb"), SubResource("Resource_d5cxm"), SubResource("Resource_bn7xm")])
+metadata/_custom_type_script = "uid://b8cm45wue2am8"

@@ -1,0 +1,45 @@
+[gd_resource type="Resource" script_class="categoryResource" load_steps=8 format=3 uid="uid://df4sjgbvr5up0"]
+
+[ext_resource type="Script" uid="uid://dsbkiyn7uvjg2" path="res://Classes/TileQuestion/tileResource.gd" id="1_p4lfh"]
+[ext_resource type="Script" uid="uid://b8cm45wue2am8" path="res://Classes/Category/categoryResource.gd" id="2_iqehi"]
+
+[sub_resource type="Resource" id="Resource_p4lfh"]
+script = ExtResource("1_p4lfh")
+pointValue = 100
+Question = "South-of-the-border setting of the '68 Olympics"
+Answer = "Mexico City"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[sub_resource type="Resource" id="Resource_iqehi"]
+script = ExtResource("1_p4lfh")
+pointValue = 200
+Question = "First visual effects Oscar went to Kubrick's look 33 years into the future"
+Answer = "2001: A Space Odyssey"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[sub_resource type="Resource" id="Resource_j5xa0"]
+script = ExtResource("1_p4lfh")
+pointValue = 300
+Question = "Camelot \"ended\" when Jackie married him"
+Answer = "Aristotle Onassis"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[sub_resource type="Resource" id="Resource_7kksj"]
+script = ExtResource("1_p4lfh")
+pointValue = 400
+Question = "He broke S. Africa's race barrier by transplanting black man's heart into white body"
+Answer = "Christiaan Barnard"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[sub_resource type="Resource" id="Resource_tr1ad"]
+script = ExtResource("1_p4lfh")
+pointValue = 500
+Question = "After 11 months in captivity, crew of this ship was released by N. Koreans"
+Answer = "the Pueblo"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[resource]
+script = ExtResource("2_iqehi")
+title = "1968"
+questionTile = Array[ExtResource("1_p4lfh")]([SubResource("Resource_p4lfh"), SubResource("Resource_iqehi"), SubResource("Resource_j5xa0"), SubResource("Resource_7kksj"), SubResource("Resource_tr1ad")])
+metadata/_custom_type_script = "uid://b8cm45wue2am8"

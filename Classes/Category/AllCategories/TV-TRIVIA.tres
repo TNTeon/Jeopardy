@@ -1,0 +1,45 @@
+[gd_resource type="Resource" script_class="categoryResource" load_steps=8 format=3 uid="uid://ds1f54dwwxdp0"]
+
+[ext_resource type="Script" uid="uid://dsbkiyn7uvjg2" path="res://Classes/TileQuestion/tileResource.gd" id="1_0n53q"]
+[ext_resource type="Script" uid="uid://b8cm45wue2am8" path="res://Classes/Category/categoryResource.gd" id="2_ytfuw"]
+
+[sub_resource type="Resource" id="Resource_0n53q"]
+script = ExtResource("1_0n53q")
+pointValue = 100
+Question = "Last season, this series mourned the loss of Sgt. Esterhaus"
+Answer = "Hill Street Blues"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[sub_resource type="Resource" id="Resource_ytfuw"]
+script = ExtResource("1_0n53q")
+pointValue = 200
+Question = "He went from the Ponderosa to the prairie"
+Answer = "Michael Landon"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[sub_resource type="Resource" id="Resource_cfa7d"]
+script = ExtResource("1_0n53q")
+pointValue = 300
+Question = "In 1970 he had a \"Goodtime Hour\""
+Answer = "Glen Campbell"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[sub_resource type="Resource" id="Resource_hf0ak"]
+script = ExtResource("1_0n53q")
+pointValue = 400
+Question = "Jackie Gleason show that rejected titles \"The Lovers\" & \"The Couple Next Door\""
+Answer = "The Honeymooners"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[sub_resource type="Resource" id="Resource_sbljr"]
+script = ExtResource("1_0n53q")
+pointValue = 500
+Question = "In court, he'd always make mincemeat of Hamilton Burger"
+Answer = "Perry Mason"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[resource]
+script = ExtResource("2_ytfuw")
+title = "TV TRIVIA"
+questionTile = Array[ExtResource("1_0n53q")]([SubResource("Resource_0n53q"), SubResource("Resource_ytfuw"), SubResource("Resource_cfa7d"), SubResource("Resource_hf0ak"), SubResource("Resource_sbljr")])
+metadata/_custom_type_script = "uid://b8cm45wue2am8"

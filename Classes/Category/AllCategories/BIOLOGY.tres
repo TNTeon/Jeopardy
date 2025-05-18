@@ -1,0 +1,45 @@
+[gd_resource type="Resource" script_class="categoryResource" load_steps=8 format=3 uid="uid://bqahuis4v3m5d"]
+
+[ext_resource type="Script" uid="uid://dsbkiyn7uvjg2" path="res://Classes/TileQuestion/tileResource.gd" id="1_7bnfd"]
+[ext_resource type="Script" uid="uid://b8cm45wue2am8" path="res://Classes/Category/categoryResource.gd" id="2_kbgjy"]
+
+[sub_resource type="Resource" id="Resource_7bnfd"]
+script = ExtResource("1_7bnfd")
+pointValue = 100
+Question = "Genus Rana; frequent victim of biology class dissections"
+Answer = "a frog"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[sub_resource type="Resource" id="Resource_kbgjy"]
+script = ExtResource("1_7bnfd")
+pointValue = 200
+Question = "L.B.J.'s hound dog or Darwin's ship"
+Answer = "the Beagle"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[sub_resource type="Resource" id="Resource_lyk5x"]
+script = ExtResource("1_7bnfd")
+pointValue = 300
+Question = "The basic unit of life; 3 billion die every minute in your body"
+Answer = "cells"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[sub_resource type="Resource" id="Resource_evmvq"]
+script = ExtResource("1_7bnfd")
+pointValue = 400
+Question = "It puts the green in greenery"
+Answer = "chlorophyll"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[sub_resource type="Resource" id="Resource_5e47b"]
+script = ExtResource("1_7bnfd")
+pointValue = 500
+Question = "Deoxyribonucleic acid"
+Answer = "DNA"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[resource]
+script = ExtResource("2_kbgjy")
+title = "BIOLOGY"
+questionTile = Array[ExtResource("1_7bnfd")]([SubResource("Resource_7bnfd"), SubResource("Resource_kbgjy"), SubResource("Resource_lyk5x"), SubResource("Resource_evmvq"), SubResource("Resource_5e47b")])
+metadata/_custom_type_script = "uid://b8cm45wue2am8"

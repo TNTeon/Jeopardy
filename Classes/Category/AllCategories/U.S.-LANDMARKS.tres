@@ -1,0 +1,45 @@
+[gd_resource type="Resource" script_class="categoryResource" load_steps=8 format=3 uid="uid://dlfsqt5eb7al6"]
+
+[ext_resource type="Script" uid="uid://dsbkiyn7uvjg2" path="res://Classes/TileQuestion/tileResource.gd" id="1_hyont"]
+[ext_resource type="Script" uid="uid://b8cm45wue2am8" path="res://Classes/Category/categoryResource.gd" id="2_hk7yh"]
+
+[sub_resource type="Resource" id="Resource_hyont"]
+script = ExtResource("1_hyont")
+pointValue = 100
+Question = "For her 100th birthday, she'll get her torch back"
+Answer = "the Statue of Liberty"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[sub_resource type="Resource" id="Resource_hk7yh"]
+script = ExtResource("1_hyont")
+pointValue = 200
+Question = "There were no known successful escapes from this \"Rock\" in S.F. bay"
+Answer = "Alcatraz"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[sub_resource type="Resource" id="Resource_a7ixe"]
+script = ExtResource("1_hyont")
+pointValue = 300
+Question = "Last Memorial Day, a Vietnam casualty was interred at this Arlington shrine"
+Answer = "the Tomb of the Unknown Soldier"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[sub_resource type="Resource" id="Resource_kpn8e"]
+script = ExtResource("1_hyont")
+pointValue = 400
+Question = "Plays are still performed at this site of Lincoln's assassination"
+Answer = "Ford's Theater"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[sub_resource type="Resource" id="Resource_2uq7t"]
+script = ExtResource("1_hyont")
+pointValue = 500
+Question = "At 555' 5\", this 100-year-old all-stone structure is world's tallest"
+Answer = "the Washington Monument"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[resource]
+script = ExtResource("2_hk7yh")
+title = "U.S. LANDMARKS"
+questionTile = Array[ExtResource("1_hyont")]([SubResource("Resource_hyont"), SubResource("Resource_hk7yh"), SubResource("Resource_a7ixe"), SubResource("Resource_kpn8e"), SubResource("Resource_2uq7t")])
+metadata/_custom_type_script = "uid://b8cm45wue2am8"

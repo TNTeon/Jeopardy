@@ -1,0 +1,45 @@
+[gd_resource type="Resource" script_class="categoryResource" load_steps=8 format=3 uid="uid://b34xnky3cavx"]
+
+[ext_resource type="Script" uid="uid://dsbkiyn7uvjg2" path="res://Classes/TileQuestion/tileResource.gd" id="1_uppln"]
+[ext_resource type="Script" uid="uid://b8cm45wue2am8" path="res://Classes/Category/categoryResource.gd" id="2_1naaq"]
+
+[sub_resource type="Resource" id="Resource_uppln"]
+script = ExtResource("1_uppln")
+pointValue = 100
+Question = "Celebrated botanist, or civic subject of Carson monologues"
+Answer = "(Luther) Burbank"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[sub_resource type="Resource" id="Resource_1naaq"]
+script = ExtResource("1_uppln")
+pointValue = 200
+Question = "Longfellow's \"spreading\" tree, now battling extinction by blight"
+Answer = "the chestnut tree"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[sub_resource type="Resource" id="Resource_ine6q"]
+script = ExtResource("1_uppln")
+pointValue = 300
+Question = "Favorite food of pandas, it's the world's largest grass"
+Answer = "bamboo"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[sub_resource type="Resource" id="Resource_hdxei"]
+script = ExtResource("1_uppln")
+pointValue = 400
+Question = "This \"tree's\" branches pointed way out of desert, so Mormons named it for Biblical leader"
+Answer = "the Joshua tree"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[sub_resource type="Resource" id="Resource_80sog"]
+script = ExtResource("1_uppln")
+pointValue = 500
+Question = "Largest specimen of this tree has 350 large trunks & over 3,000 small ones"
+Answer = "the banyan tree"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[resource]
+script = ExtResource("2_1naaq")
+title = "BOTANY"
+questionTile = Array[ExtResource("1_uppln")]([SubResource("Resource_uppln"), SubResource("Resource_1naaq"), SubResource("Resource_ine6q"), SubResource("Resource_hdxei"), SubResource("Resource_80sog")])
+metadata/_custom_type_script = "uid://b8cm45wue2am8"

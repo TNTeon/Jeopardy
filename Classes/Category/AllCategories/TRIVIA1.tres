@@ -1,0 +1,45 @@
+[gd_resource type="Resource" script_class="categoryResource" load_steps=8 format=3 uid="uid://crbeg38nqac3w"]
+
+[ext_resource type="Script" uid="uid://dsbkiyn7uvjg2" path="res://Classes/TileQuestion/tileResource.gd" id="1_yi1v3"]
+[ext_resource type="Script" uid="uid://b8cm45wue2am8" path="res://Classes/Category/categoryResource.gd" id="2_wn8u3"]
+
+[sub_resource type="Resource" id="Resource_yi1v3"]
+script = ExtResource("1_yi1v3")
+pointValue = 100
+Question = "\"Only you can prevent forest fires\""
+Answer = "Smokey the Bear('s motto)"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[sub_resource type="Resource" id="Resource_wn8u3"]
+script = ExtResource("1_yi1v3")
+pointValue = 200
+Question = "Nickname of our 16th president & Li'l Abner's son"
+Answer = "Honest Abe"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[sub_resource type="Resource" id="Resource_f1sqi"]
+script = ExtResource("1_yi1v3")
+pointValue = 300
+Question = "Though this actress' cat is named for Buster Keaton, she's really no relation"
+Answer = "Diane Keaton"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[sub_resource type="Resource" id="Resource_gc1vj"]
+script = ExtResource("1_yi1v3")
+pointValue = 400
+Question = "Above this I.Q. mark, you're considered a genius"
+Answer = "140"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[sub_resource type="Resource" id="Resource_mfp2f"]
+script = ExtResource("1_yi1v3")
+pointValue = 500
+Question = "State name that's misspelled on the Liberty Bell"
+Answer = "Pennsylvania"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[resource]
+script = ExtResource("2_wn8u3")
+title = "TRIVIA"
+questionTile = Array[ExtResource("1_yi1v3")]([SubResource("Resource_yi1v3"), SubResource("Resource_wn8u3"), SubResource("Resource_f1sqi"), SubResource("Resource_gc1vj"), SubResource("Resource_mfp2f")])
+metadata/_custom_type_script = "uid://b8cm45wue2am8"

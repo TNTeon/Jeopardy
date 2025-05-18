@@ -1,0 +1,45 @@
+[gd_resource type="Resource" script_class="categoryResource" load_steps=8 format=3 uid="uid://c1bmoglxnk11b"]
+
+[ext_resource type="Script" uid="uid://dsbkiyn7uvjg2" path="res://Classes/TileQuestion/tileResource.gd" id="1_y7mjh"]
+[ext_resource type="Script" uid="uid://b8cm45wue2am8" path="res://Classes/Category/categoryResource.gd" id="2_s3d33"]
+
+[sub_resource type="Resource" id="Resource_y7mjh"]
+script = ExtResource("1_y7mjh")
+pointValue = 100
+Question = "The Russians sold it to Seward at 2 an acre"
+Answer = "Alaska"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[sub_resource type="Resource" id="Resource_s3d33"]
+script = ExtResource("1_y7mjh")
+pointValue = 200
+Question = "It contains highest & lowest spots in lower 48 states, only 106 miles apart"
+Answer = "California"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[sub_resource type="Resource" id="Resource_ipn8r"]
+script = ExtResource("1_y7mjh")
+pointValue = 300
+Question = "Part of Massachusetts until it became our 23rd state"
+Answer = "Maine"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[sub_resource type="Resource" id="Resource_1ufti"]
+script = ExtResource("1_y7mjh")
+pointValue = 400
+Question = "Whenever it wants to, this state can legally break up into 5"
+Answer = "Texas"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[sub_resource type="Resource" id="Resource_g1r3e"]
+script = ExtResource("1_y7mjh")
+pointValue = 500
+Question = "Originally set aside for the Indians for as long as grass shall grow & rivers flow"
+Answer = "Oklahoma"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[resource]
+script = ExtResource("2_s3d33")
+title = "U.S. STATES"
+questionTile = Array[ExtResource("1_y7mjh")]([SubResource("Resource_y7mjh"), SubResource("Resource_s3d33"), SubResource("Resource_ipn8r"), SubResource("Resource_1ufti"), SubResource("Resource_g1r3e")])
+metadata/_custom_type_script = "uid://b8cm45wue2am8"

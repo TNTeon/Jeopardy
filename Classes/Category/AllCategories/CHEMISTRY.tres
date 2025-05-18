@@ -1,0 +1,45 @@
+[gd_resource type="Resource" script_class="categoryResource" load_steps=8 format=3 uid="uid://cjfhkmofqjytd"]
+
+[ext_resource type="Script" uid="uid://dsbkiyn7uvjg2" path="res://Classes/TileQuestion/tileResource.gd" id="1_8wo6p"]
+[ext_resource type="Script" uid="uid://b8cm45wue2am8" path="res://Classes/Category/categoryResource.gd" id="2_rx4ol"]
+
+[sub_resource type="Resource" id="Resource_8wo6p"]
+script = ExtResource("1_8wo6p")
+pointValue = 100
+Question = "Coal & diamonds both consist of it"
+Answer = "carbon"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[sub_resource type="Resource" id="Resource_rx4ol"]
+script = ExtResource("1_8wo6p")
+pointValue = 200
+Question = "Common kitchen substance known chemically as sodium chloride"
+Answer = "salt"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[sub_resource type="Resource" id="Resource_h0i7w"]
+script = ExtResource("1_8wo6p")
+pointValue = 300
+Question = "The chemical symbol for sulfuric acid, it completes this poem: \"Say farewell to the professor / He'll be with us no more / For what he thought was H2O / Was...\""
+Answer = "H2SO4"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[sub_resource type="Resource" id="Resource_a0ryt"]
+script = ExtResource("1_8wo6p")
+pointValue = 400
+Question = "Used in cars' catalytic converters, it's more expensive than gold"
+Answer = "platinum"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[sub_resource type="Resource" id="Resource_o3kd2"]
+script = ExtResource("1_8wo6p")
+pointValue = 500
+Question = "U.S. & Canada produce almost entire world supply of this lightest inert gas"
+Answer = "helium"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[resource]
+script = ExtResource("2_rx4ol")
+title = "CHEMISTRY"
+questionTile = Array[ExtResource("1_8wo6p")]([SubResource("Resource_8wo6p"), SubResource("Resource_rx4ol"), SubResource("Resource_h0i7w"), SubResource("Resource_a0ryt"), SubResource("Resource_o3kd2")])
+metadata/_custom_type_script = "uid://b8cm45wue2am8"

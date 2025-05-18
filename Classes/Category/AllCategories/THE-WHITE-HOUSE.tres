@@ -1,0 +1,45 @@
+[gd_resource type="Resource" script_class="categoryResource" load_steps=8 format=3 uid="uid://usty1kd5htxf"]
+
+[ext_resource type="Script" uid="uid://dsbkiyn7uvjg2" path="res://Classes/TileQuestion/tileResource.gd" id="1_7w1oj"]
+[ext_resource type="Script" uid="uid://b8cm45wue2am8" path="res://Classes/Category/categoryResource.gd" id="2_ch8w2"]
+
+[sub_resource type="Resource" id="Resource_7w1oj"]
+script = ExtResource("1_7w1oj")
+pointValue = 100
+Question = "Shape of the presidential office"
+Answer = "oval"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[sub_resource type="Resource" id="Resource_ch8w2"]
+script = ExtResource("1_7w1oj")
+pointValue = 200
+Question = "Nixon was the first since Truman to play this instrument in the White House"
+Answer = "the piano"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[sub_resource type="Resource" id="Resource_g33pl"]
+script = ExtResource("1_7w1oj")
+pointValue = 300
+Question = "In 1962 she led us on a televised tour of the White House"
+Answer = "Jackie Kennedy"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[sub_resource type="Resource" id="Resource_wo8ra"]
+script = ExtResource("1_7w1oj")
+pointValue = 400
+Question = "The library chandelier once belonged to family of this \"Last of the Mohicans\" author"
+Answer = "James Fenimore Cooper"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[sub_resource type="Resource" id="Resource_brufv"]
+script = ExtResource("1_7w1oj")
+pointValue = 500
+Question = "The White House has one of these which can seat 140 at once"
+Answer = "a dinner table (or dining room table)"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[resource]
+script = ExtResource("2_ch8w2")
+title = "THE WHITE HOUSE"
+questionTile = Array[ExtResource("1_7w1oj")]([SubResource("Resource_7w1oj"), SubResource("Resource_ch8w2"), SubResource("Resource_g33pl"), SubResource("Resource_wo8ra"), SubResource("Resource_brufv")])
+metadata/_custom_type_script = "uid://b8cm45wue2am8"

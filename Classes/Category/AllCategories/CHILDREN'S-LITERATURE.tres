@@ -1,0 +1,45 @@
+[gd_resource type="Resource" script_class="categoryResource" load_steps=8 format=3 uid="uid://bcf4lb6w6dtxe"]
+
+[ext_resource type="Script" uid="uid://dsbkiyn7uvjg2" path="res://Classes/TileQuestion/tileResource.gd" id="1_l24xb"]
+[ext_resource type="Script" uid="uid://b8cm45wue2am8" path="res://Classes/Category/categoryResource.gd" id="2_q6645"]
+
+[sub_resource type="Resource" id="Resource_l24xb"]
+script = ExtResource("1_l24xb")
+pointValue = 100
+Question = "Aesop character that won by a \"hare\""
+Answer = "turtle (or tortoise)"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[sub_resource type="Resource" id="Resource_q6645"]
+script = ExtResource("1_l24xb")
+pointValue = 200
+Question = "Crusoe named him for the day they met"
+Answer = "Friday"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[sub_resource type="Resource" id="Resource_a6f8v"]
+script = ExtResource("1_l24xb")
+pointValue = 300
+Question = "They called Robin Hood's companion this, though he was over 7' tall"
+Answer = "Little John"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[sub_resource type="Resource" id="Resource_kslhs"]
+script = ExtResource("1_l24xb")
+pointValue = 400
+Question = "Gulliver's tiny people"
+Answer = "the Lilliputians"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[sub_resource type="Resource" id="Resource_poaes"]
+script = ExtResource("1_l24xb")
+pointValue = 500
+Question = "In one Grimm tale, she's Rose Red's sister"
+Answer = "Snow White"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[resource]
+script = ExtResource("2_q6645")
+title = "CHILDREN'S LITERATURE"
+questionTile = Array[ExtResource("1_l24xb")]([SubResource("Resource_l24xb"), SubResource("Resource_q6645"), SubResource("Resource_a6f8v"), SubResource("Resource_kslhs"), SubResource("Resource_poaes")])
+metadata/_custom_type_script = "uid://b8cm45wue2am8"

@@ -1,0 +1,45 @@
+[gd_resource type="Resource" script_class="categoryResource" load_steps=8 format=3 uid="uid://bp5sscuh2t7rg"]
+
+[ext_resource type="Script" uid="uid://dsbkiyn7uvjg2" path="res://Classes/TileQuestion/tileResource.gd" id="1_viin4"]
+[ext_resource type="Script" uid="uid://b8cm45wue2am8" path="res://Classes/Category/categoryResource.gd" id="2_ld0d7"]
+
+[sub_resource type="Resource" id="Resource_viin4"]
+script = ExtResource("1_viin4")
+pointValue = 100
+Question = "Hamlet found \"something rotten\" in this country"
+Answer = "Denmark"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[sub_resource type="Resource" id="Resource_ld0d7"]
+script = ExtResource("1_viin4")
+pointValue = 200
+Question = "The Moor who loved Desdemona \"not wisely, but too well\""
+Answer = "Othello"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[sub_resource type="Resource" id="Resource_5pftv"]
+script = ExtResource("1_viin4")
+pointValue = 300
+Question = "Battle of the sexes on which musical \"Kiss Me Kate\" was based"
+Answer = "The Taming of the Shrew"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[sub_resource type="Resource" id="Resource_q4nl1"]
+script = ExtResource("1_viin4")
+pointValue = 400
+Question = "Chubby character who loved his ale & supplied the name for one"
+Answer = "Falstaff"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[sub_resource type="Resource" id="Resource_jvstc"]
+script = ExtResource("1_viin4")
+pointValue = 500
+Question = "She was 8 years older & 3 months pregnant when Shakespeare married her"
+Answer = "Anne Hathaway"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[resource]
+script = ExtResource("2_ld0d7")
+title = "SHAKESPEARE"
+questionTile = Array[ExtResource("1_viin4")]([SubResource("Resource_viin4"), SubResource("Resource_ld0d7"), SubResource("Resource_5pftv"), SubResource("Resource_q4nl1"), SubResource("Resource_jvstc")])
+metadata/_custom_type_script = "uid://b8cm45wue2am8"

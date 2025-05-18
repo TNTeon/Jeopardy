@@ -1,0 +1,45 @@
+[gd_resource type="Resource" script_class="categoryResource" load_steps=8 format=3 uid="uid://kbnxyhfpk67x"]
+
+[ext_resource type="Script" uid="uid://dsbkiyn7uvjg2" path="res://Classes/TileQuestion/tileResource.gd" id="1_t71f0"]
+[ext_resource type="Script" uid="uid://b8cm45wue2am8" path="res://Classes/Category/categoryResource.gd" id="2_rrqid"]
+
+[sub_resource type="Resource" id="Resource_t71f0"]
+script = ExtResource("1_t71f0")
+pointValue = 100
+Question = "She talked to Arnold's class about drugs on TV's \"Diff'rent Strokes\""
+Answer = "Nancy Reagan"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[sub_resource type="Resource" id="Resource_rrqid"]
+script = ExtResource("1_t71f0")
+pointValue = 200
+Question = "One of her early suitors was her husband's arch rival, Stephen A. Douglas"
+Answer = "Mary Todd Lincoln"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[sub_resource type="Resource" id="Resource_dp7a8"]
+script = ExtResource("1_t71f0")
+pointValue = 300
+Question = "Teddy's niece, her married & maiden names were the same"
+Answer = "Eleanor Roosevelt"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[sub_resource type="Resource" id="Resource_2t2mp"]
+script = ExtResource("1_t71f0")
+pointValue = 400
+Question = "Her tough Texas husband preferred her nickname to calling her Claudia Alta"
+Answer = "Lady Bird Johnson"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[sub_resource type="Resource" id="Resource_dsa15"]
+script = ExtResource("1_t71f0")
+pointValue = 500
+Question = "She was expelled from Society of Friends for marrying non-Quaker 4th president"
+Answer = "Dolley Madison"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[resource]
+script = ExtResource("2_rrqid")
+title = "FIRST LADIES"
+questionTile = Array[ExtResource("1_t71f0")]([SubResource("Resource_t71f0"), SubResource("Resource_rrqid"), SubResource("Resource_dp7a8"), SubResource("Resource_2t2mp"), SubResource("Resource_dsa15")])
+metadata/_custom_type_script = "uid://b8cm45wue2am8"

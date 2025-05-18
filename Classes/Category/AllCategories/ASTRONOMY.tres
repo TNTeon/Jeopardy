@@ -1,0 +1,45 @@
+[gd_resource type="Resource" script_class="categoryResource" load_steps=8 format=3 uid="uid://3a224j63onjo"]
+
+[ext_resource type="Script" uid="uid://dsbkiyn7uvjg2" path="res://Classes/TileQuestion/tileResource.gd" id="1_oyuhf"]
+[ext_resource type="Script" uid="uid://b8cm45wue2am8" path="res://Classes/Category/categoryResource.gd" id="2_yt3xt"]
+
+[sub_resource type="Resource" id="Resource_oyuhf"]
+script = ExtResource("1_oyuhf")
+pointValue = 100
+Question = "Self-luminous gaseous body, or Hollywood \"celeb\""
+Answer = "a star"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[sub_resource type="Resource" id="Resource_yt3xt"]
+script = ExtResource("1_oyuhf")
+pointValue = 200
+Question = "The evening or morning \"star\" is really this planet"
+Answer = "Venus"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[sub_resource type="Resource" id="Resource_d78yj"]
+script = ExtResource("1_oyuhf")
+pointValue = 300
+Question = "Planet once thought unique, it no longer runs \"rings\" around its neighbors"
+Answer = "Saturn"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[sub_resource type="Resource" id="Resource_bn8yi"]
+script = ExtResource("1_oyuhf")
+pointValue = 400
+Question = "Launched Oct. 4th, 1957, it was Earth's 1st artificial satellite"
+Answer = "Sputnik"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[sub_resource type="Resource" id="Resource_frmt2"]
+script = ExtResource("1_oyuhf")
+pointValue = 500
+Question = "Only planet to have seasons similar to Earth's"
+Answer = "Mars"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[resource]
+script = ExtResource("2_yt3xt")
+title = "ASTRONOMY"
+questionTile = Array[ExtResource("1_oyuhf")]([SubResource("Resource_oyuhf"), SubResource("Resource_yt3xt"), SubResource("Resource_d78yj"), SubResource("Resource_bn8yi"), SubResource("Resource_frmt2")])
+metadata/_custom_type_script = "uid://b8cm45wue2am8"

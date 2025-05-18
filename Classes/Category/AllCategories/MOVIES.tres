@@ -1,0 +1,45 @@
+[gd_resource type="Resource" script_class="categoryResource" load_steps=8 format=3 uid="uid://m7bd2d61mhu8"]
+
+[ext_resource type="Script" uid="uid://dsbkiyn7uvjg2" path="res://Classes/TileQuestion/tileResource.gd" id="1_0rv8w"]
+[ext_resource type="Script" uid="uid://b8cm45wue2am8" path="res://Classes/Category/categoryResource.gd" id="2_ofnfw"]
+
+[sub_resource type="Resource" id="Resource_0rv8w"]
+script = ExtResource("1_0rv8w")
+pointValue = 100
+Question = "To Dustin Hoffman this '82 film was a \"drag\""
+Answer = "Tootsie"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[sub_resource type="Resource" id="Resource_ofnfw"]
+script = ExtResource("1_0rv8w")
+pointValue = 200
+Question = "Film featuring March & Gaynor, Garland & Mason or Streisand & Kristofferson"
+Answer = "A Star Is Born"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[sub_resource type="Resource" id="Resource_2jjww"]
+script = ExtResource("1_0rv8w")
+pointValue = 300
+Question = "In '84 he's a destroyer, in '82 he was just a barbarian"
+Answer = "Conan"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[sub_resource type="Resource" id="Resource_wriib"]
+script = ExtResource("1_0rv8w")
+pointValue = 400
+Question = "Walter Matthau & Tony Curtis both coached this kids' baseball team"
+Answer = "The Bad News Bears"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[sub_resource type="Resource" id="Resource_qwl1l"]
+script = ExtResource("1_0rv8w")
+pointValue = 500
+Question = "Went from bit part in film \"Little Shop of Horrors\" to Oscars for Best Actor & Best Support"
+Answer = "Jack Nicholson"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[resource]
+script = ExtResource("2_ofnfw")
+title = "MOVIES"
+questionTile = Array[ExtResource("1_0rv8w")]([SubResource("Resource_0rv8w"), SubResource("Resource_ofnfw"), SubResource("Resource_2jjww"), SubResource("Resource_wriib"), SubResource("Resource_qwl1l")])
+metadata/_custom_type_script = "uid://b8cm45wue2am8"

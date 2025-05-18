@@ -1,0 +1,45 @@
+[gd_resource type="Resource" script_class="categoryResource" load_steps=8 format=3 uid="uid://dt104kqvf3s0c"]
+
+[ext_resource type="Script" uid="uid://dsbkiyn7uvjg2" path="res://Classes/TileQuestion/tileResource.gd" id="1_akkx8"]
+[ext_resource type="Script" uid="uid://b8cm45wue2am8" path="res://Classes/Category/categoryResource.gd" id="2_qlwft"]
+
+[sub_resource type="Resource" id="Resource_akkx8"]
+script = ExtResource("1_akkx8")
+pointValue = 100
+Question = "Until 1875 its dual capitals were New Haven & Hartford"
+Answer = "Connecticut"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[sub_resource type="Resource" id="Resource_qlwft"]
+script = ExtResource("1_akkx8")
+pointValue = 200
+Question = "This N.M. town is the oldest city that's a state capital"
+Answer = "Santa Fe"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[sub_resource type="Resource" id="Resource_qnpff"]
+script = ExtResource("1_akkx8")
+pointValue = 300
+Question = "Crossing the Delaware on Xmas, 1776, Washington defeated the Hessians at this N.J. capital"
+Answer = "Trenton, New Jersey"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[sub_resource type="Resource" id="Resource_fbxr7"]
+script = ExtResource("1_akkx8")
+pointValue = 400
+Question = "It actually is 5,280 ft. above sea level"
+Answer = "Denver"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[sub_resource type="Resource" id="Resource_smp8i"]
+script = ExtResource("1_akkx8")
+pointValue = 500
+Question = "The name shows its founder, Roger Williams, believed God led him there"
+Answer = "Providence"
+metadata/_custom_type_script = "uid://dsbkiyn7uvjg2"
+
+[resource]
+script = ExtResource("2_qlwft")
+title = "STATE CAPITALS"
+questionTile = Array[ExtResource("1_akkx8")]([SubResource("Resource_akkx8"), SubResource("Resource_qlwft"), SubResource("Resource_qnpff"), SubResource("Resource_fbxr7"), SubResource("Resource_smp8i")])
+metadata/_custom_type_script = "uid://b8cm45wue2am8"
