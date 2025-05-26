@@ -1,14 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://1qva4ccpjv1v"]
+[gd_scene load_steps=4 format=3 uid="uid://1qva4ccpjv1v"]
 
 [ext_resource type="PackedScene" uid="uid://d172lbllpitqe" path="res://Classes/Category/category.tscn" id="1_407px"]
 [ext_resource type="Theme" uid="uid://bseckuk4rs2ug" path="res://Art/Theme/QuestionBoxTheme.tres" id="1_s1rdi"]
 [ext_resource type="Script" uid="uid://c01d7euomk01p" path="res://Classes/Board/board.gd" id="1_tvpe3"]
-[ext_resource type="Script" uid="uid://b8cm45wue2am8" path="res://Classes/Category/categoryResource.gd" id="2_wnk16"]
-[ext_resource type="Resource" uid="uid://dmnqv706hd3iw" path="res://Classes/Category/AllCategories/B-MOVIES.tres" id="3_2x71v"]
-[ext_resource type="Resource" uid="uid://cihnp1up1vqsx" path="res://Classes/Category/AllCategories/BLACK-AMERICA.tres" id="4_05sk8"]
-[ext_resource type="Resource" uid="uid://crbeg38nqac3w" path="res://Classes/Category/AllCategories/TRIVIA1.tres" id="5_fn83g"]
-[ext_resource type="Resource" uid="uid://cdemew8g46pxn" path="res://Classes/Category/AllCategories/FICTION.tres" id="6_4ggga"]
-[ext_resource type="Resource" uid="uid://dhqch3ah3plec" path="res://Classes/Category/AllCategories/WORD-ORIGINS1.tres" id="7_mxbeb"]
 
 [node name="Board" type="Control"]
 layout_mode = 3
@@ -18,7 +12,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_tvpe3")
-categoryList = Array[ExtResource("2_wnk16")]([ExtResource("3_2x71v"), ExtResource("4_05sk8"), ExtResource("5_fn83g"), ExtResource("6_4ggga"), ExtResource("7_mxbeb")])
 categoryScene = ExtResource("1_407px")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]

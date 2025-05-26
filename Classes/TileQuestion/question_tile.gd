@@ -70,7 +70,7 @@ func initialize(pv : int, qu : String, an : String):
 	answer = an
 	
 	_extra_point_panel.text = "[b]"+str(point_value)
-	score.text = "[b]"+str(point_value)
+	score.text = "[b]$"+str(point_value)
 	point_value
 	
 	_question_text.text = question
