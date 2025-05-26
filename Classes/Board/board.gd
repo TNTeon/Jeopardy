@@ -1,4 +1,5 @@
 extends Control
+class_name board
 
 @export var categoryList : Array[categoryResource]
 @export var categoryScene : PackedScene

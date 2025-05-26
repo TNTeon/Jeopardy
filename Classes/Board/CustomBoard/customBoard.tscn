@@ -1,0 +1,67 @@
+[gd_scene load_steps=4 format=3 uid="uid://cue6l7mmxypcv"]
+
+[ext_resource type="Script" uid="uid://5axper2ju2vb" path="res://Classes/Board/CustomBoard/custom_board.gd" id="1_1xeaj"]
+[ext_resource type="PackedScene" uid="uid://1qva4ccpjv1v" path="res://Classes/Board/Board.tscn" id="1_l158k"]
+[ext_resource type="Theme" uid="uid://bseckuk4rs2ug" path="res://Art/Theme/QuestionBoxTheme.tres" id="1_ry2ms"]
+
+[node name="CustomBoard" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1xeaj")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_ry2ms")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Board" parent="HBoxContainer" instance=ExtResource("1_l158k")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 5.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="RowsIntSelect" type="SpinBox" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+min_value = 1.0
+max_value = 10.0
+value = 1.0
+rounded = true
+alignment = 1
+prefix = "rows:"
+
+[node name="ColumnsIntSelect" type="SpinBox" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+min_value = 1.0
+max_value = 10.0
+value = 1.0
+rounded = true
+alignment = 1
+prefix = "columns:"
+
+[node name="Spacer" type="Control" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.2
+
+[connection signal="value_changed" from="HBoxContainer/VBoxContainer/RowsIntSelect" to="." method="_on_rows_int_select_value_changed"]
