@@ -2,10 +2,12 @@ extends Control
 class_name editablePlayable
 
 @onready var editable_board: EditableBoard = $HBoxContainer/EditableBoard
+@onready var board_name: TextEdit = $HBoxContainer/VBoxContainer/boardName
 
 var rows = 1
 var columns = 1
 
+var database : SQLite
 var currentSelection = null
 
 @onready var tile_edit: VBoxContainer = $HBoxContainer/VBoxContainer/TileEdit
@@ -25,6 +27,9 @@ func _ready():
 	category_edit.visible = false
 	_on_rows_int_select_value_changed(5)
 	_on_columns_int_select_value_changed(5)
+	database = SQLite.new()
+	database.path = "res://customCategories.db"
+	database.open_db()
 
 
 func _on_rows_int_select_value_changed(value: float) -> void:
@@ -83,3 +88,35 @@ func cat_input_changed() -> void:
 		currentSelection.update()
 	if autoChanging:
 		autoChanging = false
+
+func save():
+	database.query("SELECT exists(SELECT 1 FROM board WHERE name = '"+board_name.text+"') AS row_exists;")
+	if not database.query_result[0]["row_exists"]:
+		var boardDictionary = {}
+		boardDictionary["name"] = board_name.text
+		database.insert_row("board",boardDictionary)
+	database.query("SELECT * FROM category WHERE BoardName='"+board_name.text+"'")
+	var categoryIDs = []
+	for i in database.query_result:
+		categoryIDs.append(i["id"])
+		database.delete_rows("category", "BoardName='"+board_name.text+"'")
+	for i in categoryIDs:
+		database.delete_rows("tile", "CategoryID="+str(i))
+	for i in editable_board.storeCategories.get_children():
+		if i is EditableCategory:
+			var newCatDic = {}
+			newCatDic["title"] = i.selfResource.title.replace("[b]","")
+			newCatDic["BoardName"] = board_name.text
+			database.insert_row("category",newCatDic)
+			var lastID = database.last_insert_rowid
+			for j in i.storeTiles.get_children():
+				if j is EditableTile:
+					var newTileDic = {}
+					newTileDic["pointValue"] = j.selfResource.pointValue
+					newTileDic["Question"] = j.selfResource.Question
+					newTileDic["Answer"] = j.selfResource.Answer
+					newTileDic["CategoryID"] = lastID
+					database.insert_row("tile",newTileDic)
+
+func _on_exit_but_pressed() -> void:
+	get_tree().change_scene_to_file("res://Classes/UI_Screens/CustomBoards/CustomBoardOptions/customBoardOptions.tscn")
