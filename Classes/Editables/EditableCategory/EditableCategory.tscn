@@ -1,0 +1,55 @@
+[gd_scene load_steps=5 format=3 uid="uid://dmnne6uv27sxr"]
+
+[ext_resource type="Script" uid="uid://dnitch7t5ihab" path="res://Classes/Editables/EditableCategory/EditableCategory.gd" id="1_18jkr"]
+[ext_resource type="PackedScene" uid="uid://j1ty71f1r588" path="res://Classes/Editables/EditableTile/EditableTile.tscn" id="2_rhxeb"]
+[ext_resource type="Theme" uid="uid://bseckuk4rs2ug" path="res://Art/Theme/QuestionBoxTheme.tres" id="3_xrt5e"]
+[ext_resource type="Theme" uid="uid://dpeodv265m7jd" path="res://Art/Theme/QuestionTileTheme.tres" id="4_mo26y"]
+
+[node name="EditableCategory" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_18jkr")
+_questionTileScene = ExtResource("2_rhxeb")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_xrt5e")
+
+[node name="TitlePanel" type="Panel" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+theme = ExtResource("4_mo26y")
+metadata/midpoint = Vector2(0, 0)
+
+[node name="TitleText" type="RichTextLabel" parent="VBoxContainer/TitlePanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.8
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1, 1.25)
+mouse_filter = 2
+theme = ExtResource("3_xrt5e")
+theme_override_font_sizes/bold_font_size = 20
+bbcode_enabled = true
+text = "[b]Hello world"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DeadTiles" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0

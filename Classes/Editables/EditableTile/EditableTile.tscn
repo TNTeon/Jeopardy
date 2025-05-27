@@ -1,0 +1,181 @@
+[gd_scene load_steps=8 format=3 uid="uid://j1ty71f1r588"]
+
+[ext_resource type="Script" uid="uid://cj5u4napihq3a" path="res://Classes/Editables/EditableTile/EditableTile.gd" id="1_nxxnu"]
+[ext_resource type="Theme" uid="uid://dpeodv265m7jd" path="res://Art/Theme/QuestionTileTheme.tres" id="2_e4mis"]
+[ext_resource type="Theme" uid="uid://bseckuk4rs2ug" path="res://Art/Theme/QuestionBoxTheme.tres" id="3_0y814"]
+[ext_resource type="Texture2D" uid="uid://dwbtw8symoxm4" path="res://Art/Assets/timer.png" id="4_6axeu"]
+[ext_resource type="AudioStream" uid="uid://be5q6jeo7w2kc" path="res://Sound/Jeopardy! Time's Up-(p).mp3" id="5_0880c"]
+
+[sub_resource type="Gradient" id="Gradient_2si70"]
+interpolation_color_space = 2
+colors = PackedColorArray(0.815019, 5.24625e-06, 0, 1, 0.815686, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_4qu7x"]
+gradient = SubResource("Gradient_2si70")
+width = 2
+
+[node name="EditableTile" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+script = ExtResource("1_nxxnu")
+point_value = -1
+question = "N/A"
+
+[node name="Tile" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("2_e4mis")
+metadata/midpoint = Vector2(0, 0)
+
+[node name="Score" type="RichTextLabel" parent="Tile"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.8
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1, 1.25)
+mouse_filter = 2
+theme = ExtResource("2_e4mis")
+bbcode_enabled = true
+text = "[b]$100"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="Tile"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_e4mis")
+
+[node name="QuestionCanvas" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="Background" type="Panel" parent="QuestionCanvas"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_0y814")
+
+[node name="VSplit" type="VBoxContainer" parent="QuestionCanvas/Background"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="QuestionBox" type="Panel" parent="QuestionCanvas/Background/VSplit"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 8.0
+mouse_filter = 2
+theme = ExtResource("3_0y814")
+
+[node name="QuestionText" type="RichTextLabel" parent="QuestionCanvas/Background/VSplit/QuestionBox"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_right = 0.9
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("3_0y814")
+bbcode_enabled = true
+text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in purus velit. Integer cursus vestibulum laoreet. Sed sit amet vestibulum libero, sed consequat sem."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Buzzer" type="VBoxContainer" parent="QuestionCanvas/Background/VSplit"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 4.0
+mouse_filter = 2
+theme = ExtResource("3_0y814")
+
+[node name="Buzzer" type="RichTextLabel" parent="QuestionCanvas/Background/VSplit/Buzzer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Buzzer:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Name" type="RichTextLabel" parent="QuestionCanvas/Background/VSplit/Buzzer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("3_0y814")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Timer" type="TextureRect" parent="QuestionCanvas/Background/VSplit/Buzzer"]
+z_index = 1
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.5
+texture = ExtResource("4_6axeu")
+expand_mode = 1
+
+[node name="Gradient" type="TextureRect" parent="QuestionCanvas/Background/VSplit/Buzzer/Timer"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(200, 0)
+texture = SubResource("GradientTexture1D_4qu7x")
+
+[node name="Points" type="Panel" parent="QuestionCanvas/Background/VSplit"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+mouse_filter = 2
+theme = ExtResource("3_0y814")
+
+[node name="PointsText" type="RichTextLabel" parent="QuestionCanvas/Background/VSplit/Points"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.3
+anchor_right = 0.7
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_e4mis")
+bbcode_enabled = true
+text = "200"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Timer" type="Timer" parent="QuestionCanvas"]
+wait_time = 5.0
+one_shot = true
+
+[node name="timeOutSound" type="AudioStreamPlayer" parent="QuestionCanvas/Timer"]
+stream = ExtResource("5_0880c")
+volume_db = -5.0
+
+[connection signal="pressed" from="Tile/Button" to="." method="_on_button_pressed"]
+[connection signal="timeout" from="QuestionCanvas/Timer" to="." method="timer_up"]

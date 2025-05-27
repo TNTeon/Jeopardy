@@ -1,0 +1,145 @@
+[gd_scene load_steps=4 format=3 uid="uid://cue6l7mmxypcv"]
+
+[ext_resource type="Script" uid="uid://dsei2o5t740ep" path="res://Classes/Editables/EdtiablePlayable/editable_playable.gd" id="1_cj45f"]
+[ext_resource type="Theme" uid="uid://bseckuk4rs2ug" path="res://Art/Theme/QuestionBoxTheme.tres" id="2_abq41"]
+[ext_resource type="PackedScene" uid="uid://be6u21hri3yly" path="res://Classes/Editables/EditableBoard/EditableBoard.tscn" id="3_iensg"]
+
+[node name="EditablePlayable" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_cj45f")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_abq41")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="EditableBoard" parent="HBoxContainer" instance=ExtResource("3_iensg")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 5.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Spacer" type="Control" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.1
+
+[node name="RowsIntSelect" type="SpinBox" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+min_value = 1.0
+max_value = 10.0
+value = 5.0
+rounded = true
+alignment = 1
+prefix = "rows:"
+
+[node name="ColumnsIntSelect" type="SpinBox" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+min_value = 1.0
+max_value = 10.0
+value = 5.0
+rounded = true
+alignment = 1
+prefix = "columns:"
+
+[node name="TileEdit" type="VBoxContainer" parent="HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 65.98)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Spacer" type="Control" parent="HBoxContainer/VBoxContainer/TileEdit"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.4
+
+[node name="TileEditText" type="RichTextLabel" parent="HBoxContainer/VBoxContainer/TileEdit"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.6
+theme = ExtResource("2_abq41")
+theme_override_font_sizes/bold_font_size = 30
+bbcode_enabled = true
+text = "[b]Edit Tile"
+horizontal_alignment = 1
+
+[node name="pvText" type="RichTextLabel" parent="HBoxContainer/VBoxContainer/TileEdit"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.4
+bbcode_enabled = true
+text = "Value:"
+
+[node name="pvInput" type="SpinBox" parent="HBoxContainer/VBoxContainer/TileEdit"]
+layout_mode = 2
+min_value = 1.0
+max_value = 9999.0
+value = 100.0
+rounded = true
+alignment = 1
+
+[node name="quText" type="RichTextLabel" parent="HBoxContainer/VBoxContainer/TileEdit"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.4
+bbcode_enabled = true
+text = "Value:"
+
+[node name="quInput" type="TextEdit" parent="HBoxContainer/VBoxContainer/TileEdit"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+placeholder_text = "Enter an question here"
+wrap_mode = 1
+
+[node name="anText" type="RichTextLabel" parent="HBoxContainer/VBoxContainer/TileEdit"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.4
+bbcode_enabled = true
+text = "Value:"
+
+[node name="anInput" type="TextEdit" parent="HBoxContainer/VBoxContainer/TileEdit"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+placeholder_text = "Enter an answer here"
+wrap_mode = 1
+
+[node name="Spacer2" type="Control" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.1
+
+[node name="Spacer" type="Control" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.2
+
+[connection signal="value_changed" from="HBoxContainer/VBoxContainer/RowsIntSelect" to="." method="_on_rows_int_select_value_changed"]
+[connection signal="value_changed" from="HBoxContainer/VBoxContainer/ColumnsIntSelect" to="." method="_on_columns_int_select_value_changed"]
+[connection signal="value_changed" from="HBoxContainer/VBoxContainer/TileEdit/pvInput" to="." method="tile_input_changed"]
+[connection signal="text_changed" from="HBoxContainer/VBoxContainer/TileEdit/quInput" to="." method="tile_input_changed"]
+[connection signal="text_changed" from="HBoxContainer/VBoxContainer/TileEdit/anInput" to="." method="tile_input_changed"]
