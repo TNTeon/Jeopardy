@@ -66,6 +66,7 @@ alignment = 1
 prefix = "columns:"
 
 [node name="TileEdit" type="VBoxContainer" parent="HBoxContainer/VBoxContainer"]
+visible = false
 custom_minimum_size = Vector2(0, 65.98)
 layout_mode = 2
 size_flags_vertical = 3
@@ -105,7 +106,7 @@ layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.4
 bbcode_enabled = true
-text = "Value:"
+text = "Question:"
 
 [node name="quInput" type="TextEdit" parent="HBoxContainer/VBoxContainer/TileEdit"]
 layout_mode = 2
@@ -119,13 +120,49 @@ layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.4
 bbcode_enabled = true
-text = "Value:"
+text = "Answer:"
 
 [node name="anInput" type="TextEdit" parent="HBoxContainer/VBoxContainer/TileEdit"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 2.0
 placeholder_text = "Enter an answer here"
+wrap_mode = 1
+
+[node name="CategoryEdit" type="VBoxContainer" parent="HBoxContainer/VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(0, 65.98)
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.2
+
+[node name="Spacer" type="Control" parent="HBoxContainer/VBoxContainer/CategoryEdit"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.4
+
+[node name="CatEditText" type="RichTextLabel" parent="HBoxContainer/VBoxContainer/CategoryEdit"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.6
+theme = ExtResource("2_abq41")
+theme_override_font_sizes/bold_font_size = 25
+bbcode_enabled = true
+text = "[b]Edit Category"
+horizontal_alignment = 1
+
+[node name="titleText" type="RichTextLabel" parent="HBoxContainer/VBoxContainer/CategoryEdit"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.4
+bbcode_enabled = true
+text = "Title:"
+
+[node name="titleInput" type="TextEdit" parent="HBoxContainer/VBoxContainer/CategoryEdit"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+placeholder_text = "Enter a title for your category here"
 wrap_mode = 1
 
 [node name="Spacer2" type="Control" parent="HBoxContainer/VBoxContainer"]
@@ -143,3 +180,4 @@ size_flags_stretch_ratio = 0.2
 [connection signal="value_changed" from="HBoxContainer/VBoxContainer/TileEdit/pvInput" to="." method="tile_input_changed"]
 [connection signal="text_changed" from="HBoxContainer/VBoxContainer/TileEdit/quInput" to="." method="tile_input_changed"]
 [connection signal="text_changed" from="HBoxContainer/VBoxContainer/TileEdit/anInput" to="." method="tile_input_changed"]
+[connection signal="text_changed" from="HBoxContainer/VBoxContainer/CategoryEdit/titleInput" to="." method="cat_input_changed"]
