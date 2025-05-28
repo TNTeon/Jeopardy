@@ -32,9 +32,9 @@ func nameRequestRecieved(requestedName):
 	var sender_id = multiplayer.get_remote_sender_id()
 	if requestedName not in id_dictionary.values() or (id_dictionary.has(sender_id) and id_dictionary[sender_id] == requestedName):
 		id_dictionary[sender_id] = requestedName
-		print(id_dictionary)
+		rpc_id(sender_id, "replyNameChange",true)
 	else:
-		print("recieved but bad!")
+		rpc_id(sender_id, "replyNameChange",false)
 
 #endregion
 
@@ -49,7 +49,7 @@ func requestNameChange(requestedName):
 	rpc_id(1,"nameRequestRecieved",requestedName)
 
 @rpc("authority","call_remote","reliable")
-func replayNameChange(worked : bool):
+func replyNameChange(worked : bool):
 	print(worked)
 
 #endregion
