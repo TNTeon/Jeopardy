@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://df7fdnec2gb8u"]
+
+[ext_resource type="Script" uid="uid://dsq0xxqucy3s3" path="res://Classes/Networking/networkController.gd" id="1_pt130"]
+
+[node name="HostNetworking" type="Node"]
+script = ExtResource("1_pt130")
+
+[node name="Function" type="RichTextLabel" parent="."]
+offset_right = 189.0
+offset_bottom = 69.0
