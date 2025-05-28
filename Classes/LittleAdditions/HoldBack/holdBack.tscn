@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://dytsvdyny2n08"]
 
-[ext_resource type="Script" uid="uid://dbm2l86ntjyje" path="res://Classes/HoldBack/hold_back.gd" id="1_feann"]
+[ext_resource type="Script" uid="uid://dbm2l86ntjyje" path="res://Classes/LittleAdditions/HoldBack/hold_back.gd" id="1_feann"]
 [ext_resource type="Texture2D" uid="uid://br5aiaw31wec6" path="res://Art/Assets/Untitled.png" id="2_lts8a"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uibeo"]

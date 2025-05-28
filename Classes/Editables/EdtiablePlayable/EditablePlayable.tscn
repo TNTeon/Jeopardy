@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://dsei2o5t740ep" path="res://Classes/Editables/EdtiablePlayable/editable_playable.gd" id="1_cj45f"]
 [ext_resource type="Theme" uid="uid://bseckuk4rs2ug" path="res://Art/Theme/QuestionBoxTheme.tres" id="2_abq41"]
 [ext_resource type="PackedScene" uid="uid://be6u21hri3yly" path="res://Classes/Editables/EditableBoard/EditableBoard.tscn" id="3_iensg"]
-[ext_resource type="PackedScene" uid="uid://dytsvdyny2n08" path="res://Classes/HoldBack/holdBack.tscn" id="4_abq41"]
+[ext_resource type="PackedScene" uid="uid://dytsvdyny2n08" path="res://Classes/LittleAdditions/HoldBack/holdBack.tscn" id="4_abq41"]
 
 [node name="EditablePlayable" type="Control"]
 layout_mode = 3

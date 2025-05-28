@@ -1,9 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://ctu2x2f7s26xg"]
+[gd_scene load_steps=14 format=3 uid="uid://ctu2x2f7s26xg"]
 
 [ext_resource type="Script" uid="uid://bav7a000nvcui" path="res://Classes/UI_Screens/CustomBoards/pickCustomBoard/previewBoard/preview_board.gd" id="1_2l143"]
 [ext_resource type="Theme" uid="uid://bseckuk4rs2ug" path="res://Art/Theme/QuestionBoxTheme.tres" id="2_ti14r"]
 [ext_resource type="Theme" uid="uid://dqs6kiraonh5c" path="res://Art/Theme/StyledButtons.tres" id="3_dvbgu"]
 [ext_resource type="Theme" uid="uid://dpeodv265m7jd" path="res://Art/Theme/QuestionTileTheme.tres" id="3_ti14r"]
+[ext_resource type="PackedScene" uid="uid://c2l4xq6u6cwfr" path="res://Classes/LittleAdditions/Confirm/confirm.tscn" id="5_4mvls"]
 
 [sub_resource type="ImageTexture" id="ImageTexture_dvbgu"]
 
@@ -144,9 +145,8 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -57.0
-offset_right = 2.0
-offset_bottom = 56.0
+offset_left = -59.0
+offset_bottom = 44.0
 grow_horizontal = 0
 theme_override_constants/separation = 0
 
@@ -170,6 +170,10 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_fdqmh")
 theme_override_styles/normal = SubResource("StyleBoxFlat_4p8tc")
 text = "Delete"
 
+[node name="Confirm" parent="." instance=ExtResource("5_4mvls")]
+visible = false
+
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="VSplitContainer2/Edit" to="." method="_on_edit_pressed"]
-[connection signal="pressed" from="VSplitContainer2/DeleteBut" to="." method="_on_delete_but_pressed"]
+[connection signal="pressed" from="VSplitContainer2/DeleteBut" to="Confirm" method="requested"]
+[connection signal="confirmed" from="Confirm" to="." method="_on_delete_but_pressed"]

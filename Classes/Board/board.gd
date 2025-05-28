@@ -6,8 +6,12 @@ class_name board
 
 @onready var _h_box_container = $HBoxContainer
 
+var loadedGame : bool
+
 func _ready():
+	loadedGame = false
 	if not TransferInformation.loadBoard.is_empty():
+		loadedGame = true
 		categoryList = TransferInformation.loadBoard
 	if len(categoryList) > 0:
 		print("init")
@@ -26,4 +30,7 @@ func initialize():
 
 
 func _on_hold_back_backout() -> void:
-	get_tree().change_scene_to_file("res://Classes/UI_Screens/TitleScreen/titleScreen.tscn")
+	if loadedGame:
+		get_tree().change_scene_to_file("res://Classes/UI_Screens/CustomBoards/pickCustomBoard/pickCustomBoard.tscn")
+	else:
+		get_tree().change_scene_to_file("res://Classes/UI_Screens/TitleScreen/titleScreen.tscn")
