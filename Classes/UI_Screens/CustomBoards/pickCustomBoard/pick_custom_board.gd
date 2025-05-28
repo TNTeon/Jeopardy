@@ -53,7 +53,7 @@ class newBoard:
 
 
 func _on_back_but_pressed() -> void:
-	get_tree().change_scene_to_file("res://Classes/UI_Screens/CustomBoards/CustomBoardOptions/customBoardOptions.tscn")
+	get_tree().change_scene_to_file("res://Classes/UI_Screens/TitleScreen/titleScreen.tscn")
 
 func deleteBoard(boardName : String):
 	database.query("SELECT * FROM board WHERE name='"+boardName+"'")

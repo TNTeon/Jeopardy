@@ -23,3 +23,7 @@ func initialize():
 		newCat.title = i.title
 		newCat.tileList = i.questionTile
 		newCat.initalize()
+
+
+func _on_hold_back_backout() -> void:
+	get_tree().change_scene_to_file("res://Classes/UI_Screens/TitleScreen/titleScreen.tscn")
