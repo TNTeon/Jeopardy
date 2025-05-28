@@ -1,0 +1,75 @@
+[gd_scene load_steps=3 format=3 uid="uid://irv5n7n8tnmb"]
+
+[ext_resource type="Script" uid="uid://b32lqk1afnau7" path="res://Classes/UI_Screens/TitleScreen/title_screen.gd" id="1_6me1i"]
+[ext_resource type="Theme" uid="uid://bseckuk4rs2ug" path="res://Art/Theme/QuestionBoxTheme.tres" id="1_212u8"]
+
+[node name="TitleScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6me1i")
+
+[node name="Background" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_212u8")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_right = 0.9
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="RichTextLabel" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 4.0
+theme = ExtResource("1_212u8")
+bbcode_enabled = true
+text = "[b]JEOPARDY"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 50
+
+[node name="RandomBut" type="Button" parent="VBoxContainer/Control"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Random Game"
+
+[node name="CustomBut" type="Button" parent="VBoxContainer/Control"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Custom Boards"
+
+[node name="OptionsBut" type="Button" parent="VBoxContainer/Control"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Options"
+
+[node name="ExitBut" type="Button" parent="VBoxContainer/Control"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Exit"
+
+[node name="Spacer" type="Control" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.8
+
+[connection signal="pressed" from="VBoxContainer/Control/RandomBut" to="." method="_on_random_but_pressed"]
+[connection signal="pressed" from="VBoxContainer/Control/CustomBut" to="." method="_on_custom_but_pressed"]
+[connection signal="pressed" from="VBoxContainer/Control/ExitBut" to="." method="_on_exit_but_pressed"]

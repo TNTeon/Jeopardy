@@ -5,7 +5,7 @@ var amount_of_categories : int
 
 func _ready():
 	database = SQLite.new()
-	database.path = "res://Classes/Category/allCategories.db"
+	database.path = "res://Classes/Category/showCategories.db"
 	database.open_db()
 	database.query("SELECT COUNT(*) FROM category;")
 	amount_of_categories = int(database.query_result[0]["COUNT(*)"])

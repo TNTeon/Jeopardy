@@ -1,0 +1,210 @@
+[gd_scene load_steps=5 format=3 uid="uid://cue6l7mmxypcv"]
+
+[ext_resource type="Script" uid="uid://dsei2o5t740ep" path="res://Classes/Editables/EdtiablePlayable/editable_playable.gd" id="1_cj45f"]
+[ext_resource type="Theme" uid="uid://bseckuk4rs2ug" path="res://Art/Theme/QuestionBoxTheme.tres" id="2_abq41"]
+[ext_resource type="PackedScene" uid="uid://be6u21hri3yly" path="res://Classes/Editables/EditableBoard/EditableBoard.tscn" id="3_iensg"]
+[ext_resource type="PackedScene" uid="uid://dytsvdyny2n08" path="res://Classes/LittleAdditions/HoldBack/holdBack.tscn" id="4_abq41"]
+
+[node name="EditablePlayable" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_cj45f")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_abq41")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="EditableBoard" parent="HBoxContainer" instance=ExtResource("3_iensg")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 5.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Spacer" type="Control" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.05
+
+[node name="boardName" type="TextEdit" parent="HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 38.35)
+layout_mode = 2
+size_flags_stretch_ratio = 0.02
+placeholder_text = "Put board name here"
+
+[node name="HSplitContainer" type="HSplitContainer" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="SaveBut" type="Button" parent="HBoxContainer/VBoxContainer/HSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Save"
+
+[node name="ExitBut" type="Button" parent="HBoxContainer/VBoxContainer/HSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Exit"
+
+[node name="RowsIntSelect" type="SpinBox" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+min_value = 1.0
+max_value = 10.0
+value = 1.0
+rounded = true
+alignment = 1
+suffix = "Categories"
+
+[node name="ColumnsIntSelect" type="SpinBox" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+min_value = 1.0
+max_value = 10.0
+value = 5.0
+rounded = true
+alignment = 1
+suffix = "Questions"
+
+[node name="TileEdit" type="VBoxContainer" parent="HBoxContainer/VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(0, 65.98)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Spacer" type="Control" parent="HBoxContainer/VBoxContainer/TileEdit"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.4
+
+[node name="TileEditText" type="RichTextLabel" parent="HBoxContainer/VBoxContainer/TileEdit"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.6
+theme = ExtResource("2_abq41")
+theme_override_font_sizes/bold_font_size = 25
+bbcode_enabled = true
+text = "[b]Edit Tile"
+horizontal_alignment = 1
+
+[node name="pvText" type="RichTextLabel" parent="HBoxContainer/VBoxContainer/TileEdit"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.4
+theme_override_font_sizes/normal_font_size = 0
+bbcode_enabled = true
+text = "Value:"
+
+[node name="pvInput" type="SpinBox" parent="HBoxContainer/VBoxContainer/TileEdit"]
+layout_mode = 2
+min_value = 1.0
+max_value = 9999.0
+value = 100.0
+rounded = true
+alignment = 1
+
+[node name="quText" type="RichTextLabel" parent="HBoxContainer/VBoxContainer/TileEdit"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.4
+bbcode_enabled = true
+text = "Question:"
+
+[node name="quInput" type="TextEdit" parent="HBoxContainer/VBoxContainer/TileEdit"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+placeholder_text = "Enter an question here"
+wrap_mode = 1
+
+[node name="anText" type="RichTextLabel" parent="HBoxContainer/VBoxContainer/TileEdit"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.4
+bbcode_enabled = true
+text = "Answer:"
+
+[node name="anInput" type="TextEdit" parent="HBoxContainer/VBoxContainer/TileEdit"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+placeholder_text = "Enter an answer here"
+wrap_mode = 1
+
+[node name="CategoryEdit" type="VBoxContainer" parent="HBoxContainer/VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(0, 65.98)
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.2
+
+[node name="Spacer" type="Control" parent="HBoxContainer/VBoxContainer/CategoryEdit"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.4
+
+[node name="CatEditText" type="RichTextLabel" parent="HBoxContainer/VBoxContainer/CategoryEdit"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.6
+theme = ExtResource("2_abq41")
+theme_override_font_sizes/bold_font_size = 25
+bbcode_enabled = true
+text = "[b]Edit Category"
+horizontal_alignment = 1
+
+[node name="titleText" type="RichTextLabel" parent="HBoxContainer/VBoxContainer/CategoryEdit"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.4
+bbcode_enabled = true
+text = "Title:"
+
+[node name="titleInput" type="TextEdit" parent="HBoxContainer/VBoxContainer/CategoryEdit"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+placeholder_text = "Enter a title for your category here"
+wrap_mode = 1
+
+[node name="Spacer2" type="Control" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.05
+
+[node name="Spacer" type="Control" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.2
+
+[node name="HoldBack" parent="." instance=ExtResource("4_abq41")]
+
+[connection signal="text_changed" from="HBoxContainer/VBoxContainer/boardName" to="." method="board_name_changed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/HSplitContainer/SaveBut" to="." method="save"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/HSplitContainer/ExitBut" to="." method="_on_exit_but_pressed"]
+[connection signal="value_changed" from="HBoxContainer/VBoxContainer/RowsIntSelect" to="." method="_on_rows_int_select_value_changed"]
+[connection signal="value_changed" from="HBoxContainer/VBoxContainer/ColumnsIntSelect" to="." method="_on_columns_int_select_value_changed"]
+[connection signal="value_changed" from="HBoxContainer/VBoxContainer/TileEdit/pvInput" to="." method="tile_input_changed"]
+[connection signal="text_changed" from="HBoxContainer/VBoxContainer/TileEdit/quInput" to="." method="tile_input_changed"]
+[connection signal="text_changed" from="HBoxContainer/VBoxContainer/TileEdit/anInput" to="." method="tile_input_changed"]
+[connection signal="text_changed" from="HBoxContainer/VBoxContainer/CategoryEdit/titleInput" to="." method="cat_input_changed"]
+[connection signal="backout" from="HoldBack" to="." method="_on_exit_but_pressed"]
