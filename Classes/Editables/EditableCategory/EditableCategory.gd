@@ -30,6 +30,19 @@ func initalize(columns : int, base : Control):
 	base.removeSelections.connect(clearSelection)
 	for i in range(columns):
 		newTile()
+func initalizeWithTiles(tiles : Array[tileResource],base : Control):
+	update()
+	EditablePlayable = base
+	selected.connect(base.newSelection)
+	base.removeSelections.connect(clearSelection)
+	for i in tiles:
+		loadTile(i)
+
+func loadTile(tile : tileResource):
+	numberOfTiles += 1
+	var newTile : EditableTile = _questionTileScene.instantiate()
+	storeTiles.add_child(newTile)
+	newTile.initialize(tile.pointValue,tile.Question,tile.Answer,EditablePlayable)
 
 func newTile():
 	numberOfTiles += 1

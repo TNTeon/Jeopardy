@@ -4,6 +4,7 @@ var database : SQLite
 var allBoards : Array[newBoard] = []
 
 const BoardPath = "res://Classes/Board/Board.tscn"
+const EditablePlayablePath = "res://Classes/Editables/EdtiablePlayable/EditablePlayable.tscn"
 const PREVIEW_BOARD = preload("res://Classes/UI_Screens/CustomBoards/pickCustomBoard/previewBoard/previewBoard.tscn")
 @onready var storePreviews: VBoxContainer = $VSplitContainer/ScrollContainer/VBoxContainer
 
@@ -22,15 +23,13 @@ func _ready():
 		newPreviewInstance.initialize(i.name,i.Categories)
 		newPreviewInstance.boardSelected.connect(loadBoard)
 		newPreviewInstance.deleteBoard.connect(deleteBoard)
+		newPreviewInstance.editBoard.connect(editBoard)
 			
 func loadBoard(boardName : String):
 	for i in allBoards:
 		if i.name == boardName:
-			var createNewBoard = load(BoardPath)
-			createNewBoard = createNewBoard.instantiate()
-			createNewBoard.categoryList = i.Categories
-			get_tree().get_root().add_child(createNewBoard)
-			get_tree().get_root().remove_child(self)
+			TransferInformation.loadBoard = i.Categories
+			get_tree().change_scene_to_file("res://Classes/Board/Board.tscn")
 			return
 class newBoard:
 	var name : String = ""
@@ -63,3 +62,11 @@ func deleteBoard(boardName : String):
 		database.delete_rows("tile","CategoryID='"+str(cat["id"])+"'")
 		database.delete_rows("category","id='"+str(cat["id"])+"'")
 	database.delete_rows("board","name='"+boardName+"'")
+
+func editBoard(boardName : String):
+	TransferInformation.editBoardSelected = boardName
+	get_tree().change_scene_to_file("res://Classes/Editables/EdtiablePlayable/EditablePlayable.tscn")
+
+
+func _on_new_board_pressed() -> void:
+	get_tree().change_scene_to_file("res://Classes/Editables/EdtiablePlayable/EditablePlayable.tscn")

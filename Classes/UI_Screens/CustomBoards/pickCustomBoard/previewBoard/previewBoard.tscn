@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://ctu2x2f7s26xg"]
+[gd_scene load_steps=13 format=3 uid="uid://ctu2x2f7s26xg"]
 
 [ext_resource type="Script" uid="uid://bav7a000nvcui" path="res://Classes/UI_Screens/CustomBoards/pickCustomBoard/previewBoard/preview_board.gd" id="1_2l143"]
 [ext_resource type="Theme" uid="uid://bseckuk4rs2ug" path="res://Art/Theme/QuestionBoxTheme.tres" id="2_ti14r"]
@@ -22,6 +22,38 @@ border_color = Color(0.0430392, 0.0430392, 0.0430392, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4mvls"]
 bg_color = Color(0, 0, 0, 0.188235)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yeu84"]
+bg_color = Color(0.0150837, 0.0429237, 0.351353, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 2
+border_color = Color(0.0253638, 0.0253638, 0.0253638, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3hv5v"]
+bg_color = Color(0.027451, 0.0705882, 0.388235, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 2
+border_color = Color(0.0253638, 0.0253638, 0.0253638, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fdqmh"]
+bg_color = Color(0.0150837, 0.0429237, 0.351353, 1)
+border_width_left = 4
+border_width_top = 2
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.0253638, 0.0253638, 0.0253638, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4p8tc"]
+bg_color = Color(0.027451, 0.0705882, 0.388235, 1)
+border_width_left = 4
+border_width_top = 2
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.0253638, 0.0253638, 0.0253638, 1)
 
 [node name="PreviewBoard" type="Control"]
 custom_minimum_size = Vector2(0, 200)
@@ -107,17 +139,37 @@ mouse_filter = 1
 theme = ExtResource("3_ti14r")
 theme_override_styles/hover = SubResource("StyleBoxFlat_4mvls")
 
-[node name="DeleteBut" type="Button" parent="."]
-z_index = 2
+[node name="VSplitContainer2" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -87.0
-offset_bottom = 45.0
+offset_left = -57.0
+offset_right = 2.0
+offset_bottom = 56.0
 grow_horizontal = 0
+theme_override_constants/separation = 0
+
+[node name="Edit" type="Button" parent="VSplitContainer2"]
+z_index = 2
+layout_mode = 2
+size_flags_vertical = 3
 theme = ExtResource("3_dvbgu")
+theme_override_styles/hover = SubResource("StyleBoxFlat_yeu84")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_yeu84")
+theme_override_styles/normal = SubResource("StyleBoxFlat_3hv5v")
+text = "Edit"
+
+[node name="DeleteBut" type="Button" parent="VSplitContainer2"]
+z_index = 2
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("3_dvbgu")
+theme_override_styles/hover = SubResource("StyleBoxFlat_fdqmh")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_fdqmh")
+theme_override_styles/normal = SubResource("StyleBoxFlat_4p8tc")
 text = "Delete"
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="DeleteBut" to="." method="_on_delete_but_pressed"]
+[connection signal="pressed" from="VSplitContainer2/Edit" to="." method="_on_edit_pressed"]
+[connection signal="pressed" from="VSplitContainer2/DeleteBut" to="." method="_on_delete_but_pressed"]

@@ -6,6 +6,7 @@ extends Control
 
 signal boardSelected
 signal deleteBoard
+signal editBoard
 
 func initialize(name : String, categories : Array[categoryResource]):
 	board_name.text = name
@@ -30,3 +31,7 @@ func _on_button_pressed() -> void:
 func _on_delete_but_pressed() -> void:
 	self.queue_free()
 	deleteBoard.emit(board_name.text)
+
+func _on_edit_pressed() -> void:
+	self.queue_free()
+	editBoard.emit(board_name.text)

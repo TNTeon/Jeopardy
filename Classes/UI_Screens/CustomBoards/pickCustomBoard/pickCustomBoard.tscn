@@ -50,7 +50,7 @@ size_flags_vertical = 3
 size_flags_stretch_ratio = 0.2
 theme = ExtResource("2_jndyo")
 theme_override_font_sizes/normal_font_size = 90
-text = "Boards"
+text = "Saved Boards"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -74,4 +74,13 @@ grow_vertical = 0
 theme = ExtResource("3_d36ke")
 text = "Back"
 
+[node name="NewBoard" type="Button" parent="."]
+offset_left = 43.715
+offset_top = 25.435
+offset_right = 203.69
+offset_bottom = 88.405
+theme = ExtResource("3_d36ke")
+text = "New Board"
+
 [connection signal="pressed" from="BackBut" to="." method="_on_back_but_pressed"]
+[connection signal="pressed" from="NewBoard" to="." method="_on_new_board_pressed"]

@@ -8,6 +8,13 @@ class_name EditableBoard
 
 var numberOfCategories = 0
 
+func loadCategory(cat : categoryResource, base : Control):
+	var newCat : EditableCategory = categoryScene.instantiate()
+	storeCategories.add_child(newCat)
+	newCat.title = cat.title
+	newCat.initalizeWithTiles(cat.questionTile, base)
+	numberOfCategories += 1
+
 func newCategory(columns : int, base : Control):
 	if dead_categories.get_child_count() == 0:
 		var newCat : EditableCategory = categoryScene.instantiate()

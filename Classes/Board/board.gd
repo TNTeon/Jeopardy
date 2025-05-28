@@ -7,6 +7,8 @@ class_name board
 @onready var _h_box_container = $HBoxContainer
 
 func _ready():
+	if not TransferInformation.loadBoard.is_empty():
+		categoryList = TransferInformation.loadBoard
 	if len(categoryList) > 0:
 		print("init")
 		initialize()

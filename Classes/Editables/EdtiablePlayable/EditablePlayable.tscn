@@ -70,10 +70,10 @@ text = "Exit"
 layout_mode = 2
 min_value = 1.0
 max_value = 10.0
-value = 5.0
+value = 1.0
 rounded = true
 alignment = 1
-prefix = "rows:"
+suffix = "Categories"
 
 [node name="ColumnsIntSelect" type="SpinBox" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2
@@ -82,7 +82,7 @@ max_value = 10.0
 value = 5.0
 rounded = true
 alignment = 1
-prefix = "columns:"
+suffix = "Questions"
 
 [node name="TileEdit" type="VBoxContainer" parent="HBoxContainer/VBoxContainer"]
 visible = false

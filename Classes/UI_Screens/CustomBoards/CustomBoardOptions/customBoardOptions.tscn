@@ -48,17 +48,12 @@ theme_override_constants/separation = 50
 [node name="CreateBut" type="Button" parent="VBoxContainer/Control"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Create Board"
-
-[node name="EditBut" type="Button" parent="VBoxContainer/Control"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Edit board"
+text = "Create New Board"
 
 [node name="PlayBut" type="Button" parent="VBoxContainer/Control"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Play Board"
+text = "Play/Edit Board"
 
 [node name="BackBut" type="Button" parent="VBoxContainer/Control"]
 layout_mode = 2
@@ -71,6 +66,5 @@ size_flags_vertical = 3
 size_flags_stretch_ratio = 0.8
 
 [connection signal="pressed" from="VBoxContainer/Control/CreateBut" to="." method="_on_create_but_pressed"]
-[connection signal="pressed" from="VBoxContainer/Control/EditBut" to="." method="_on_edit_but_pressed"]
 [connection signal="pressed" from="VBoxContainer/Control/PlayBut" to="." method="_on_play_but_pressed"]
 [connection signal="pressed" from="VBoxContainer/Control/BackBut" to="." method="_on_back_but_pressed"]

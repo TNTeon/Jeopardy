@@ -11,8 +11,13 @@ config_version=5
 [application]
 
 config/name="Jeopardy"
+run/main_scene="uid://irv5n7n8tnmb"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[autoload]
+
+TransferInformation="*res://Classes/Singletons/transfer_information.gd"
 
 [editor_plugins]
 

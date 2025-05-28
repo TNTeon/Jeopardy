@@ -3,6 +3,8 @@ class_name editablePlayable
 
 @onready var editable_board: EditableBoard = $HBoxContainer/EditableBoard
 @onready var board_name: TextEdit = $HBoxContainer/VBoxContainer/boardName
+@onready var rows_int_select: SpinBox = $HBoxContainer/VBoxContainer/RowsIntSelect
+@onready var columns_int_select: SpinBox = $HBoxContainer/VBoxContainer/ColumnsIntSelect
 
 var rows = 1
 var columns = 1
@@ -25,11 +27,14 @@ signal removeSelections
 func _ready():
 	tile_edit.visible = false
 	category_edit.visible = false
-	_on_rows_int_select_value_changed(5)
-	_on_columns_int_select_value_changed(5)
 	database = SQLite.new()
 	database.path = "res://customCategories.db"
 	database.open_db()
+	_on_rows_int_select_value_changed(5)
+	_on_columns_int_select_value_changed(5)
+	if TransferInformation.editBoardSelected != "":
+		loadBoard(TransferInformation.editBoardSelected)
+		TransferInformation.editBoardSelected = ""
 
 
 func _on_rows_int_select_value_changed(value: float) -> void:
@@ -41,6 +46,7 @@ func _on_rows_int_select_value_changed(value: float) -> void:
 	editable_board.updateColumns(columns)
 	
 func _on_columns_int_select_value_changed(value: float) -> void:
+	print("value:", value)
 	columns = int(value)
 	editable_board.updateColumns(columns)
 
@@ -119,4 +125,33 @@ func save():
 					database.insert_row("tile",newTileDic)
 
 func _on_exit_but_pressed() -> void:
-	get_tree().change_scene_to_file("res://Classes/UI_Screens/CustomBoards/CustomBoardOptions/customBoardOptions.tscn")
+	get_tree().change_scene_to_file("res://Classes/UI_Screens/CustomBoards/pickCustomBoard/pickCustomBoard.tscn")
+
+func loadBoard(boardName : String):
+	rows_int_select.allow_lesser = true
+	columns_int_select.allow_lesser = true
+	rows_int_select.value = 0
+	columns_int_select.value = 0
+	board_name.text = boardName
+	database.query("SELECT * FROM category WHERE BoardName='"+boardName+"'")
+	var countRows = 0
+	var countColumns = 0
+	for categoryDictionary in database.query_result:
+		countRows += 1
+		var newCat = categoryResource.new()
+		newCat.title = categoryDictionary["title"]
+		database.query("SELECT * FROM tile WHERE CategoryID='"+str(categoryDictionary["id"])+"'")
+		countColumns = 0
+		for tileDictionary in database.query_result:
+			countColumns += 1
+			var newTile = tileResource.new()
+			newTile.Answer = tileDictionary["Answer"]
+			newTile.Question = tileDictionary["Question"]
+			newTile.pointValue = tileDictionary["pointValue"]
+			newCat.questionTile.append(newTile)
+		editable_board.loadCategory(newCat, self)
+	rows_int_select.value = countRows
+	columns_int_select.value = countColumns
+	rows_int_select.allow_lesser = false
+	columns_int_select.allow_lesser = false
+	
