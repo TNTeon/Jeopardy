@@ -32,6 +32,8 @@ func _ready():
 	database.open_db()
 	_on_rows_int_select_value_changed(5)
 	_on_columns_int_select_value_changed(5)
+	columns_int_select.value = 5
+	rows_int_select.value = 5
 	if TransferInformation.editBoardSelected != "":
 		loadBoard(TransferInformation.editBoardSelected)
 		TransferInformation.editBoardSelected = ""
