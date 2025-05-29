@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://l2scabldvs5l"]
+
+[ext_resource type="Theme" uid="uid://bseckuk4rs2ug" path="res://Art/Theme/QuestionBoxTheme.tres" id="1_x6vx1"]
+
+[node name="name" type="RichTextLabel"]
+custom_minimum_size = Vector2(0, 49.67)
+theme = ExtResource("1_x6vx1")
+theme_override_font_sizes/normal_font_size = 36
+text = "• Teon"
