@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://bbjgwsgrr24mf"]
 
-[ext_resource type="Script" uid="uid://cla584o5ys52d" path="res://Classes/Networking/Clinet/clientSetup.gd" id="1_72qut"]
+[ext_resource type="Script" uid="uid://cla584o5ys52d" path="res://Classes/Networking/Clinet/Setup/clientSetup.gd" id="1_72qut"]
 [ext_resource type="Theme" uid="uid://bseckuk4rs2ug" path="res://Art/Theme/QuestionBoxTheme.tres" id="2_oxoj8"]
 [ext_resource type="Theme" uid="uid://dqs6kiraonh5c" path="res://Art/Theme/StyledButtons.tres" id="3_w3s7b"]
 [ext_resource type="Texture2D" uid="uid://bvhibnbuiec6s" path="res://Art/Assets/checkandX.png" id="4_17l8u"]
@@ -24,6 +24,7 @@ grow_vertical = 2
 theme = ExtResource("2_oxoj8")
 
 [node name="hBoxOptions" type="HBoxContainer" parent="."]
+visible = false
 anchors_preset = -1
 anchor_left = 0.1
 anchor_top = 0.1
@@ -127,7 +128,6 @@ texture = SubResource("AtlasTexture_k5wax")
 stretch_mode = 2
 
 [node name="allSet" type="Control" parent="."]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -137,9 +137,9 @@ grow_vertical = 2
 
 [node name="AllSetText" type="RichTextLabel" parent="allSet"]
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = -1
 anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_bottom = 0.8
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_oxoj8")
@@ -152,22 +152,36 @@ vertical_alignment = 1
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.375
-anchor_top = 0.613
+anchor_top = 0.5
 anchor_right = 0.625
-anchor_bottom = 0.716
+anchor_bottom = 0.6
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("3_w3s7b")
 theme_override_font_sizes/font_size = 30
 text = "Unready"
 
+[node name="startGame" type="Button" parent="allSet"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.375
+anchor_top = 0.63
+anchor_right = 0.625
+anchor_bottom = 0.73
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_w3s7b")
+theme_override_font_sizes/font_size = 30
+text = "Start Game"
+
 [node name="Error!" type="RichTextLabel" parent="allSet"]
-visible = false
-layout_mode = 0
-offset_left = 51.0
-offset_top = 483.0
-offset_right = 1110.0
-offset_bottom = 612.0
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.8
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 theme = ExtResource("2_oxoj8")
 theme_override_font_sizes/normal_font_size = 30
 text = "If you're seeing this, some very strange error occured. I don't think this error can actually happen but this is a safe guard incase it does! I'll keep you as \"All set,\" but feel free to reset the program if you need to unready (so sorry lol)"
@@ -176,3 +190,4 @@ horizontal_alignment = 1
 [connection signal="pressed" from="hBoxOptions/hostOptions/hostButton" to="." method="host_button"]
 [connection signal="pressed" from="hBoxOptions/settingName/confirmName" to="." method="confirm_name_button"]
 [connection signal="pressed" from="allSet/unReady" to="." method="unready_button"]
+[connection signal="pressed" from="allSet/startGame" to="." method="start_game_button"]

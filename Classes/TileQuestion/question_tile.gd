@@ -50,13 +50,20 @@ class_name QuestionTile
 @onready var _time_out_sound = $QuestionCanvas/Timer/timeOutSound
 #endregion
 
+signal selectedTile
+signal tileDying
+signal allowBuzzing
+signal stopBuzzing
+signal changePoints
+
 enum state{
 	IDLE,
 	VIEWING,
 	WAITING,
 	ANSWERING,
 	JUDGEMENT,
-	ANSWERED
+	ANSWERED,
+	DEAD
 }
 var currState = state.IDLE
 var buzzers = []
@@ -81,6 +88,7 @@ func initialize(pv : int, qu : String, an : String):
 	_pointsPanel.visible = false
 
 func tile_clicked():
+	selectedTile.emit(self)
 	currState = state.VIEWING
 	_button.release_focus()
 	
@@ -95,17 +103,19 @@ func startTimer():
 	_timer.start(5)
 	#TODO just make the question answered if no players left
 	if currState == state.VIEWING:
+		allowBuzzing.emit(pastBuzzers)
 		currState = state.WAITING
 		_pointsPanel.visible = true
 	
 func plrBuzzes(name):
-	if !buzzers.has(name) and !pastBuzzers.has(name):
+	if !buzzers.has(name) and !pastBuzzers.has(name) and currState == state.WAITING:
 		_buzzerPanel.visible = true
 		buzzers.append(name)
 		if !_timer.is_stopped():
 			waitForAnswer()
 
 func waitForAnswer():
+	stopBuzzing.emit()
 	currState = state.ANSWERING
 	var currentPlr = buzzers[0]
 	pastBuzzers.append(currentPlr)
@@ -114,6 +124,8 @@ func waitForAnswer():
 	startTimer()
 	
 func closeQuestion():
+	stopBuzzing.emit()
+	tileDying.emit(self)
 	#Animate
 	_button.visible = false
 	score.visible = false
@@ -122,17 +134,18 @@ func closeQuestion():
 	tween.parallel().tween_property(_background,"position",tile.get_meta("midpoint")+tile.global_position,0.5)
 
 func correctAnswer():
-	#TODO Add points to player
+	changePoints.emit(_nameText.text,point_value)
 	_timer.paused = true
 	currState = state.ANSWERED
 	
 func incorrectAnswer():
-	#TODO Remove points from player
+	changePoints.emit(_nameText.text,-point_value)
 	_buzzerPanel.visible = false
 	currState = state.VIEWING
 	startTimer()
 
 func timer_up():
+	stopBuzzing.emit()
 	_time_out_sound.play()
 	if currState == state.WAITING:
 		currState = state.ANSWERED
@@ -157,6 +170,7 @@ func _process(delta):
 		startTimer()
 	#Move forward after answering (might want to add answer after this?!)
 	elif Input.is_action_just_pressed("ui_accept") and currState == state.ANSWERED:
+		currState = state.DEAD
 		closeQuestion()
 	
 	#Allows judge for correct and incorrect answers
@@ -164,10 +178,4 @@ func _process(delta):
 		correctAnswer()
 	if Input.is_action_just_pressed("ui_down") and (currState == state.ANSWERING or currState == state.JUDGEMENT):
 		incorrectAnswer()
-	
-	#FIXME Allow players to buzz in properly and remove this temp fix
-	if Input.is_action_just_pressed("ui_left") and currState == state.WAITING:
-		plrBuzzes("Teon")
-	if Input.is_action_just_pressed("ui_right") and currState == state.WAITING:
-		plrBuzzes("Boen")
 #endregion

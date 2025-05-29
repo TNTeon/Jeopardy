@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://byh6fl43nnbe4"]
+[gd_scene load_steps=4 format=3 uid="uid://byh6fl43nnbe4"]
 
 [ext_resource type="Script" uid="uid://b0l2o7xxuigxx" path="res://Classes/Networking/Host/host_setup.gd" id="1_m5a5a"]
 [ext_resource type="Theme" uid="uid://bseckuk4rs2ug" path="res://Art/Theme/QuestionBoxTheme.tres" id="2_p6vth"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p6vth"]
+bg_color = Color(0.0253638, 0.0253638, 0.0253638, 1)
 
 [node name="HostSetup" type="CanvasLayer"]
 script = ExtResource("1_m5a5a")
@@ -17,20 +20,42 @@ theme = ExtResource("2_p6vth")
 [node name="PlayersText" type="RichTextLabel" parent="."]
 anchors_preset = -1
 anchor_left = 0.1
+anchor_top = 0.3
+anchor_right = 0.9
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_p6vth")
+text = "Players:"
+horizontal_alignment = 1
+
+[node name="storePlayerNames" type="VBoxContainer" parent="."]
+anchors_preset = -1
+anchor_left = 0.302
+anchor_top = 0.427
+anchor_right = 0.95
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HostText" type="RichTextLabel" parent="."]
+anchors_preset = -1
+anchor_left = 0.1
 anchor_top = 0.1
 anchor_right = 0.9
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_p6vth")
-text = "Players"
+text = "No Host"
 horizontal_alignment = 1
 
-[node name="storePlayerNames" type="VBoxContainer" parent="."]
+[node name="Panel2" type="Panel" parent="."]
 anchors_preset = -1
-anchor_left = 0.302
-anchor_top = 0.227
-anchor_right = 0.95
-anchor_bottom = 1.0
+anchor_left = 0.1
+anchor_top = 0.24
+anchor_right = 0.9
+anchor_bottom = 0.26
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_p6vth")

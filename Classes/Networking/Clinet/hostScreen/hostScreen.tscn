@@ -1,0 +1,133 @@
+[gd_scene load_steps=4 format=3 uid="uid://dcu02hrwt0w8i"]
+
+[ext_resource type="Script" uid="uid://dyf474xy615gf" path="res://Classes/Networking/Clinet/hostScreen/host_screen.gd" id="1_mxyfn"]
+[ext_resource type="Theme" uid="uid://bseckuk4rs2ug" path="res://Art/Theme/QuestionBoxTheme.tres" id="2_lf7bl"]
+[ext_resource type="Theme" uid="uid://dpeodv265m7jd" path="res://Art/Theme/QuestionTileTheme.tres" id="3_wo5as"]
+
+[node name="HostScreen" type="CanvasLayer"]
+script = ExtResource("1_mxyfn")
+
+[node name="Background" type="Panel" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_lf7bl")
+
+[node name="HostText" type="RichTextLabel" parent="."]
+anchors_preset = -1
+anchor_top = 0.05
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_lf7bl")
+text = "Host"
+horizontal_alignment = 1
+
+[node name="QuestionPanel" type="Panel" parent="."]
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.3
+anchor_right = 0.45
+anchor_bottom = 0.7
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_lf7bl")
+
+[node name="displayQuestion" type="RichTextLabel" parent="QuestionPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.03
+anchor_top = 0.03
+anchor_right = 0.97
+anchor_bottom = 0.97
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 25
+text = "Question here!! oml this is so nice and cool but we need to decrease the font size by a lot! lol"
+
+[node name="AnswerPanel" type="Panel" parent="."]
+anchors_preset = -1
+anchor_left = 0.55
+anchor_top = 0.3
+anchor_right = 0.95
+anchor_bottom = 0.7
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_lf7bl")
+
+[node name="displayAnswer" type="RichTextLabel" parent="AnswerPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.03
+anchor_top = 0.03
+anchor_right = 0.97
+anchor_bottom = 0.97
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 25
+text = "Question here!! oml this is so nice and cool but we need to decrease the font size by a lot! lol"
+
+[node name="PointPanel" type="Panel" parent="."]
+anchors_preset = -1
+anchor_left = 0.4
+anchor_top = 0.83
+anchor_right = 0.6
+anchor_bottom = 0.95
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_wo5as")
+
+[node name="displayPV" type="RichTextLabel" parent="PointPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.03
+anchor_top = 0.03
+anchor_right = 0.97
+anchor_bottom = 0.97
+grow_horizontal = 2
+grow_vertical = 2
+text = "$500"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="questionLabel" type="RichTextLabel" parent="."]
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.2
+anchor_right = 0.4
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_lf7bl")
+theme_override_font_sizes/normal_font_size = 40
+text = "Question"
+horizontal_alignment = 1
+
+[node name="answerLabel" type="RichTextLabel" parent="."]
+anchors_preset = -1
+anchor_left = 0.6
+anchor_top = 0.2
+anchor_right = 0.9
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_lf7bl")
+theme_override_font_sizes/normal_font_size = 40
+text = "Answer"
+horizontal_alignment = 1
+
+[node name="pointValueLabel" type="RichTextLabel" parent="."]
+anchors_preset = -1
+anchor_left = 0.4
+anchor_top = 0.757
+anchor_right = 0.6
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_lf7bl")
+theme_override_font_sizes/normal_font_size = 30
+text = "Value"
+horizontal_alignment = 1
