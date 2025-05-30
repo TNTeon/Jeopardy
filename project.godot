@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Jeopardy"
-run/main_scene="uid://irv5n7n8tnmb"
+run/main_scene="uid://df7fdnec2gb8u"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -35,3 +35,4 @@ exit={
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+textures/vram_compression/import_etc2_astc=true

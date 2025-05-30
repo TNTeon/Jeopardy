@@ -5,9 +5,9 @@ const HOST_SETUP = preload("res://Classes/Networking/Host/hostSetup.tscn")
 const BOARD = preload("res://Classes/Board/Board.tscn")
 const PLAYER_SCREEN = preload("res://Classes/Networking/Clinet/playerScreen/playerScreen.tscn")
 const HOST_SCREEN = preload("res://Classes/Networking/Clinet/hostScreen/hostScreen.tscn")
+const CONNECT_TO_SERVER = preload("res://Classes/Networking/Clinet/connectToServer/connectToServer.tscn")
 
-@onready var function: RichTextLabel = $Function
-@export var host : bool = true
+@export var host : bool = false
 
 var port = 9105
 const address = "127.0.0.1"
@@ -16,22 +16,30 @@ var multiplayer_peer = ENetMultiplayerPeer.new()
 var id_dictionary = {}
 var playerHostID : int = -1
 
-#TODO remove all "#testing" lines
+var newConnectionScene
 
 func _ready():
-	#await get_tree().create_timer(1).timeout
-	if len(OS.get_cmdline_args()) > 1 and OS.get_cmdline_args()[1] == "client": #testing
-		host = false #testing
+	host = TransferInformation.isHost
 	if !host:
-		function.text = "Client"
-		multiplayer_peer.create_client(address,port)
-		multiplayer.multiplayer_peer = multiplayer_peer
-		multiplayer.connected_to_server.connect(confirmClientConnection)
+		newConnectionScene = CONNECT_TO_SERVER.instantiate()
+		add_child(newConnectionScene)
+		newConnectionScene.attemptConnection.connect(requestConnection)
 	else:
-		function.text = "Host" #testing
 		multiplayer_peer.create_server(port)
 		multiplayer.multiplayer_peer = multiplayer_peer
 		serverCreated()
+
+func requestConnection(ip):
+	ip = ip.replace("Z","GOHDGLND")
+	for i in range(ip.length()):
+		var uni = ip.unicode_at(i)
+		ip[i] = String.chr(uni - 22)
+	var error = multiplayer_peer.create_client(ip,port)
+	if error == OK:
+		multiplayer.multiplayer_peer = multiplayer_peer
+		multiplayer.connected_to_server.connect(confirmClientConnection)
+	else:
+		newConnectionScene.failed()
 
 #region Host
 var newBoard : board
@@ -139,6 +147,7 @@ func confirmClientConnection():
 	createClientSetup.unready.connect(requestUnready)
 	createClientSetup.selectedHost.connect(requestHost)
 	createClientSetup.startGame.connect(requestStartGame)
+	newConnectionScene.queue_free()
 
 @rpc("any_peer","call_remote","reliable")
 func startingGame():

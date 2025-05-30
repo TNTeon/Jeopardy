@@ -78,7 +78,6 @@ func initialize(pv : int, qu : String, an : String):
 	
 	_extra_point_panel.text = "[b]"+str(point_value)
 	score.text = "[b]$"+str(point_value)
-	point_value
 	
 	_question_text.text = question
 	
@@ -107,10 +106,10 @@ func startTimer():
 		currState = state.WAITING
 		_pointsPanel.visible = true
 	
-func plrBuzzes(name):
-	if !buzzers.has(name) and !pastBuzzers.has(name) and currState == state.WAITING:
+func plrBuzzes(plrName):
+	if !buzzers.has(plrName) and !pastBuzzers.has(plrName) and currState == state.WAITING:
 		_buzzerPanel.visible = true
-		buzzers.append(name)
+		buzzers.append(plrName)
 		if !_timer.is_stopped():
 			waitForAnswer()
 
@@ -159,7 +158,7 @@ func _ready():
 	if point_value != -1:
 		initialize(point_value,question,answer)
 	
-func _process(delta):
+func _process(_delta):
 	#Shink the timer when answering
 	if !_timer.is_stopped() and currState == state.ANSWERING:
 		_gradient.scale.x = _timer.time_left/5

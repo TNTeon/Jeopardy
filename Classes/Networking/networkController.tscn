@@ -4,8 +4,3 @@
 
 [node name="HostNetworking" type="Node"]
 script = ExtResource("1_pt130")
-
-[node name="Function" type="RichTextLabel" parent="."]
-z_index = 3
-offset_right = 189.0
-offset_bottom = 69.0

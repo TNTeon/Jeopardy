@@ -5,23 +5,23 @@ var amount_of_categories : int
 
 func _ready():
 	database = SQLite.new()
-	database.path = "res://Classes/Category/showCategories.db"
+	var DATABASE_PATH_RES = "res://Classes/Category/showCategories.db"
+	var DATABASE_PATH = "user://showCategories.db"
+	if not FileAccess.file_exists(DATABASE_PATH):
+		DirAccess.copy_absolute(DATABASE_PATH_RES,DATABASE_PATH)
+		print("Copied db file to users dir")
+	database.path = DATABASE_PATH
 	database.open_db()
 	database.query("SELECT COUNT(*) FROM category;")
 	amount_of_categories = int(database.query_result[0]["COUNT(*)"])
 	
 	for i in range(5):
 		categoryList.append(randomCategory())
-	initialize()
-
-func displayCategory(cat : categoryResource):
-	print(cat.title)
-	for i in range(5):
-		print(cat.questionTile[i].Question)
-		print(cat.questionTile[i].Answer)
-		print(cat.questionTile[i].pointValue)
-		print("")
-
+	TransferInformation.loadBoard = categoryList
+	TransferInformation.isHost = true
+	await get_tree().process_frame
+	get_tree().change_scene_to_file("res://Classes/Networking/networkController.tscn")
+	
 func createResource(id):
 	id = str(id)
 	var catInfo = database.select_rows("category","id = "+id, ["*"])[0]

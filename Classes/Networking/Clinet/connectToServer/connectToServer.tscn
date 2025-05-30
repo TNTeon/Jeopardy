@@ -1,0 +1,78 @@
+[gd_scene load_steps=6 format=3 uid="uid://y7llxom22jal"]
+
+[ext_resource type="Theme" uid="uid://bseckuk4rs2ug" path="res://Art/Theme/QuestionBoxTheme.tres" id="1_44iq7"]
+[ext_resource type="Script" uid="uid://chi3x8qnvf0ro" path="res://Classes/Networking/Clinet/connectToServer/connect_to_server.gd" id="1_klnfo"]
+[ext_resource type="Theme" uid="uid://dqs6kiraonh5c" path="res://Art/Theme/StyledButtons.tres" id="2_xxukk"]
+[ext_resource type="Texture2D" uid="uid://bvhibnbuiec6s" path="res://Art/Assets/checkandX.png" id="4_q357s"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7kbeu"]
+atlas = ExtResource("4_q357s")
+region = Rect2(50, 0, 50, 50)
+
+[node name="ConnectToServer" type="CanvasLayer"]
+script = ExtResource("1_klnfo")
+
+[node name="Background" type="Panel" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_44iq7")
+
+[node name="EnterCodeLabel" type="RichTextLabel" parent="."]
+anchors_preset = -1
+anchor_top = 0.3
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_44iq7")
+text = "Enter Code"
+horizontal_alignment = 1
+
+[node name="inputCode" type="TextEdit" parent="."]
+anchors_preset = -1
+anchor_left = 0.4
+anchor_top = 0.42
+anchor_right = 0.6
+anchor_bottom = 0.55
+grow_horizontal = 2
+grow_vertical = 2
+placeholder_text = "Enter code here!"
+
+[node name="joinButton" type="Button" parent="."]
+anchors_preset = -1
+anchor_left = 0.42
+anchor_top = 0.58
+anchor_right = 0.58
+anchor_bottom = 0.7
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_xxukk")
+text = "Join"
+
+[node name="joinFeedbackImg" type="TextureRect" parent="."]
+anchors_preset = -1
+anchor_left = 0.59
+anchor_top = 0.58
+anchor_right = 0.65
+anchor_bottom = 0.705
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_7kbeu")
+
+[node name="joinFeedbackText" type="RichTextLabel" parent="."]
+anchors_preset = -1
+anchor_top = 0.8
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_44iq7")
+theme_override_font_sizes/normal_font_size = 26
+text = "Connection to server failed
+Ensure you are connected to the same network as the hosted computer and your code is correct"
+horizontal_alignment = 1
+
+[connection signal="pressed" from="joinButton" to="." method="connectionButton"]

@@ -2,7 +2,7 @@ extends Node
 
 signal backout
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("exit"):
 		$TextureRect/AnimationPlayer.play("load")
 	if Input.is_action_just_released("exit"):
