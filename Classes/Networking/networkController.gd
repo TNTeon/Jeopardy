@@ -10,7 +10,6 @@ const CONNECT_TO_SERVER = preload("res://Classes/Networking/Clinet/connectToServ
 @export var host : bool = false
 
 var port = 9105
-const address = "127.0.0.1"
 var multiplayer_peer = ENetMultiplayerPeer.new()
 
 var id_dictionary = {}
@@ -38,6 +37,8 @@ func requestConnection(ip):
 	if error == OK:
 		multiplayer.multiplayer_peer = multiplayer_peer
 		multiplayer.connected_to_server.connect(confirmClientConnection)
+		multiplayer.server_disconnected.connect(func():get_tree().reload_current_scene())
+		multiplayer.peer_disconnected.connect(func(peerID):print(str(peerID) + " disconnected"))
 	else:
 		newConnectionScene.failed()
 

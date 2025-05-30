@@ -50,6 +50,11 @@ layout_mode = 2
 size_flags_horizontal = 3
 text = "Random Game"
 
+[node name="JoinBut" type="Button" parent="VBoxContainer/Control"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Join Game"
+
 [node name="CustomBut" type="Button" parent="VBoxContainer/Control"]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -65,15 +70,12 @@ layout_mode = 2
 size_flags_horizontal = 3
 text = "Exit"
 
-[node name="Button" type="Button" parent="VBoxContainer/Control"]
-layout_mode = 2
-
 [node name="Spacer" type="Control" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.8
 
 [connection signal="pressed" from="VBoxContainer/Control/RandomBut" to="." method="_on_random_but_pressed"]
+[connection signal="pressed" from="VBoxContainer/Control/JoinBut" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/Control/CustomBut" to="." method="_on_custom_but_pressed"]
 [connection signal="pressed" from="VBoxContainer/Control/ExitBut" to="." method="_on_exit_but_pressed"]
-[connection signal="pressed" from="VBoxContainer/Control/Button" to="." method="_on_button_pressed"]
