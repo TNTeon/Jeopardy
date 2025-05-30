@@ -46,7 +46,7 @@ class_name QuestionTile
 @onready var _nameText = $QuestionCanvas/Background/VSplit/Buzzer/Name
 @onready var _gradient = $QuestionCanvas/Background/VSplit/Buzzer/Timer/Gradient
 
-@onready var _timer = $QuestionCanvas/Timer
+@onready var _timer : Timer = $QuestionCanvas/Timer
 @onready var _time_out_sound = $QuestionCanvas/Timer/timeOutSound
 #endregion
 
@@ -100,7 +100,6 @@ func tile_clicked():
 	
 func startTimer():
 	_timer.start(5)
-	#TODO just make the question answered if no players left
 	if currState == state.VIEWING:
 		allowBuzzing.emit(pastBuzzers)
 		currState = state.WAITING
@@ -121,7 +120,15 @@ func waitForAnswer():
 	buzzers.pop_front()
 	_nameText.text = currentPlr
 	startTimer()
-	
+
+func outOfPlayers():
+	if TransferInformation.isHost and len(multiplayer.get_peers())-1 <= len(pastBuzzers):
+		print("out")
+		currState = state.ANSWERED
+		_timer.paused = true
+		return true
+	return false
+
 func closeQuestion():
 	stopBuzzing.emit()
 	tileDying.emit(self)
@@ -141,7 +148,8 @@ func incorrectAnswer():
 	changePoints.emit(_nameText.text,-point_value)
 	_buzzerPanel.visible = false
 	currState = state.VIEWING
-	startTimer()
+	if outOfPlayers():
+		startTimer()
 
 func timer_up():
 	stopBuzzing.emit()
@@ -170,6 +178,7 @@ func _process(_delta):
 	#Move forward after answering (might want to add answer after this?!)
 	elif Input.is_action_just_pressed("ui_accept") and currState == state.ANSWERED:
 		currState = state.DEAD
+		print("closing")
 		closeQuestion()
 	
 	#Allows judge for correct and incorrect answers

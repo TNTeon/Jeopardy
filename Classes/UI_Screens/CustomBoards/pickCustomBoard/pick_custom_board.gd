@@ -29,7 +29,8 @@ func loadBoard(boardName : String):
 	for i in allBoards:
 		if i.name == boardName:
 			TransferInformation.loadBoard = i.Categories
-			get_tree().change_scene_to_file("res://Classes/Board/Board.tscn")
+			TransferInformation.isHost = true
+			get_tree().change_scene_to_file("res://Classes/Networking/networkController.tscn")
 			return
 class newBoard:
 	var name : String = ""
