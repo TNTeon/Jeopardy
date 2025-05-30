@@ -42,6 +42,7 @@ func initialize():
 
 func _on_hold_back_backout() -> void:
 	if loadedGame:
+		multiplayer.multiplayer_peer.close()
 		get_tree().change_scene_to_file("res://Classes/UI_Screens/CustomBoards/pickCustomBoard/pickCustomBoard.tscn")
 	else:
 		get_tree().change_scene_to_file("res://Classes/UI_Screens/TitleScreen/titleScreen.tscn")
@@ -49,6 +50,7 @@ func _on_hold_back_backout() -> void:
 func setSelectedTile(tile : QuestionTile):
 	selectedTile = tile
 	newTile.emit(tile)
+
 func removeSelectedTile(tile : QuestionTile):
 	if tile == selectedTile:
 		selectedTile = null

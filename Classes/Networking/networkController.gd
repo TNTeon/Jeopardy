@@ -103,6 +103,7 @@ func nameChangeReceived(requestedName):
 	if requestedName not in name_dictionary.values():
 		name_dictionary[sender_id] = requestedName
 		ip_dictionary[sender_id] = multiplayer_peer.get_peer(sender_id).get_remote_address()
+		score_dictionary[sender_id] = 0
 		rpc_id(sender_id, "replyNameChange",true)
 	else:
 		rpc_id(sender_id, "replyNameChange",false)
@@ -172,8 +173,7 @@ func reconnectPlayer(oldID):
 		disconnectedIDs.erase(oldID)
 		name_dictionary[sender_id] = name_dictionary[oldID]
 		ip_dictionary[sender_id] = ip_dictionary[oldID]
-		#TODO when scoreDict has the old client ID, uncomment this line!
-		#score_dictionary[sender_id] = score_dictionary[oldID]
+		score_dictionary[sender_id] = score_dictionary[oldID]
 		name_dictionary.erase(oldID)
 		ip_dictionary.erase(oldID)
 		score_dictionary.erase(oldID)
@@ -215,6 +215,9 @@ func confirmClientConnection():
 			var clientID = ip_dictionary.find_key(clientIP)
 			var clientName = name_dictionary[clientID]
 			rpc_id(1,"reconnectPlayer",clientID)
+		else:
+			newConnectionScene.gameAlreadyStarted()
+			multiplayer_peer.close()
 
 @rpc("any_peer","call_remote","reliable")
 func startingGame():
@@ -280,6 +283,7 @@ func replyStartGame(worked : int):
 func replyReconnectPlayer(worked : int):
 	if worked == -1:
 		multiplayer_peer.close()
+		newConnectionScene.gameAlreadyStarted()
 		push_error("never disconnected!")
 	else:
 		createCilentScreen(name_dictionary[worked])

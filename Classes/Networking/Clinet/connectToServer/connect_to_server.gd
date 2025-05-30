@@ -18,3 +18,9 @@ func connectionButton():
 func failed():
 	join_feedback_text.visible = true
 	join_feedback_img.visible = true
+	join_feedback_text.text = "Connection to server failed\nEnsure you are connected to the same network as the hosted computer and your code is correct"
+
+func gameAlreadyStarted():
+	join_feedback_text.visible = true
+	join_feedback_img.visible = true
+	join_feedback_text.text = "The game has alreay started"
