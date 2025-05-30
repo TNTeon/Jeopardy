@@ -12,10 +12,23 @@ const CONNECT_TO_SERVER = preload("res://Classes/Networking/Clinet/connectToServ
 var port = 9105
 var multiplayer_peer = ENetMultiplayerPeer.new()
 
-var id_dictionary = {}
+var name_dictionary = {}
+var score_dictionary = {}
+var ip_dictionary = {}
 var playerHostID : int = -1
+var disconnectedIDs = []
 
 var newConnectionScene
+
+var currentServerState : serverStates
+
+enum serverStates{
+	PRE_GAME,
+	GAME_STARTED
+}
+
+signal updatedServerState
+signal updatedIps
 
 func _ready():
 	host = TransferInformation.isHost
@@ -26,6 +39,7 @@ func _ready():
 	else:
 		multiplayer_peer.create_server(port)
 		multiplayer.multiplayer_peer = multiplayer_peer
+		multiplayer.peer_disconnected.connect(disconnectedPeer)
 		serverCreated()
 
 func requestConnection(ip):
@@ -38,7 +52,6 @@ func requestConnection(ip):
 		multiplayer.multiplayer_peer = multiplayer_peer
 		multiplayer.connected_to_server.connect(confirmClientConnection)
 		multiplayer.server_disconnected.connect(func():get_tree().reload_current_scene())
-		multiplayer.peer_disconnected.connect(func(peerID):print(str(peerID) + " disconnected"))
 	else:
 		newConnectionScene.failed()
 
@@ -47,12 +60,13 @@ var newBoard : board
 var newHostSetup : hostSetup
 
 func serverCreated():
+	currentServerState = serverStates.PRE_GAME
 	newBoard = BOARD.instantiate()
 	add_child(newBoard)
 	newBoard.visible = false
 	newBoard.allowBuzzing.connect(
 		func(pastBuzz):
-			pastBuzz.filter(func(n): return id_dictionary.find_key(n))
+			pastBuzz.filter(func(n): return name_dictionary.find_key(n))
 			rpc("allowBuzzingClients",pastBuzz)
 	)
 	newBoard.stopBuzzing.connect(func(): rpc("stopBuzzingClients"))
@@ -70,18 +84,29 @@ func serverCreated():
 	newHostSetup.visible = true
 	
 func changePoints(plrName, points):
-	var playerId = id_dictionary.find_key(plrName)
+	var playerId = name_dictionary.find_key(plrName)
 	rpc_id(playerId,"changePointsClient", points)
+	
+func disconnectedPeer(peerID):
+	print(str(peerID) + " disconnected")
+	print(currentServerState)
+	if currentServerState == serverStates.PRE_GAME:
+		name_dictionary.erase(peerID)
+		ip_dictionary.erase(peerID)
+		score_dictionary.erase(peerID)
+	elif name_dictionary.has(peerID):
+		disconnectedIDs.append(peerID)
 	
 @rpc("any_peer","call_remote","reliable")
 func nameChangeReceived(requestedName):
 	var sender_id = multiplayer.get_remote_sender_id()
-	if requestedName not in id_dictionary.values():
-		id_dictionary[sender_id] = requestedName
+	if requestedName not in name_dictionary.values():
+		name_dictionary[sender_id] = requestedName
+		ip_dictionary[sender_id] = multiplayer_peer.get_peer(sender_id).get_remote_address()
 		rpc_id(sender_id, "replyNameChange",true)
 	else:
 		rpc_id(sender_id, "replyNameChange",false)
-	newHostSetup.updateNames(id_dictionary)
+	newHostSetup.updateNames(name_dictionary)
 
 @rpc("any_peer","call_remote","reliable")
 func unreadyReceived():
@@ -92,9 +117,10 @@ func unreadyReceived():
 		rpc_id(sender_id, "replyUnready",true)
 		rpc("hostUnready")
 		return
-	elif id_dictionary.has(sender_id):
-		id_dictionary.erase(sender_id)
-		newHostSetup.updateNames(id_dictionary)
+	elif name_dictionary.has(sender_id):
+		name_dictionary.erase(sender_id)
+		ip_dictionary.erase(sender_id)
+		newHostSetup.updateNames(name_dictionary)
 		rpc_id(sender_id, "replyUnready",true)
 		return
 	else:
@@ -120,20 +146,50 @@ func startGameReceived():
 	if playerHostID == -1:
 		rpc_id(sender_id,"replyStartGame",-1)
 		return
-	if len(id_dictionary.keys()) < numOfPlayers - 1: # - 1 because of host
-		rpc_id(sender_id,"replyStartGame",numOfPlayers-1-len(id_dictionary.keys()))
+	if len(name_dictionary.keys()) < numOfPlayers - 1: # - 1 because of host
+		rpc_id(sender_id,"replyStartGame",numOfPlayers-1-len(name_dictionary.keys()))
 		return
 	newBoard.visible = true
 	newHostSetup.visible = false
 	rpc_id(sender_id,"replyStartGame",0)
 	rpc("startingGame")
+	currentServerState = serverStates.GAME_STARTED
 
 @rpc("any_peer","call_remote","reliable")
 func buzzReceived():
 	var sender_id = multiplayer.get_remote_sender_id()
 	if newBoard.selectedTile:
-		var sender_name = id_dictionary[sender_id]
+		print(name_dictionary)
+		var sender_name = name_dictionary[sender_id]
 		newBoard.selectedTile.plrBuzzes(sender_name)
+		
+@rpc("any_peer","call_remote","reliable")
+func reconnectPlayer(oldID):
+	var sender_id = multiplayer.get_remote_sender_id()
+	print("old id is ",oldID)
+	print("is it in ",disconnectedIDs)
+	if oldID in disconnectedIDs:
+		disconnectedIDs.erase(oldID)
+		name_dictionary[sender_id] = name_dictionary[oldID]
+		ip_dictionary[sender_id] = ip_dictionary[oldID]
+		#TODO when scoreDict has the old client ID, uncomment this line!
+		#score_dictionary[sender_id] = score_dictionary[oldID]
+		name_dictionary.erase(oldID)
+		ip_dictionary.erase(oldID)
+		score_dictionary.erase(oldID)
+		rpc_id(sender_id, "replyReconnectPlayer",oldID)
+		rpc_id(sender_id, "replyDictionaries",name_dictionary, ip_dictionary, score_dictionary)
+	else:
+		rpc_id(sender_id, "replyReconnectPlayer", -1)
+
+@rpc("any_peer","call_remote","reliable")
+func requestCurrentState():
+	var sender_id = multiplayer.get_remote_sender_id()
+	rpc_id(sender_id, "replyCurrentState",currentServerState)
+@rpc("any_peer","call_remote","reliable")
+func requestDictionaries():
+	var sender_id = multiplayer.get_remote_sender_id()
+	rpc_id(sender_id, "replyDictionaries",name_dictionary, ip_dictionary, score_dictionary)
 #endregion
 
 #region Client
@@ -141,14 +197,24 @@ var createClientSetup : clientSetup
 var createClientScreen : playerScreen
 var createHostScreen : hostScreen
 func confirmClientConnection():
-	print("clinet connected!")
-	createClientSetup = CLIENT_SETUP.instantiate()
-	add_child(createClientSetup)
-	createClientSetup.changeName.connect(requestNameChange)
-	createClientSetup.unready.connect(requestUnready)
-	createClientSetup.selectedHost.connect(requestHost)
-	createClientSetup.startGame.connect(requestStartGame)
-	newConnectionScene.queue_free()
+	rpc_id(1, "requestCurrentState")
+	await updatedServerState
+	if currentServerState == serverStates.PRE_GAME:
+		createClientSetup = CLIENT_SETUP.instantiate()
+		add_child(createClientSetup)
+		createClientSetup.changeName.connect(requestNameChange)
+		createClientSetup.unready.connect(requestUnready)
+		createClientSetup.selectedHost.connect(requestHost)
+		createClientSetup.startGame.connect(requestStartGame)
+		newConnectionScene.queue_free()
+	else:
+		rpc_id(1, "requestDictionaries")
+		await updatedIps
+		var clientIP = findLocalIP()
+		if clientIP in ip_dictionary.values():
+			var clientID = ip_dictionary.find_key(clientIP)
+			var clientName = name_dictionary[clientID]
+			rpc_id(1,"reconnectPlayer",clientID)
 
 @rpc("any_peer","call_remote","reliable")
 func startingGame():
@@ -156,11 +222,14 @@ func startingGame():
 		createHostScreen = HOST_SCREEN.instantiate()
 		add_child(createHostScreen)
 	else:
-		createClientScreen = PLAYER_SCREEN.instantiate()
-		add_child(createClientScreen)
-		createClientScreen.name_text.text = createClientSetup.name_input.text
-		createClientScreen.buzzedIn.connect(requestBuzz)
+		createCilentScreen(createClientSetup.name_input.text)
 	createClientSetup.queue_free()
+
+func createCilentScreen(nameForClient):
+	createClientScreen = PLAYER_SCREEN.instantiate()
+	add_child(createClientScreen)
+	createClientScreen.name_text.text = nameForClient
+	createClientScreen.buzzedIn.connect(requestBuzz)
 
 ## Requests
 func requestNameChange(requestedName):
@@ -180,6 +249,18 @@ func requestBuzz():
 
 ## Replies
 @rpc("authority","call_remote","reliable")
+func replyCurrentState(currState : serverStates):
+	currentServerState = currState
+	updatedServerState.emit()
+
+@rpc("authority","call_remote","reliable")
+func replyDictionaries(names : Dictionary,ipAddresses : Dictionary, scores):
+	name_dictionary = names
+	ip_dictionary = ipAddresses
+	score_dictionary = scores
+	updatedIps.emit()
+
+@rpc("authority","call_remote","reliable")
 func replyNameChange(worked : bool):
 	createClientSetup.replyNameChange(worked)
 
@@ -194,6 +275,14 @@ func replyHost(worked : bool):
 @rpc("authority","call_remote","reliable")
 func replyStartGame(worked : int):
 	createClientSetup.replyStartGame(worked)
+
+@rpc("authority","call_remote","reliable")
+func replyReconnectPlayer(worked : int):
+	if worked == -1:
+		multiplayer_peer.close()
+		push_error("never disconnected!")
+	else:
+		createCilentScreen(name_dictionary[worked])
 
 ## Extras
 @rpc("any_peer","call_remote","reliable")
@@ -223,3 +312,16 @@ func newTile(question : Dictionary):
 	createHostScreen.newTile(question)
 
 #endregion
+
+func findLocalIP():
+	var ip_address : String
+	if OS.has_feature("windows"):
+		if OS.has_environment("COMPUTERNAME"):
+			ip_address =  IP.resolve_hostname(str(OS.get_environment("COMPUTERNAME")),IP.Type.TYPE_IPV4)
+	elif OS.has_feature("x11"):
+		if OS.has_environment("HOSTNAME"):
+			ip_address =  IP.resolve_hostname(str(OS.get_environment("HOSTNAME")),IP.Type.TYPE_IPV4)
+	elif OS.has_feature("OSX"):
+		if OS.has_environment("HOSTNAME"):
+			ip_address =  IP.resolve_hostname(str(OS.get_environment("HOSTNAME")),IP.Type.TYPE_IPV4)
+	return ip_address
