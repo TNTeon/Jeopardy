@@ -25,9 +25,9 @@ func resizeFont():
 	heightOfFont = getFontLength(get_theme_font_size(fontType+"_size"),"y")
 	heightOfWindow = (size.y)*scale.y - extraSpace
 	if lengthOfFont > lengthOfWindow or heightOfFont > heightOfWindow:
-		print("length: ",lengthOfWindow - lengthOfFont, "height: ",heightOfWindow - heightOfFont)
+		#print("length: ",lengthOfWindow - lengthOfFont, "height: ",heightOfWindow - heightOfFont)
 		add_theme_font_size_override(fontType+"_size",get_theme_font_size(fontType+"_size")-20)
-	print("length: ",lengthOfWindow - lengthOfFont, "height: ",heightOfWindow - heightOfFont)
+	#print("length: ",lengthOfWindow - lengthOfFont, "height: ",heightOfWindow - heightOfFont)
 	
 
 func getFontLength(fontSize, axis : String):

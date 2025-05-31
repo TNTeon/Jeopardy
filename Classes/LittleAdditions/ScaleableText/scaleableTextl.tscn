@@ -6,10 +6,12 @@
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = 2.0
+offset_bottom = -5.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/normal_font_size = 327
-text = "testing"
+theme_override_font_sizes/normal_font_size = 39
+text = "Testing"
 horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("1_xwp3t")

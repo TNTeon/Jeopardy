@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://irv5n7n8tnmb"]
+[gd_scene load_steps=4 format=3 uid="uid://irv5n7n8tnmb"]
 
 [ext_resource type="Script" uid="uid://b32lqk1afnau7" path="res://Classes/UI_Screens/TitleScreen/title_screen.gd" id="1_6me1i"]
 [ext_resource type="Theme" uid="uid://bseckuk4rs2ug" path="res://Art/Theme/QuestionBoxTheme.tres" id="1_212u8"]
+[ext_resource type="Script" uid="uid://luthqih2wcwp" path="res://Classes/LittleAdditions/ScaleableText/scaleable_textl.gd" id="3_kdw51"]
 
 [node name="TitleScreen" type="Control"]
 layout_mode = 3
@@ -35,10 +36,15 @@ layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 4.0
 theme = ExtResource("1_212u8")
+theme_override_font_sizes/bold_font_size = 30
 bbcode_enabled = true
 text = "[b]JEOPARDY"
 horizontal_alignment = 1
 vertical_alignment = 1
+script = ExtResource("3_kdw51")
+fontType = "bold_font"
+extraSpace = 0.5
+metadata/_custom_type_script = "uid://luthqih2wcwp"
 
 [node name="Control" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
@@ -75,6 +81,7 @@ layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.8
 
+[connection signal="resized" from="VBoxContainer/Title" to="VBoxContainer/Title" method="_on_resized"]
 [connection signal="pressed" from="VBoxContainer/Control/RandomBut" to="." method="_on_random_but_pressed"]
 [connection signal="pressed" from="VBoxContainer/Control/JoinBut" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/Control/CustomBut" to="." method="_on_custom_but_pressed"]

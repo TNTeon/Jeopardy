@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://c2l4xq6u6cwfr"]
+[gd_scene load_steps=6 format=3 uid="uid://c2l4xq6u6cwfr"]
 
 [ext_resource type="Theme" uid="uid://bseckuk4rs2ug" path="res://Art/Theme/QuestionBoxTheme.tres" id="1_etp2v"]
 [ext_resource type="Script" uid="uid://no2f5kyynrqb" path="res://Classes/LittleAdditions/Confirm/confirm.gd" id="1_gbp02"]
 [ext_resource type="Theme" uid="uid://dqs6kiraonh5c" path="res://Art/Theme/StyledButtons.tres" id="2_gbp02"]
+[ext_resource type="Script" uid="uid://luthqih2wcwp" path="res://Classes/LittleAdditions/ScaleableText/scaleable_textl.gd" id="3_2gb80"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2gb80"]
 bg_color = Color(0, 0, 0, 0.113725)
@@ -43,9 +44,13 @@ grow_vertical = 2
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 1.5
+theme_override_font_sizes/normal_font_size = 30
 text = "Confirm Deletion?"
 horizontal_alignment = 1
 vertical_alignment = 1
+script = ExtResource("3_2gb80")
+extraSpace = 0.5
+metadata/_custom_type_script = "uid://luthqih2wcwp"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Panel/AspectRatioContainer/Panel/VBoxContainer"]
 layout_mode = 2
@@ -83,5 +88,6 @@ layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.2
 
+[connection signal="resized" from="Panel/AspectRatioContainer/Panel/VBoxContainer/RichTextLabel" to="Panel/AspectRatioContainer/Panel/VBoxContainer/RichTextLabel" method="_on_resized"]
 [connection signal="pressed" from="Panel/AspectRatioContainer/Panel/VBoxContainer/HBoxContainer/yesBut" to="." method="_on_yes_but_pressed"]
 [connection signal="pressed" from="Panel/AspectRatioContainer/Panel/VBoxContainer/HBoxContainer/noBut" to="." method="_on_no_but_pressed"]

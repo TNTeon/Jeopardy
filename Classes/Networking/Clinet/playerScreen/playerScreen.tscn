@@ -46,6 +46,7 @@ anchor_bottom = 0.95
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("3_i1yxv")
+theme_override_font_sizes/font_size = 61
 text = "BUZZ IN"
 
 [connection signal="pressed" from="buzzButton" to="." method="buzz_button"]

@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://bbjgwsgrr24mf"]
+[gd_scene load_steps=8 format=3 uid="uid://bbjgwsgrr24mf"]
 
 [ext_resource type="Script" uid="uid://cla584o5ys52d" path="res://Classes/Networking/Clinet/Setup/clientSetup.gd" id="1_72qut"]
 [ext_resource type="Theme" uid="uid://bseckuk4rs2ug" path="res://Art/Theme/QuestionBoxTheme.tres" id="2_oxoj8"]
+[ext_resource type="Script" uid="uid://luthqih2wcwp" path="res://Classes/LittleAdditions/ScaleableText/scaleable_textl.gd" id="3_ibr1h"]
 [ext_resource type="Theme" uid="uid://dqs6kiraonh5c" path="res://Art/Theme/StyledButtons.tres" id="3_w3s7b"]
 [ext_resource type="Texture2D" uid="uid://bvhibnbuiec6s" path="res://Art/Assets/checkandX.png" id="4_17l8u"]
 
@@ -47,9 +48,12 @@ offset_left = 1.14441e-05
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_oxoj8")
+theme_override_font_sizes/normal_font_size = 67
 text = "Join as Host"
 horizontal_alignment = 1
 vertical_alignment = 1
+script = ExtResource("3_ibr1h")
+metadata/_custom_type_script = "uid://luthqih2wcwp"
 
 [node name="hostButton" type="Button" parent="hBoxOptions/hostOptions"]
 layout_mode = 1
@@ -85,9 +89,12 @@ offset_left = 1.14441e-05
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_oxoj8")
+theme_override_font_sizes/normal_font_size = 61
 text = "Join as Player"
 horizontal_alignment = 1
 vertical_alignment = 1
+script = ExtResource("3_ibr1h")
+metadata/_custom_type_script = "uid://luthqih2wcwp"
 
 [node name="nameInput" type="TextEdit" parent="hBoxOptions/settingName"]
 layout_mode = 1
@@ -138,15 +145,19 @@ grow_vertical = 2
 [node name="AllSetText" type="RichTextLabel" parent="allSet"]
 layout_mode = 1
 anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 0.8
+anchor_left = 0.35
+anchor_top = 0.25
+anchor_right = 0.65
+anchor_bottom = 0.482
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_oxoj8")
-theme_override_font_sizes/normal_font_size = 100
+theme_override_font_sizes/normal_font_size = 104
 text = "All set"
 horizontal_alignment = 1
 vertical_alignment = 1
+script = ExtResource("3_ibr1h")
+metadata/_custom_type_script = "uid://luthqih2wcwp"
 
 [node name="unReady" type="Button" parent="allSet"]
 layout_mode = 1
@@ -187,7 +198,10 @@ theme_override_font_sizes/normal_font_size = 30
 text = "If you're seeing this, some very strange error occured. I don't think this error can actually happen but this is a safe guard incase it does! I'll keep you as \"All set,\" but feel free to reset the program if you need to unready (so sorry lol)"
 horizontal_alignment = 1
 
+[connection signal="resized" from="hBoxOptions/hostOptions/joinAsHost" to="hBoxOptions/hostOptions/joinAsHost" method="_on_resized"]
 [connection signal="pressed" from="hBoxOptions/hostOptions/hostButton" to="." method="host_button"]
+[connection signal="resized" from="hBoxOptions/settingName/joinAsPlayer" to="hBoxOptions/settingName/joinAsPlayer" method="_on_resized"]
 [connection signal="pressed" from="hBoxOptions/settingName/confirmName" to="." method="confirm_name_button"]
+[connection signal="resized" from="allSet/AllSetText" to="allSet/AllSetText" method="_on_resized"]
 [connection signal="pressed" from="allSet/unReady" to="." method="unready_button"]
 [connection signal="pressed" from="allSet/startGame" to="." method="start_game_button"]

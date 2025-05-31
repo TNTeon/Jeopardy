@@ -1,9 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://ctu2x2f7s26xg"]
+[gd_scene load_steps=15 format=3 uid="uid://ctu2x2f7s26xg"]
 
 [ext_resource type="Script" uid="uid://bav7a000nvcui" path="res://Classes/UI_Screens/CustomBoards/pickCustomBoard/previewBoard/preview_board.gd" id="1_2l143"]
 [ext_resource type="Theme" uid="uid://bseckuk4rs2ug" path="res://Art/Theme/QuestionBoxTheme.tres" id="2_ti14r"]
 [ext_resource type="Theme" uid="uid://dqs6kiraonh5c" path="res://Art/Theme/StyledButtons.tres" id="3_dvbgu"]
 [ext_resource type="Theme" uid="uid://dpeodv265m7jd" path="res://Art/Theme/QuestionTileTheme.tres" id="3_ti14r"]
+[ext_resource type="Script" uid="uid://luthqih2wcwp" path="res://Classes/LittleAdditions/ScaleableText/scaleable_textl.gd" id="3_yeu84"]
 [ext_resource type="PackedScene" uid="uid://c2l4xq6u6cwfr" path="res://Classes/LittleAdditions/Confirm/confirm.tscn" id="5_4mvls"]
 
 [sub_resource type="ImageTexture" id="ImageTexture_dvbgu"]
@@ -92,9 +93,13 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 74
 text = "Name Board Here"
 horizontal_alignment = 1
 vertical_alignment = 1
+script = ExtResource("3_yeu84")
+extraSpace = 0.5
+metadata/_custom_type_script = "uid://luthqih2wcwp"
 
 [node name="Panel2" type="Panel" parent="VSplitContainer"]
 layout_mode = 2
@@ -123,11 +128,14 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("3_ti14r")
-theme_override_font_sizes/normal_font_size = 30
+theme_override_font_sizes/normal_font_size = 157
 text = "test"
 fit_content = true
 horizontal_alignment = 1
 vertical_alignment = 1
+script = ExtResource("3_yeu84")
+extraSpace = 0.9
+metadata/_custom_type_script = "uid://luthqih2wcwp"
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 1
@@ -173,6 +181,8 @@ text = "Delete"
 [node name="Confirm" parent="." instance=ExtResource("5_4mvls")]
 visible = false
 
+[connection signal="resized" from="VSplitContainer/Panel/BoardName" to="VSplitContainer/Panel/BoardName" method="_on_resized"]
+[connection signal="resized" from="VSplitContainer/Panel2/StoreCategories/Category/CategoryName" to="VSplitContainer/Panel2/StoreCategories/Category/CategoryName" method="_on_resized"]
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="VSplitContainer2/Edit" to="." method="_on_edit_pressed"]
 [connection signal="pressed" from="VSplitContainer2/DeleteBut" to="Confirm" method="requested"]
