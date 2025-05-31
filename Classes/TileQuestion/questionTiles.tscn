@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://y10b8tepf30m"]
+[gd_scene load_steps=9 format=3 uid="uid://y10b8tepf30m"]
 
 [ext_resource type="Script" uid="uid://bosu2hjrafceo" path="res://Classes/TileQuestion/question_tile.gd" id="1_ssvs3"]
 [ext_resource type="Theme" uid="uid://dpeodv265m7jd" path="res://Art/Theme/QuestionTileTheme.tres" id="2_54ayr"]
 [ext_resource type="Theme" uid="uid://bseckuk4rs2ug" path="res://Art/Theme/QuestionBoxTheme.tres" id="3_dtf81"]
+[ext_resource type="Script" uid="uid://luthqih2wcwp" path="res://Classes/LittleAdditions/ScaleableText/scaleable_textl.gd" id="3_k8335"]
 [ext_resource type="Texture2D" uid="uid://dwbtw8symoxm4" path="res://Art/Assets/timer.png" id="4_2si70"]
 [ext_resource type="AudioStream" uid="uid://be5q6jeo7w2kc" path="res://Sound/Jeopardy! Time's Up-(p).mp3" id="5_4qu7x"]
 
@@ -49,10 +50,15 @@ grow_vertical = 2
 scale = Vector2(1, 1.25)
 mouse_filter = 2
 theme = ExtResource("2_54ayr")
+theme_override_font_sizes/bold_font_size = 249
 bbcode_enabled = true
 text = "[b]$100"
 horizontal_alignment = 1
 vertical_alignment = 1
+script = ExtResource("3_k8335")
+fontType = "bold_font"
+extraSpace = 0.8
+metadata/_custom_type_script = "uid://luthqih2wcwp"
 
 [node name="Button" type="Button" parent="Tile"]
 layout_mode = 1
@@ -177,5 +183,6 @@ one_shot = true
 stream = ExtResource("5_4qu7x")
 volume_db = -5.0
 
+[connection signal="resized" from="Tile/Score" to="Tile/Score" method="_on_resized"]
 [connection signal="pressed" from="Tile/Button" to="." method="tile_clicked"]
 [connection signal="timeout" from="QuestionCanvas/Timer" to="." method="timer_up"]
