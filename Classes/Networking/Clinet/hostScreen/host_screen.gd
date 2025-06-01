@@ -13,4 +13,4 @@ func _ready():
 func newTile(tile : Dictionary):
 	display_question.text = tile["question"]
 	display_answer.text = tile["answer"]
-	display_pv.text = "$"+str(tile["pointValue"])
+	display_pv.text = "[b]$"+str(tile["pointValue"])

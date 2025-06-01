@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://dcu02hrwt0w8i"]
+[gd_scene load_steps=5 format=3 uid="uid://dcu02hrwt0w8i"]
 
 [ext_resource type="Script" uid="uid://dyf474xy615gf" path="res://Classes/Networking/Clinet/hostScreen/host_screen.gd" id="1_mxyfn"]
 [ext_resource type="Theme" uid="uid://bseckuk4rs2ug" path="res://Art/Theme/QuestionBoxTheme.tres" id="2_lf7bl"]
 [ext_resource type="Theme" uid="uid://dpeodv265m7jd" path="res://Art/Theme/QuestionTileTheme.tres" id="3_wo5as"]
+[ext_resource type="Script" uid="uid://luthqih2wcwp" path="res://Classes/LittleAdditions/ScaleableText/scaleable_textl.gd" id="4_v385h"]
 
 [node name="HostScreen" type="CanvasLayer"]
 script = ExtResource("1_mxyfn")
@@ -89,9 +90,15 @@ anchor_right = 0.97
 anchor_bottom = 0.97
 grow_horizontal = 2
 grow_vertical = 2
-text = "$500"
+theme_override_font_sizes/bold_font_size = 42
+bbcode_enabled = true
+text = "[b]$500"
 horizontal_alignment = 1
 vertical_alignment = 1
+script = ExtResource("4_v385h")
+fontType = "bold_font"
+extraSpace = 0.8
+metadata/_custom_type_script = "uid://luthqih2wcwp"
 
 [node name="questionLabel" type="RichTextLabel" parent="."]
 anchors_preset = -1
@@ -131,3 +138,5 @@ theme = ExtResource("2_lf7bl")
 theme_override_font_sizes/normal_font_size = 30
 text = "Value"
 horizontal_alignment = 1
+
+[connection signal="resized" from="PointPanel/displayPV" to="PointPanel/displayPV" method="_on_resized"]

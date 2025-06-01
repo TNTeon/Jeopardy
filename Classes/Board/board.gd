@@ -4,7 +4,8 @@ class_name board
 @export var categoryList : Array[categoryResource]
 @export var categoryScene : PackedScene
 
-@onready var _h_box_container = $HBoxContainer
+@onready var _h_box_container: HBoxContainer = $VBoxContainer/StoreCategories
+@onready var store_icons: HBoxContainer = $VBoxContainer/StoreIcons
 
 var loadedGame : bool
 var selectedTile : QuestionTile

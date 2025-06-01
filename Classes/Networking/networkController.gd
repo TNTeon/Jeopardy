@@ -6,6 +6,7 @@ const BOARD = preload("res://Classes/Board/Board.tscn")
 const PLAYER_SCREEN = preload("res://Classes/Networking/Clinet/playerScreen/playerScreen.tscn")
 const HOST_SCREEN = preload("res://Classes/Networking/Clinet/hostScreen/hostScreen.tscn")
 const CONNECT_TO_SERVER = preload("res://Classes/Networking/Clinet/connectToServer/connectToServer.tscn")
+const PLAYER_ICON = preload("res://Classes/PlayerIcon/PlayerIcon.tscn")
 
 @export var host : bool = false
 
@@ -15,6 +16,7 @@ var multiplayer_peer = ENetMultiplayerPeer.new()
 var name_dictionary = {}
 var score_dictionary = {}
 var ip_dictionary = {}
+var icon_dictionary = {}
 var playerHostID : int = -1
 var disconnectedIDs = []
 
@@ -90,6 +92,8 @@ func serverCreated():
 	
 func changePoints(plrName, points):
 	var playerId = name_dictionary.find_key(plrName)
+	score_dictionary[playerId] += points
+	icon_dictionary[playerId].addToScore(points)
 	rpc_id(playerId,"changePointsClient", points)
 	
 func disconnectedPeer(peerID):
@@ -107,9 +111,15 @@ func disconnectedPeer(peerID):
 func nameChangeReceived(requestedName):
 	var sender_id = multiplayer.get_remote_sender_id()
 	if requestedName not in name_dictionary.values():
+		var newPlayerIcon = PLAYER_ICON.instantiate()
+		newBoard.store_icons.add_child(newPlayerIcon)
+		newPlayerIcon.updateName(requestedName)
+		newPlayerIcon.updateScore(0)
+		
 		name_dictionary[sender_id] = requestedName
 		ip_dictionary[sender_id] = multiplayer_peer.get_peer(sender_id).get_remote_address()
 		score_dictionary[sender_id] = 0
+		icon_dictionary[sender_id] = newPlayerIcon
 		rpc_id(sender_id, "replyNameChange",true)
 	else:
 		rpc_id(sender_id, "replyNameChange",false)
@@ -125,6 +135,8 @@ func unreadyReceived():
 		rpc("hostUnready")
 		return
 	elif name_dictionary.has(sender_id):
+		icon_dictionary[sender_id].queue_free()
+		icon_dictionary.erase(sender_id)
 		name_dictionary.erase(sender_id)
 		ip_dictionary.erase(sender_id)
 		newHostSetup.updateNames(name_dictionary)
@@ -180,9 +192,11 @@ func reconnectPlayer(oldID):
 		name_dictionary[sender_id] = name_dictionary[oldID]
 		ip_dictionary[sender_id] = ip_dictionary[oldID]
 		score_dictionary[sender_id] = score_dictionary[oldID]
+		icon_dictionary[sender_id] = icon_dictionary[oldID]
 		name_dictionary.erase(oldID)
 		ip_dictionary.erase(oldID)
 		score_dictionary.erase(oldID)
+		icon_dictionary.erase(oldID)
 		rpc_id(sender_id, "replyReconnectPlayer",oldID)
 		rpc_id(sender_id, "replyDictionaries",name_dictionary, ip_dictionary, score_dictionary)
 	else:
@@ -300,6 +314,8 @@ func replyReconnectPlayer(worked : int):
 		push_error("never disconnected!")
 	else:
 		createCilentScreen(name_dictionary[worked])
+		await updatedIps
+		createClientScreen.changePoints(score_dictionary[multiplayer.get_unique_id()])
 
 ## Extras
 @rpc("any_peer","call_remote","reliable")
