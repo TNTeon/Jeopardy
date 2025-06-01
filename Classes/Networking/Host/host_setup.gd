@@ -12,6 +12,8 @@ func _ready():
 		var uni = ip.unicode_at(i)
 		ip[i] = String.chr(uni + 22)
 	ip = ip.replace("GOHDGLND","Z")
+	ip = ip.replace("GFD","Y")
+	ip = ip.replace("GMHD","X")
 	join_code.text = "Code: " + ip
 
 func updateNames(players : Dictionary):
@@ -27,15 +29,12 @@ func updateNames(players : Dictionary):
 			newName.text = "• "+desiredName
 			store_player_names.add_child(newName)
 
-func findLocalIP():
-	var ip_address : String
-	if OS.has_feature("windows"):
-		if OS.has_environment("COMPUTERNAME"):
-			ip_address =  IP.resolve_hostname(str(OS.get_environment("COMPUTERNAME")),IP.Type.TYPE_IPV4)
-	elif OS.has_feature("x11"):
-		if OS.has_environment("HOSTNAME"):
-			ip_address =  IP.resolve_hostname(str(OS.get_environment("HOSTNAME")),IP.Type.TYPE_IPV4)
-	elif OS.has_feature("OSX"):
-		if OS.has_environment("HOSTNAME"):
-			ip_address =  IP.resolve_hostname(str(OS.get_environment("HOSTNAME")),IP.Type.TYPE_IPV4)
-	return ip_address
+func findLocalIP() -> String:
+	var ip = ""
+	for address in IP.get_local_addresses():
+		if "." in address and not address.begins_with("127.") and not address.begins_with("169.254."):
+			if address.begins_with("192.168.") or address.begins_with("10.") or (address.begins_with("172.") and int(address.split(".")[1]) >= 16 and int(address.split(".")[1]) <= 31):
+				print(address.split(".")[1])
+				ip = address
+				break
+	return ip
