@@ -1,0 +1,207 @@
+[gd_scene load_steps=8 format=3 uid="uid://bbjgwsgrr24mf"]
+
+[ext_resource type="Script" uid="uid://cla584o5ys52d" path="res://Classes/Networking/Clinet/Setup/clientSetup.gd" id="1_72qut"]
+[ext_resource type="Theme" uid="uid://bseckuk4rs2ug" path="res://Art/Theme/QuestionBoxTheme.tres" id="2_oxoj8"]
+[ext_resource type="Script" uid="uid://luthqih2wcwp" path="res://Classes/LittleAdditions/ScaleableText/scaleable_textl.gd" id="3_ibr1h"]
+[ext_resource type="Theme" uid="uid://dqs6kiraonh5c" path="res://Art/Theme/StyledButtons.tres" id="3_w3s7b"]
+[ext_resource type="Texture2D" uid="uid://bvhibnbuiec6s" path="res://Art/Assets/checkandX.png" id="4_17l8u"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e3f6j"]
+bg_color = Color(0.0253638, 0.0253638, 0.0253638, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k5wax"]
+atlas = ExtResource("4_17l8u")
+region = Rect2(4.44, 0, 50, 50)
+
+[node name="ClientSetup" type="CanvasLayer"]
+script = ExtResource("1_72qut")
+
+[node name="Panel" type="Panel" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_oxoj8")
+
+[node name="hBoxOptions" type="HBoxContainer" parent="."]
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.1
+anchor_right = 0.9
+anchor_bottom = 0.9
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="hostOptions" type="Control" parent="hBoxOptions"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="joinAsHost" type="RichTextLabel" parent="hBoxOptions/hostOptions"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.1
+anchor_right = 0.9
+anchor_bottom = 0.295
+offset_left = 1.14441e-05
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_oxoj8")
+theme_override_font_sizes/normal_font_size = 67
+text = "Join as Host"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("3_ibr1h")
+metadata/_custom_type_script = "uid://luthqih2wcwp"
+
+[node name="hostButton" type="Button" parent="hBoxOptions/hostOptions"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.3
+anchor_top = 0.3
+anchor_right = 0.7
+anchor_bottom = 0.6
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+theme = ExtResource("3_w3s7b")
+text = "Click to be host"
+
+[node name="splitter" type="Panel" parent="hBoxOptions"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.02
+theme_override_styles/panel = SubResource("StyleBoxFlat_e3f6j")
+
+[node name="settingName" type="Control" parent="hBoxOptions"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="joinAsPlayer" type="RichTextLabel" parent="hBoxOptions/settingName"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.1
+anchor_right = 0.9
+anchor_bottom = 0.295
+offset_left = 1.14441e-05
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_oxoj8")
+theme_override_font_sizes/normal_font_size = 61
+text = "Join as Player"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("3_ibr1h")
+metadata/_custom_type_script = "uid://luthqih2wcwp"
+
+[node name="nameInput" type="TextEdit" parent="hBoxOptions/settingName"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.3
+anchor_top = 0.3
+anchor_right = 0.7
+anchor_bottom = 0.6
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+placeholder_text = "Set name here!"
+
+[node name="confirmName" type="Button" parent="hBoxOptions/settingName"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.35
+anchor_top = 0.62
+anchor_right = 0.65
+anchor_bottom = 0.75
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+theme = ExtResource("3_w3s7b")
+text = "Confirm name"
+
+[node name="nameFeedback" type="TextureRect" parent="hBoxOptions/settingName"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.658
+anchor_top = 0.635
+anchor_right = 0.761
+anchor_bottom = 0.77
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_k5wax")
+stretch_mode = 2
+
+[node name="allSet" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AllSetText" type="RichTextLabel" parent="allSet"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.35
+anchor_top = 0.25
+anchor_right = 0.65
+anchor_bottom = 0.482
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_oxoj8")
+theme_override_font_sizes/normal_font_size = 104
+text = "All set"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("3_ibr1h")
+metadata/_custom_type_script = "uid://luthqih2wcwp"
+
+[node name="unReady" type="Button" parent="allSet"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.375
+anchor_top = 0.5
+anchor_right = 0.625
+anchor_bottom = 0.6
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_w3s7b")
+theme_override_font_sizes/font_size = 30
+text = "Unready"
+
+[node name="startGame" type="Button" parent="allSet"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.375
+anchor_top = 0.63
+anchor_right = 0.625
+anchor_bottom = 0.73
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_w3s7b")
+theme_override_font_sizes/font_size = 30
+text = "Start Game"
+
+[node name="Error!" type="RichTextLabel" parent="allSet"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.8
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_oxoj8")
+theme_override_font_sizes/normal_font_size = 30
+text = "If you're seeing this, some very strange error occured. I don't think this error can actually happen but this is a safe guard incase it does! I'll keep you as \"All set,\" but feel free to reset the program if you need to unready (so sorry lol)"
+horizontal_alignment = 1
+
+[connection signal="resized" from="hBoxOptions/hostOptions/joinAsHost" to="hBoxOptions/hostOptions/joinAsHost" method="_on_resized"]
+[connection signal="pressed" from="hBoxOptions/hostOptions/hostButton" to="." method="host_button"]
+[connection signal="resized" from="hBoxOptions/settingName/joinAsPlayer" to="hBoxOptions/settingName/joinAsPlayer" method="_on_resized"]
+[connection signal="pressed" from="hBoxOptions/settingName/confirmName" to="." method="confirm_name_button"]
+[connection signal="resized" from="allSet/AllSetText" to="allSet/AllSetText" method="_on_resized"]
+[connection signal="pressed" from="allSet/unReady" to="." method="unready_button"]
+[connection signal="pressed" from="allSet/startGame" to="." method="start_game_button"]

@@ -1,0 +1,322 @@
+[gd_scene load_steps=8 format=3 uid="uid://dcu02hrwt0w8i"]
+
+[ext_resource type="Script" uid="uid://dyf474xy615gf" path="res://Classes/Networking/Clinet/hostScreen/host_screen.gd" id="1_mxyfn"]
+[ext_resource type="Theme" uid="uid://bseckuk4rs2ug" path="res://Art/Theme/QuestionBoxTheme.tres" id="2_lf7bl"]
+[ext_resource type="Theme" uid="uid://dpeodv265m7jd" path="res://Art/Theme/QuestionTileTheme.tres" id="3_wo5as"]
+[ext_resource type="Script" uid="uid://luthqih2wcwp" path="res://Classes/LittleAdditions/ScaleableText/scaleable_textl.gd" id="4_v385h"]
+[ext_resource type="Texture2D" uid="uid://dmd4sf8ydsqr7" path="res://Art/Assets/greenArrow.png" id="5_pgi57"]
+[ext_resource type="Theme" uid="uid://dqs6kiraonh5c" path="res://Art/Theme/StyledButtons.tres" id="5_wpua3"]
+[ext_resource type="Texture2D" uid="uid://ti3yttr2ormj" path="res://Art/Assets/redArrow.png" id="6_qdq4g"]
+
+[node name="HostScreen" type="CanvasLayer"]
+script = ExtResource("1_mxyfn")
+
+[node name="Background" type="Panel" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_lf7bl")
+
+[node name="HostText" type="RichTextLabel" parent="."]
+anchors_preset = -1
+anchor_top = 0.05
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_lf7bl")
+text = "Host"
+horizontal_alignment = 1
+
+[node name="TileClicked" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="QuestionPanel" type="Panel" parent="TileClicked"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.3
+anchor_right = 0.45
+anchor_bottom = 0.7
+offset_bottom = 3.05176e-05
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_lf7bl")
+
+[node name="displayQuestion" type="RichTextLabel" parent="TileClicked/QuestionPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.03
+anchor_top = 0.03
+anchor_right = 0.97
+anchor_bottom = 0.97
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 25
+text = "Question here!! oml this is so nice and cool but we need to decrease the font size by a lot! lol"
+
+[node name="AnswerPanel" type="Panel" parent="TileClicked"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.55
+anchor_top = 0.3
+anchor_right = 0.95
+anchor_bottom = 0.7
+offset_bottom = 3.05176e-05
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_lf7bl")
+
+[node name="displayAnswer" type="RichTextLabel" parent="TileClicked/AnswerPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.03
+anchor_top = 0.03
+anchor_right = 0.97
+anchor_bottom = 0.97
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 25
+text = "Question here!! oml this is so nice and cool but we need to decrease the font size by a lot! lol"
+
+[node name="PointPanel" type="Panel" parent="TileClicked"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.4
+anchor_top = 0.83
+anchor_right = 0.6
+anchor_bottom = 0.95
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_wo5as")
+
+[node name="displayPV" type="RichTextLabel" parent="TileClicked/PointPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.03
+anchor_top = 0.03
+anchor_right = 0.97
+anchor_bottom = 0.97
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/bold_font_size = 46
+bbcode_enabled = true
+text = "[b]$500"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("4_v385h")
+fontType = "bold_font"
+extraSpace = 0.8
+metadata/_custom_type_script = "uid://luthqih2wcwp"
+
+[node name="RatePanel" type="Panel" parent="TileClicked"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.46
+anchor_top = 0.3
+anchor_right = 0.54
+anchor_bottom = 0.7
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_lf7bl")
+
+[node name="storeRatings" type="VBoxContainer" parent="TileClicked/RatePanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.05
+anchor_right = 0.9
+anchor_bottom = 0.95
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 5
+alignment = 1
+
+[node name="upArrow" type="TextureButton" parent="TileClicked/RatePanel/storeRatings"]
+layout_mode = 2
+size_flags_vertical = 3
+texture_normal = ExtResource("5_pgi57")
+texture_pressed = ExtResource("5_pgi57")
+texture_hover = ExtResource("5_pgi57")
+texture_disabled = ExtResource("5_pgi57")
+texture_focused = ExtResource("5_pgi57")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="downArrow" type="TextureButton" parent="TileClicked/RatePanel/storeRatings"]
+layout_mode = 2
+size_flags_vertical = 3
+texture_normal = ExtResource("6_qdq4g")
+texture_pressed = ExtResource("6_qdq4g")
+texture_hover = ExtResource("6_qdq4g")
+texture_disabled = ExtResource("6_qdq4g")
+texture_focused = ExtResource("6_qdq4g")
+ignore_texture_size = true
+stretch_mode = 0
+flip_v = true
+
+[node name="questionLabel" type="RichTextLabel" parent="TileClicked"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.2
+anchor_right = 0.4
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_lf7bl")
+theme_override_font_sizes/normal_font_size = 40
+text = "Question"
+horizontal_alignment = 1
+
+[node name="answerLabel" type="RichTextLabel" parent="TileClicked"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.6
+anchor_top = 0.2
+anchor_right = 0.9
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_lf7bl")
+theme_override_font_sizes/normal_font_size = 40
+text = "Answer"
+horizontal_alignment = 1
+
+[node name="pointValueLabel" type="RichTextLabel" parent="TileClicked"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.4
+anchor_top = 0.757
+anchor_right = 0.6
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_lf7bl")
+theme_override_font_sizes/normal_font_size = 30
+text = "Value"
+horizontal_alignment = 1
+
+[node name="startBuzzing" type="Button" parent="TileClicked"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.664
+anchor_top = 0.83
+anchor_right = 0.95
+anchor_bottom = 0.95
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("5_wpua3")
+text = "Start Buzzing"
+
+[node name="EndQuestion" type="Button" parent="TileClicked"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.664
+anchor_top = 0.83
+anchor_right = 0.95
+anchor_bottom = 0.95
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("5_wpua3")
+text = "End Question"
+
+[node name="selectCategory" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="displayCategory" type="RichTextLabel" parent="selectCategory"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.25
+anchor_top = 0.136
+anchor_right = 0.75
+anchor_bottom = 0.4
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 43
+text = "Select the Category"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("4_v385h")
+extraSpace = 0.7
+metadata/_custom_type_script = "uid://luthqih2wcwp"
+
+[node name="storeCategory" type="HBoxContainer" parent="selectCategory"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.4
+anchor_right = 1.0
+anchor_bottom = 0.7
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="selectTile" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="displayCategory" type="RichTextLabel" parent="selectTile"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.2
+anchor_right = 0.9
+anchor_bottom = 0.4
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 66
+text = "Select the Tile"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("4_v385h")
+extraSpace = 0.7
+metadata/_custom_type_script = "uid://luthqih2wcwp"
+
+[node name="storeTile" type="VBoxContainer" parent="selectTile"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.4
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="backToCategories" type="Button" parent="selectTile"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.716
+anchor_top = 0.1
+anchor_right = 0.909
+anchor_bottom = 0.2
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("5_wpua3")
+text = "Back To Categories"
+
+[connection signal="resized" from="TileClicked/PointPanel/displayPV" to="TileClicked/PointPanel/displayPV" method="_on_resized"]
+[connection signal="pressed" from="TileClicked/RatePanel/storeRatings/upArrow" to="." method="rateGood"]
+[connection signal="pressed" from="TileClicked/RatePanel/storeRatings/downArrow" to="." method="rateBad"]
+[connection signal="pressed" from="TileClicked/startBuzzing" to="." method="_on_start_buzzing_pressed"]
+[connection signal="pressed" from="TileClicked/EndQuestion" to="." method="end_question"]
+[connection signal="resized" from="selectCategory/displayCategory" to="selectCategory/displayCategory" method="_on_resized"]
+[connection signal="resized" from="selectTile/displayCategory" to="selectTile/displayCategory" method="_on_resized"]
+[connection signal="pressed" from="selectTile/backToCategories" to="." method="_on_back_to_categories_pressed"]

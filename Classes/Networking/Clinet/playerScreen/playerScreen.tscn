@@ -1,0 +1,52 @@
+[gd_scene load_steps=4 format=3 uid="uid://dpx85ip1b8f8h"]
+
+[ext_resource type="Script" uid="uid://12ec86t2ilgl" path="res://Classes/Networking/Clinet/playerScreen/player_screen.gd" id="1_ik381"]
+[ext_resource type="Theme" uid="uid://bseckuk4rs2ug" path="res://Art/Theme/QuestionBoxTheme.tres" id="2_p1dlh"]
+[ext_resource type="Theme" uid="uid://dqs6kiraonh5c" path="res://Art/Theme/StyledButtons.tres" id="3_i1yxv"]
+
+[node name="PlayerScene" type="CanvasLayer"]
+script = ExtResource("1_ik381")
+
+[node name="Background" type="Panel" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_p1dlh")
+
+[node name="nameText" type="RichTextLabel" parent="."]
+anchors_preset = -1
+anchor_top = 0.05
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_p1dlh")
+text = "Name"
+horizontal_alignment = 1
+
+[node name="moneyDisplay" type="RichTextLabel" parent="."]
+anchors_preset = -1
+anchor_top = 0.18
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_p1dlh")
+text = "$0"
+horizontal_alignment = 1
+
+[node name="buzzButton" type="Button" parent="."]
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.3
+anchor_right = 0.95
+anchor_bottom = 0.95
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_i1yxv")
+theme_override_font_sizes/font_size = 61
+text = "BUZZ IN"
+
+[connection signal="pressed" from="buzzButton" to="." method="buzz_button"]

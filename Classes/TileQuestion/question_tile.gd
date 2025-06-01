@@ -46,9 +46,16 @@ class_name QuestionTile
 @onready var _nameText = $QuestionCanvas/Background/VSplit/Buzzer/Name
 @onready var _gradient = $QuestionCanvas/Background/VSplit/Buzzer/Timer/Gradient
 
-@onready var _timer = $QuestionCanvas/Timer
+@onready var _timer : Timer = $QuestionCanvas/Timer
 @onready var _time_out_sound = $QuestionCanvas/Timer/timeOutSound
 #endregion
+
+signal selectedTile
+signal tileDying
+signal signalOutOfPlayers
+signal allowBuzzing
+signal stopBuzzing
+signal changePoints
 
 enum state{
 	IDLE,
@@ -56,7 +63,8 @@ enum state{
 	WAITING,
 	ANSWERING,
 	JUDGEMENT,
-	ANSWERED
+	ANSWERED,
+	DEAD
 }
 var currState = state.IDLE
 var buzzers = []
@@ -71,7 +79,6 @@ func initialize(pv : int, qu : String, an : String):
 	
 	_extra_point_panel.text = "[b]"+str(point_value)
 	score.text = "[b]$"+str(point_value)
-	point_value
 	
 	_question_text.text = question
 	
@@ -81,6 +88,7 @@ func initialize(pv : int, qu : String, an : String):
 	_pointsPanel.visible = false
 
 func tile_clicked():
+	selectedTile.emit(self)
 	currState = state.VIEWING
 	_button.release_focus()
 	
@@ -93,27 +101,39 @@ func tile_clicked():
 	
 func startTimer():
 	_timer.start(5)
-	#TODO just make the question answered if no players left
 	if currState == state.VIEWING:
+		allowBuzzing.emit(pastBuzzers)
 		currState = state.WAITING
 		_pointsPanel.visible = true
 	
-func plrBuzzes(name):
-	if !buzzers.has(name) and !pastBuzzers.has(name):
+func plrBuzzes(plrName):
+	if !buzzers.has(plrName) and !pastBuzzers.has(plrName) and currState == state.WAITING:
 		_buzzerPanel.visible = true
-		buzzers.append(name)
+		buzzers.append(plrName)
 		if !_timer.is_stopped():
 			waitForAnswer()
 
 func waitForAnswer():
+	stopBuzzing.emit()
 	currState = state.ANSWERING
 	var currentPlr = buzzers[0]
 	pastBuzzers.append(currentPlr)
 	buzzers.pop_front()
 	_nameText.text = currentPlr
 	startTimer()
-	
+
+func outOfPlayers():
+	if TransferInformation.isHost and len(multiplayer.get_peers())-1 <= len(pastBuzzers):
+		print("out")
+		currState = state.ANSWERED
+		_timer.paused = true
+		signalOutOfPlayers.emit()
+		return true
+	return false
+
 func closeQuestion():
+	stopBuzzing.emit()
+	tileDying.emit(self)
 	#Animate
 	_button.visible = false
 	score.visible = false
@@ -122,19 +142,22 @@ func closeQuestion():
 	tween.parallel().tween_property(_background,"position",tile.get_meta("midpoint")+tile.global_position,0.5)
 
 func correctAnswer():
-	#TODO Add points to player
+	changePoints.emit(_nameText.text,point_value)
 	_timer.paused = true
 	currState = state.ANSWERED
 	
 func incorrectAnswer():
-	#TODO Remove points from player
+	changePoints.emit(_nameText.text,-point_value)
 	_buzzerPanel.visible = false
 	currState = state.VIEWING
-	startTimer()
+	if not outOfPlayers():
+		startTimer()
 
 func timer_up():
+	stopBuzzing.emit()
 	_time_out_sound.play()
 	if currState == state.WAITING:
+		signalOutOfPlayers.emit()
 		currState = state.ANSWERED
 	if currState == state.ANSWERING:
 		currState = state.JUDGEMENT
@@ -146,28 +169,34 @@ func _ready():
 	if point_value != -1:
 		initialize(point_value,question,answer)
 	
-func _process(delta):
+func _process(_delta):
 	#Shink the timer when answering
 	if !_timer.is_stopped() and currState == state.ANSWERING:
 		_gradient.scale.x = _timer.time_left/5
 	
 	#TODO Change temp input actions to real ones.
 	#Allow Answering
-	if Input.is_action_just_pressed("ui_accept") and currState == state.VIEWING:
-		startTimer()
-	#Move forward after answering (might want to add answer after this?!)
-	elif Input.is_action_just_pressed("ui_accept") and currState == state.ANSWERED:
-		closeQuestion()
+	if Input.is_action_just_pressed("ui_accept"):
+		hostMovingOn()
+		
 	
 	#Allows judge for correct and incorrect answers
 	if Input.is_action_just_pressed("ui_up") and (currState == state.ANSWERING or currState == state.JUDGEMENT):
 		correctAnswer()
 	if Input.is_action_just_pressed("ui_down") and (currState == state.ANSWERING or currState == state.JUDGEMENT):
 		incorrectAnswer()
-	
-	#FIXME Allow players to buzz in properly and remove this temp fix
-	if Input.is_action_just_pressed("ui_left") and currState == state.WAITING:
-		plrBuzzes("Teon")
-	if Input.is_action_just_pressed("ui_right") and currState == state.WAITING:
-		plrBuzzes("Boen")
 #endregion
+func hostMovingOn():
+	if currState == state.VIEWING:
+		startTimer()
+	#Move forward after answering (might want to add answer after this?!)
+	elif currState == state.ANSWERED:
+		currState = state.DEAD
+		print("closing")
+		closeQuestion()
+func hostRated(rating):
+	if rating and (currState == state.ANSWERING or currState == state.JUDGEMENT):
+		correctAnswer()
+	elif not rating and (currState == state.ANSWERING or currState == state.JUDGEMENT):
+		print("WRONG")
+		incorrectAnswer()
