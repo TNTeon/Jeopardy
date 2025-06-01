@@ -4,7 +4,7 @@ class_name board
 @export var categoryList : Array[categoryResource]
 @export var categoryScene : PackedScene
 
-@onready var _h_box_container: HBoxContainer = $VBoxContainer/StoreCategories
+@onready var store_categories: HBoxContainer = $VBoxContainer/StoreCategories
 @onready var store_icons: HBoxContainer = $VBoxContainer/StoreIcons
 
 var loadedGame : bool
@@ -30,7 +30,7 @@ func initialize():
 		return
 	for i in categoryList:
 		var newCat : category = categoryScene.instantiate()
-		_h_box_container.add_child(newCat)
+		store_categories.add_child(newCat)
 		newCat.title = i.title
 		newCat.tileList = i.questionTile
 		newCat.relaySelectedSignal.connect(setSelectedTile)
@@ -58,3 +58,6 @@ func removeSelectedTile(tile : QuestionTile):
 		stopBuzzing.emit()
 	else:
 		push_error("Selected tile doens't match dying tile!")
+		
+func selectTile(catNumber, tileNumber):
+	store_categories.get_child(catNumber).selectTile(tileNumber+1)

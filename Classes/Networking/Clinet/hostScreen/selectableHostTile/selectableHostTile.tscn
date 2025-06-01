@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://d3nvyj7o6c3um"]
+
+[ext_resource type="Theme" uid="uid://dqs6kiraonh5c" path="res://Art/Theme/StyledButtons.tres" id="1_q0cyu"]
+[ext_resource type="Script" uid="uid://brr43iiafw2a3" path="res://Classes/Networking/Clinet/hostScreen/selectableHostTile/selectable_host_tile.gd" id="2_nl78m"]
+
+[node name="SelectableHostTile" type="Button"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_q0cyu")
+text = "Test"
+script = ExtResource("2_nl78m")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

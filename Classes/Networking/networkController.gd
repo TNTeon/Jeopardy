@@ -46,8 +46,8 @@ func _ready():
 
 func requestConnection(ip):
 	ip = ip.replace("Z","GOHDGLND")
-	ip = ip.replace("GFD","Y")
-	ip = ip.replace("GMHD","X")
+	ip = ip.replace("Y","GFD")
+	ip = ip.replace("X","GMHD")
 	for i in range(ip.length()):
 		var uni = ip.unicode_at(i)
 		ip[i] = String.chr(uni - 22)
@@ -83,6 +83,7 @@ func serverCreated():
 			serialize["question"] = tile.question
 			serialize["answer"] = tile.answer
 			serialize["pointValue"] = tile.point_value
+			tile.signalOutOfPlayers.connect(func():rpc_id(playerHostID,"tellHostOutOfPlayers"))
 			rpc_id(playerHostID,"newTile",serialize)
 	)
 	newBoard.changePlayerPoints.connect(changePoints)
@@ -170,17 +171,19 @@ func startGameReceived():
 		return
 	newBoard.visible = true
 	newHostSetup.visible = false
+	var sendCategoryList = serializeCategoryList(newBoard.categoryList)
 	rpc_id(sender_id,"replyStartGame",0)
 	rpc("startingGame")
+	rpc_id(sender_id,"giveHostCategories",sendCategoryList)
 	currentServerState = serverStates.GAME_STARTED
 
 @rpc("any_peer","call_remote","reliable")
 func buzzReceived():
 	var sender_id = multiplayer.get_remote_sender_id()
 	if newBoard.selectedTile:
-		print(name_dictionary)
 		var sender_name = name_dictionary[sender_id]
 		newBoard.selectedTile.plrBuzzes(sender_name)
+		rpc_id(playerHostID,"tellHostPlrBuzzed")
 		
 @rpc("any_peer","call_remote","reliable")
 func reconnectPlayer(oldID):
@@ -208,10 +211,24 @@ func requestCurrentState():
 	print("request Info from: ", multiplayer_peer.get_peer(sender_id).get_remote_address())
 	print("compare to ip's: ", disconnectedIDs, "\n")
 	rpc_id(sender_id, "replyCurrentState",currentServerState)
+
 @rpc("any_peer","call_remote","reliable")
 func requestDictionaries():
 	var sender_id = multiplayer.get_remote_sender_id()
 	rpc_id(sender_id, "replyDictionaries",name_dictionary, ip_dictionary, score_dictionary)
+
+@rpc("any_peer","call_remote","reliable")
+func selectTileOnBoard(first,second):
+	newBoard.selectTile(first,second)
+
+@rpc("any_peer","call_remote","reliable")
+func hostMovingOn():
+	newBoard.selectedTile.hostMovingOn()
+
+@rpc("any_peer","call_remote","reliable")
+func hostRated(rating):
+	newBoard.selectedTile.hostRated(rating)
+
 @rpc("any_peer","call_remote","reliable")
 func printToServer(info):
 	print("MESSAGE FROM CLIENT")
@@ -251,9 +268,16 @@ func startingGame():
 	if createClientSetup.host:
 		createHostScreen = HOST_SCREEN.instantiate()
 		add_child(createHostScreen)
+		createHostScreen.tileSelected.connect(func(first,second):rpc_id(1,"selectTileOnBoard",first,second))
+		createHostScreen.moveOnSignal.connect(func():rpc_id(1,"hostMovingOn"))
+		createHostScreen.rating.connect(func(rate):rpc_id(1,"hostRated",rate))
 	else:
 		createCilentScreen(createClientSetup.name_input.text)
 	createClientSetup.queue_free()
+
+@rpc("authority","call_remote","reliable")
+func giveHostCategories(categories : Array[Dictionary]):
+	createHostScreen.fillCategories(categories)
 
 func createCilentScreen(nameForClient):
 	createClientScreen = PLAYER_SCREEN.instantiate()
@@ -337,6 +361,14 @@ func stopBuzzingClients():
 		createClientScreen.stopBuzzing()
 		
 @rpc("authority","call_remote","reliable")
+func tellHostPlrBuzzed():
+	createHostScreen.changeStates(createHostScreen.states.GRADING_RESPONSE)
+
+@rpc("authority","call_remote","reliable")
+func tellHostOutOfPlayers():
+	createHostScreen.changeStates(createHostScreen.states.TILE_DYING)
+
+@rpc("authority","call_remote","reliable")
 func changePointsClient(points : int):
 	createClientScreen.changePoints(points)
 
@@ -346,18 +378,19 @@ func newTile(question : Dictionary):
 
 #endregion
 
-#func findLocalIP():
-	#var ip_address : String
-	#if OS.has_feature("windows"):
-		#if OS.has_environment("COMPUTERNAME"):
-			#ip_address =  IP.resolve_hostname(str(OS.get_environment("COMPUTERNAME")),IP.Type.TYPE_IPV4)
-	#elif OS.has_feature("x11"):
-		#if OS.has_environment("HOSTNAME"):
-			#ip_address =  IP.resolve_hostname(str(OS.get_environment("HOSTNAME")),IP.Type.TYPE_IPV4)
-	#elif OS.has_feature("OSX"):
-		#if OS.has_environment("HOSTNAME"):
-			#ip_address =  IP.resolve_hostname(str(OS.get_environment("HOSTNAME")),IP.Type.TYPE_IPV4)
-	#return ip_address
+func serializeCategoryList(resourceArray : Array[categoryResource]):
+	var serialized : Array[Dictionary]
+	for i in resourceArray:
+		var newCatDict = {}
+		newCatDict["title"] = i.title
+		for j in range(len(i.questionTile)):
+			var newTileDict = {}
+			newTileDict["pointValue"] = i.questionTile[j].pointValue
+			newTileDict["Answer"] = i.questionTile[j].Answer
+			newTileDict["Question"] = i.questionTile[j].Question
+			newCatDict[j] = newTileDict
+		serialized.append(newCatDict)
+	return serialized
 
 func findLocalIP() -> String:
 	var ip = ""

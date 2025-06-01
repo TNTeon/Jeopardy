@@ -25,3 +25,8 @@ func initalize():
 		newTile.allowBuzzing.connect(func(pastBuzz): relayAllowBuzzingSignal.emit(pastBuzz))
 		newTile.stopBuzzing.connect(func(): relayStopBuzzingSignal.emit())
 		newTile.changePoints.connect(func(plrName,points): relayChangePointsSignal.emit(plrName,points))
+
+func selectTile(tileNumber):
+	var tile : QuestionTile = _v_box_container.get_child(tileNumber)
+	if tile.currState == tile.state.IDLE:
+		tile.tile_clicked()

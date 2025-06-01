@@ -28,7 +28,7 @@ func _ready():
 	tile_edit.visible = false
 	category_edit.visible = false
 	database = SQLite.new()
-	database.path = "res://customCategories.db"
+	database.path = "user://customCategories.db"
 	database.open_db()
 	_on_rows_int_select_value_changed(5)
 	_on_columns_int_select_value_changed(5)

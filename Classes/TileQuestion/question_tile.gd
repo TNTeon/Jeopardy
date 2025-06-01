@@ -52,6 +52,7 @@ class_name QuestionTile
 
 signal selectedTile
 signal tileDying
+signal signalOutOfPlayers
 signal allowBuzzing
 signal stopBuzzing
 signal changePoints
@@ -126,6 +127,7 @@ func outOfPlayers():
 		print("out")
 		currState = state.ANSWERED
 		_timer.paused = true
+		signalOutOfPlayers.emit()
 		return true
 	return false
 
@@ -148,13 +150,14 @@ func incorrectAnswer():
 	changePoints.emit(_nameText.text,-point_value)
 	_buzzerPanel.visible = false
 	currState = state.VIEWING
-	if outOfPlayers():
+	if not outOfPlayers():
 		startTimer()
 
 func timer_up():
 	stopBuzzing.emit()
 	_time_out_sound.play()
 	if currState == state.WAITING:
+		signalOutOfPlayers.emit()
 		currState = state.ANSWERED
 	if currState == state.ANSWERING:
 		currState = state.JUDGEMENT
@@ -173,13 +176,9 @@ func _process(_delta):
 	
 	#TODO Change temp input actions to real ones.
 	#Allow Answering
-	if Input.is_action_just_pressed("ui_accept") and currState == state.VIEWING:
-		startTimer()
-	#Move forward after answering (might want to add answer after this?!)
-	elif Input.is_action_just_pressed("ui_accept") and currState == state.ANSWERED:
-		currState = state.DEAD
-		print("closing")
-		closeQuestion()
+	if Input.is_action_just_pressed("ui_accept"):
+		hostMovingOn()
+		
 	
 	#Allows judge for correct and incorrect answers
 	if Input.is_action_just_pressed("ui_up") and (currState == state.ANSWERING or currState == state.JUDGEMENT):
@@ -187,3 +186,17 @@ func _process(_delta):
 	if Input.is_action_just_pressed("ui_down") and (currState == state.ANSWERING or currState == state.JUDGEMENT):
 		incorrectAnswer()
 #endregion
+func hostMovingOn():
+	if currState == state.VIEWING:
+		startTimer()
+	#Move forward after answering (might want to add answer after this?!)
+	elif currState == state.ANSWERED:
+		currState = state.DEAD
+		print("closing")
+		closeQuestion()
+func hostRated(rating):
+	if rating and (currState == state.ANSWERING or currState == state.JUDGEMENT):
+		correctAnswer()
+	elif not rating and (currState == state.ANSWERING or currState == state.JUDGEMENT):
+		print("WRONG")
+		incorrectAnswer()

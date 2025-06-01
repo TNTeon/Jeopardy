@@ -10,7 +10,13 @@ const PREVIEW_BOARD = preload("res://Classes/UI_Screens/CustomBoards/pickCustomB
 
 func _ready():
 	database = SQLite.new()
-	database.path = "res://customCategories.db"
+	
+	var DATABASE_PATH_RES = "res://customCategories.db"
+	var DATABASE_PATH = "user://customCategories.db"
+	if not FileAccess.file_exists(DATABASE_PATH):
+		DirAccess.copy_absolute(DATABASE_PATH_RES,DATABASE_PATH)
+		print("Copied db file to users dir")
+	database.path = DATABASE_PATH
 	database.open_db()
 	
 	database.query("SELECT * FROM board")
