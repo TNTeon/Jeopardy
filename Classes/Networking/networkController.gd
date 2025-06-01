@@ -49,11 +49,14 @@ func requestConnection(ip):
 		ip[i] = String.chr(uni - 22)
 	var error = multiplayer_peer.create_client(ip,port)
 	if error == OK:
+		print("connecting")
 		multiplayer.multiplayer_peer = multiplayer_peer
 		multiplayer.connected_to_server.connect(confirmClientConnection)
 		multiplayer.server_disconnected.connect(func():get_tree().reload_current_scene())
 	else:
+		print("Connection failed: ",ip)
 		newConnectionScene.failed()
+		multiplayer_peer.close()
 
 #region Host
 var newBoard : board
@@ -89,7 +92,8 @@ func changePoints(plrName, points):
 	
 func disconnectedPeer(peerID):
 	print(str(peerID) + " disconnected")
-	print(currentServerState)
+	if ip_dictionary.has(peerID):
+		print("with ip: ", ip_dictionary[peerID])
 	if currentServerState == serverStates.PRE_GAME:
 		name_dictionary.erase(peerID)
 		ip_dictionary.erase(peerID)
@@ -185,11 +189,16 @@ func reconnectPlayer(oldID):
 @rpc("any_peer","call_remote","reliable")
 func requestCurrentState():
 	var sender_id = multiplayer.get_remote_sender_id()
+	print("request Info from: ", multiplayer_peer.get_peer(sender_id).get_remote_address())
+	print("compare to ip's: ", disconnectedIDs, "\n")
 	rpc_id(sender_id, "replyCurrentState",currentServerState)
 @rpc("any_peer","call_remote","reliable")
 func requestDictionaries():
 	var sender_id = multiplayer.get_remote_sender_id()
 	rpc_id(sender_id, "replyDictionaries",name_dictionary, ip_dictionary, score_dictionary)
+@rpc("any_peer","call_remote","reliable")
+func printToServer(info):
+	print(info)
 #endregion
 
 #region Client
