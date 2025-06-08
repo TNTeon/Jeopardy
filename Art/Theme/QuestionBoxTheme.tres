@@ -1,9 +1,17 @@
-[gd_resource type="Theme" load_steps=15 format=3 uid="uid://bseckuk4rs2ug"]
+[gd_resource type="Theme" load_steps=16 format=3 uid="uid://bseckuk4rs2ug"]
 
 [ext_resource type="FontFile" uid="uid://dhre6q3jedsgc" path="res://Art/Font/Korinna/ITC Korinna Bold.otf" id="1_75jir"]
 [ext_resource type="FontFile" uid="uid://dyp1h7o0ubfsd" path="res://Art/Font/Korinna/ITC Korinna LT Bold.otf" id="2_4iocg"]
 [ext_resource type="FontFile" uid="uid://xp0twsj4ophn" path="res://Art/Font/Korinna/Korinna Italic.ttf" id="3_oanf6"]
 [ext_resource type="FontFile" uid="uid://bnbl4yc6qjmwq" path="res://Art/Font/Korinna/ITC Korinna Regular.otf" id="4_ke3p6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_75jir"]
+bg_color = Color(0.027451, 0.0705882, 0.388235, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.0253638, 0.0253638, 0.0253638, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8rd0d"]
 
@@ -32,6 +40,7 @@ border_color = Color(0.0253638, 0.0253638, 0.0253638, 1)
 [sub_resource type="ImageTexture" id="ImageTexture_75jir"]
 
 [resource]
+AcceptDialog/styles/panel = SubResource("StyleBoxFlat_75jir")
 Button/styles/disabled = SubResource("StyleBoxEmpty_8rd0d")
 Button/styles/focus = SubResource("StyleBoxEmpty_syqbr")
 Button/styles/hover = SubResource("StyleBoxEmpty_n7382")

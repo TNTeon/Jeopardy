@@ -54,7 +54,7 @@ layout_mode = 2
 size_flags_stretch_ratio = 0.02
 placeholder_text = "Put board name here"
 
-[node name="HSplitContainer" type="HSplitContainer" parent="HBoxContainer/VBoxContainer"]
+[node name="HSplitContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2
 
 [node name="SaveBut" type="Button" parent="HBoxContainer/VBoxContainer/HSplitContainer"]
@@ -62,10 +62,30 @@ layout_mode = 2
 size_flags_horizontal = 3
 text = "Save"
 
-[node name="ExitBut" type="Button" parent="HBoxContainer/VBoxContainer/HSplitContainer"]
+[node name="ExportBut" type="Button" parent="HBoxContainer/VBoxContainer/HSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Export"
+
+[node name="saveFilePath" type="FileDialog" parent="HBoxContainer/VBoxContainer/HSplitContainer/ExportBut"]
+initial_position = 4
+size = Vector2i(1050, 500)
+access = 2
+filters = PackedStringArray("*.tres;Resource File;resource/tres")
+
+[node name="ExitBut" type="Button" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Exit"
+
+[node name="confirmExit" type="ConfirmationDialog" parent="HBoxContainer/VBoxContainer/ExitBut"]
+title = "Confirm Exit?"
+initial_position = 4
+size = Vector2i(400, 70)
+always_on_top = true
+theme = ExtResource("2_abq41")
+ok_button_text = "Confirm Exit"
+dialog_text = "               Any unsaved changes will be lost"
 
 [node name="RowsIntSelect" type="SpinBox" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2
@@ -200,7 +220,10 @@ size_flags_stretch_ratio = 0.2
 
 [connection signal="text_changed" from="HBoxContainer/VBoxContainer/boardName" to="." method="board_name_changed"]
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/HSplitContainer/SaveBut" to="." method="save"]
-[connection signal="pressed" from="HBoxContainer/VBoxContainer/HSplitContainer/ExitBut" to="." method="_on_exit_but_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/HSplitContainer/ExportBut" to="." method="_on_export_but_pressed"]
+[connection signal="file_selected" from="HBoxContainer/VBoxContainer/HSplitContainer/ExportBut/saveFilePath" to="." method="_on_export_file"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/ExitBut" to="." method="_on_exit_but_pressed"]
+[connection signal="confirmed" from="HBoxContainer/VBoxContainer/ExitBut/confirmExit" to="." method="_on_confrim_exit"]
 [connection signal="value_changed" from="HBoxContainer/VBoxContainer/RowsIntSelect" to="." method="_on_rows_int_select_value_changed"]
 [connection signal="value_changed" from="HBoxContainer/VBoxContainer/ColumnsIntSelect" to="." method="_on_columns_int_select_value_changed"]
 [connection signal="value_changed" from="HBoxContainer/VBoxContainer/TileEdit/pvInput" to="." method="tile_input_changed"]

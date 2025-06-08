@@ -48,6 +48,5 @@ func randomCategory():
 	var randomChoice = randi_range(1,amount_of_categories)
 	return createResource(randomChoice)
 
-
 func _on_button_pressed():
 	get_tree().change_scene_to_file("res://Classes/Networking/networkController.tscn")

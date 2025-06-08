@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://cdnbhcifirnp3"]
+[gd_scene load_steps=9 format=3 uid="uid://cdnbhcifirnp3"]
 
 [ext_resource type="Script" uid="uid://dn608khsq6vko" path="res://Classes/UI_Screens/CustomBoards/pickCustomBoard/pick_custom_board.gd" id="1_isefr"]
 [ext_resource type="Theme" uid="uid://bseckuk4rs2ug" path="res://Art/Theme/QuestionBoxTheme.tres" id="2_jndyo"]
 [ext_resource type="Script" uid="uid://luthqih2wcwp" path="res://Classes/LittleAdditions/ScaleableText/scaleable_textl.gd" id="3_an8xp"]
 [ext_resource type="Theme" uid="uid://dqs6kiraonh5c" path="res://Art/Theme/StyledButtons.tres" id="3_d36ke"]
 [ext_resource type="PackedScene" uid="uid://dytsvdyny2n08" path="res://Classes/LittleAdditions/HoldBack/holdBack.tscn" id="4_d36ke"]
+[ext_resource type="Script" uid="uid://b2wms6edixqgk" path="res://Classes/UI_Screens/CustomBoards/pickCustomBoard/set_name_window.gd" id="5_83kfx"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jndyo"]
 bg_color = Color(0, 0, 0, 1)
@@ -87,9 +88,79 @@ offset_bottom = 88.405
 theme = ExtResource("3_d36ke")
 text = "New Board"
 
+[node name="LoadBoard" type="Button" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -203.69
+offset_top = 25.435
+offset_right = -43.7151
+offset_bottom = 88.405
+grow_horizontal = 0
+theme = ExtResource("3_d36ke")
+text = "Load Board"
+
+[node name="findFile" type="FileDialog" parent="LoadBoard"]
+title = "Find the saved board"
+initial_position = 4
+size = Vector2i(1050, 500)
+ok_button_text = "Open"
+file_mode = 0
+access = 2
+filters = PackedStringArray("*.tres;Resource File;resource/tres")
+
+[node name="setNameWindow" type="Window" parent="LoadBoard"]
+initial_position = 4
+size = Vector2i(770, 305)
+visible = false
+script = ExtResource("5_83kfx")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="LoadBoard/setNameWindow"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="nameThisBoard" type="RichTextLabel" parent="LoadBoard/setNameWindow/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("2_jndyo")
+bbcode_enabled = true
+text = "[b]Name this board"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="setName" type="TextEdit" parent="LoadBoard/setNameWindow/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+theme_override_font_sizes/font_size = 40
+placeholder_text = "Name here!"
+
+[node name="storeButtons" type="HBoxContainer" parent="LoadBoard/setNameWindow/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="setBut" type="Button" parent="LoadBoard/setNameWindow/VBoxContainer/storeButtons"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Set"
+
+[node name="cancelBut" type="Button" parent="LoadBoard/setNameWindow/VBoxContainer/storeButtons"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Cancel"
+
 [node name="HoldBack" parent="." instance=ExtResource("4_d36ke")]
 
 [connection signal="resized" from="VSplitContainer/Panel/RichTextLabel" to="VSplitContainer/Panel/RichTextLabel" method="_on_resized"]
 [connection signal="pressed" from="BackBut" to="." method="_on_back_but_pressed"]
 [connection signal="pressed" from="NewBoard" to="." method="_on_new_board_pressed"]
+[connection signal="pressed" from="LoadBoard" to="." method="_on_load_board_pressed"]
+[connection signal="file_selected" from="LoadBoard/findFile" to="." method="_on_file_dialog_file_selected"]
+[connection signal="pressed" from="LoadBoard/setNameWindow/VBoxContainer/storeButtons/setBut" to="LoadBoard/setNameWindow" method="_on_set_but_pressed"]
+[connection signal="pressed" from="LoadBoard/setNameWindow/VBoxContainer/storeButtons/cancelBut" to="LoadBoard/setNameWindow" method="_on_cancel_but_pressed"]
 [connection signal="backout" from="HoldBack" to="." method="_on_back_but_pressed"]

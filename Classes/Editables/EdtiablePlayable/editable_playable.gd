@@ -20,6 +20,14 @@ var currentSelection = null
 @onready var category_edit: VBoxContainer = $HBoxContainer/VBoxContainer/CategoryEdit
 @onready var title_input: TextEdit = $HBoxContainer/VBoxContainer/CategoryEdit/titleInput
 
+@onready var confirm_exit = $HBoxContainer/VBoxContainer/ExitBut/confirmExit
+@onready var save_file_path = $HBoxContainer/VBoxContainer/HSplitContainer/ExportBut/saveFilePath
+
+@onready var export_but = $HBoxContainer/VBoxContainer/HSplitContainer/ExportBut
+@onready var save_but = $HBoxContainer/VBoxContainer/HSplitContainer/SaveBut
+@onready var exit_but = $HBoxContainer/VBoxContainer/ExitBut
+
+
 var autoChanging = false
 
 signal removeSelections
@@ -127,6 +135,9 @@ func save():
 					database.insert_row("tile",newTileDic)
 
 func _on_exit_but_pressed() -> void:
+	confirm_exit.visible = true
+
+func _on_confrim_exit():
 	get_tree().change_scene_to_file("res://Classes/UI_Screens/CustomBoards/pickCustomBoard/pickCustomBoard.tscn")
 
 func loadBoard(boardName : String):
@@ -156,4 +167,30 @@ func loadBoard(boardName : String):
 	columns_int_select.value = countColumns
 	rows_int_select.allow_lesser = false
 	columns_int_select.allow_lesser = false
-	
+
+func _on_export_but_pressed():
+	export_but.release_focus()
+	save_file_path.visible = true
+
+func _on_export_file(path):
+	print("itwent")
+	print("going")
+	confirmed_export(path)
+#
+func confirmed_export(path):
+	var exportBoard = boardResource.new()
+	exportBoard.board_name = board_name.text
+	for i in editable_board.storeCategories.get_children():
+		if i is EditableCategory:
+			var exportCat = categoryResource.new()
+			exportCat.title = i.selfResource.title.replace("[b]","")
+			for j in i.storeTiles.get_children():
+				if j is EditableTile:
+					var exportTile = tileResource.new()
+					exportTile.pointValue = j.selfResource.pointValue
+					exportTile.Question = j.selfResource.Question
+					exportTile.Answer = j.selfResource.Answer
+					exportCat.questionTile.append(exportTile)
+			exportBoard.categories.append(exportCat)
+	ResourceSaver.save(exportBoard,path)
+	print("saved")
