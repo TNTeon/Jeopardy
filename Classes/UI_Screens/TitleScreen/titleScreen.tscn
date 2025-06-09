@@ -85,4 +85,5 @@ size_flags_stretch_ratio = 0.8
 [connection signal="pressed" from="VBoxContainer/Control/RandomBut" to="." method="_on_random_but_pressed"]
 [connection signal="pressed" from="VBoxContainer/Control/JoinBut" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/Control/CustomBut" to="." method="_on_custom_but_pressed"]
+[connection signal="pressed" from="VBoxContainer/Control/OptionsBut" to="." method="_on_options_but_pressed"]
 [connection signal="pressed" from="VBoxContainer/Control/ExitBut" to="." method="_on_exit_but_pressed"]

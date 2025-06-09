@@ -1,16 +1,20 @@
-[gd_scene load_steps=4 format=3 uid="uid://c3du65gd2ntdm"]
+[gd_scene load_steps=7 format=3 uid="uid://c3du65gd2ntdm"]
 
+[ext_resource type="Script" uid="uid://dhl8ayvx27bmj" path="res://Classes/UI_Screens/Options/options_screen.gd" id="1_gir0y"]
 [ext_resource type="Theme" uid="uid://bseckuk4rs2ug" path="res://Art/Theme/QuestionBoxTheme.tres" id="2_67bve"]
 [ext_resource type="Script" uid="uid://luthqih2wcwp" path="res://Classes/LittleAdditions/ScaleableText/scaleable_textl.gd" id="3_1std4"]
 [ext_resource type="Theme" uid="uid://dpeodv265m7jd" path="res://Art/Theme/QuestionTileTheme.tres" id="3_lsudn"]
+[ext_resource type="Theme" uid="uid://dqs6kiraonh5c" path="res://Art/Theme/StyledButtons.tres" id="5_a71vt"]
+[ext_resource type="PackedScene" uid="uid://dytsvdyny2n08" path="res://Classes/LittleAdditions/HoldBack/holdBack.tscn" id="5_wgqkt"]
 
-[node name="TitleScreen" type="Control"]
+[node name="optionScreen" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_gir0y")
 
 [node name="Background" type="Panel" parent="."]
 layout_mode = 1
@@ -29,7 +33,7 @@ anchor_bottom = 0.2
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_67bve")
-theme_override_font_sizes/normal_font_size = 97
+theme_override_font_sizes/normal_font_size = 85
 text = "Options"
 horizontal_alignment = 1
 script = ExtResource("3_1std4")
@@ -59,9 +63,91 @@ text = "Gameplay options"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Options" type="VBoxContainer" parent="VScrollBar/VBoxContainer"]
+[node name="gameplay" type="HBoxContainer" parent="VScrollBar/VBoxContainer"]
 custom_minimum_size = Vector2(0, 200)
 layout_mode = 2
 size_flags_horizontal = 3
 
+[node name="spacer" type="Control" parent="VScrollBar/VBoxContainer/gameplay"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VScrollBar/VBoxContainer/gameplay"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 20
+
+[node name="spacer" type="Control" parent="VScrollBar/VBoxContainer/gameplay/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="timeoutDisplay" type="RichTextLabel" parent="VScrollBar/VBoxContainer/gameplay/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.86
+theme = ExtResource("2_67bve")
+theme_override_font_sizes/normal_font_size = 40
+text = "Timeout"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="timeoutInput" type="SpinBox" parent="VScrollBar/VBoxContainer/gameplay/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+min_value = 1.0
+max_value = 20.0
+value = 5.0
+suffix = "seconds"
+
+[node name="spacer2" type="Control" parent="VScrollBar/VBoxContainer/gameplay/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="spacer2" type="Control" parent="VScrollBar/VBoxContainer/gameplay"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.8
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="VScrollBar/VBoxContainer/gameplay"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="spacer" type="Control" parent="VScrollBar/VBoxContainer/gameplay/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="takeAwayPointsDisplay" type="RichTextLabel" parent="VScrollBar/VBoxContainer/gameplay/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.86
+theme = ExtResource("2_67bve")
+theme_override_font_sizes/normal_font_size = 39
+text = "Remove points"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="takeAwayPointsBut" type="Button" parent="VScrollBar/VBoxContainer/gameplay/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("5_a71vt")
+toggle_mode = true
+button_pressed = true
+text = "Enabled"
+icon_alignment = 1
+
+[node name="spacer2" type="Control" parent="VScrollBar/VBoxContainer/gameplay/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="spacer3" type="Control" parent="VScrollBar/VBoxContainer/gameplay"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.8
+
+[node name="HoldBack" parent="." instance=ExtResource("5_wgqkt")]
+
 [connection signal="resized" from="DisplayOptions" to="DisplayOptions" method="_on_resized"]
+[connection signal="value_changed" from="VScrollBar/VBoxContainer/gameplay/VBoxContainer/timeoutInput" to="." method="_timeout_value_changed"]
+[connection signal="pressed" from="VScrollBar/VBoxContainer/gameplay/VBoxContainer2/takeAwayPointsBut" to="." method="_on_take_away_points_but_pressed"]
+[connection signal="backout" from="HoldBack" to="." method="_on_hold_back_backout"]

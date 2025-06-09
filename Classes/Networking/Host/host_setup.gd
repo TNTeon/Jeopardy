@@ -41,4 +41,5 @@ func findLocalIP() -> String:
 
 
 func _on_hold_back_backout():
+	multiplayer.multiplayer_peer.close()
 	get_tree().change_scene_to_file("res://Classes/UI_Screens/TitleScreen/titleScreen.tscn")

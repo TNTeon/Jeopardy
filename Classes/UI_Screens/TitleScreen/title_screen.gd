@@ -51,3 +51,7 @@ func randomCategory():
 func _on_button_pressed():
 	TransferInformation.isHost = false
 	get_tree().change_scene_to_file("res://Classes/Networking/networkController.tscn")
+
+
+func _on_options_but_pressed():
+	get_tree().change_scene_to_file("res://Classes/UI_Screens/Options/optionsScreen.tscn")

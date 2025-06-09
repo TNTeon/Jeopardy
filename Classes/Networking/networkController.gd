@@ -92,6 +92,8 @@ func serverCreated():
 	newHostSetup.visible = true
 	
 func changePoints(plrName, points):
+	if points < 0 and !TransferInformation.removePoints:
+		points = 0
 	var playerId = name_dictionary.find_key(plrName)
 	score_dictionary[playerId] += points
 	icon_dictionary[playerId].addToScore(points)

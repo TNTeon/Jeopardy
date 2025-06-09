@@ -48,6 +48,7 @@ class_name QuestionTile
 
 @onready var _timer : Timer = $QuestionCanvas/Timer
 @onready var _time_out_sound = $QuestionCanvas/Timer/timeOutSound
+var timeoutLength = 5
 #endregion
 
 signal selectedTile
@@ -73,6 +74,7 @@ var pastBuzzers = []
 
 #region CreatedFunctions
 func initialize(pv : int, qu : String, an : String):
+	timeoutLength = TransferInformation.timeoutAmount
 	point_value = pv
 	question = qu
 	answer = an
@@ -100,7 +102,7 @@ func tile_clicked():
 	tween.parallel().tween_property(_background,"position",Vector2.ZERO,0.5)
 	
 func startTimer():
-	_timer.start(5)
+	_timer.start(timeoutLength)
 	if currState == state.VIEWING:
 		allowBuzzing.emit(pastBuzzers)
 		currState = state.WAITING
@@ -172,7 +174,7 @@ func _ready():
 func _process(_delta):
 	#Shink the timer when answering
 	if !_timer.is_stopped() and currState == state.ANSWERING:
-		_gradient.scale.x = _timer.time_left/5
+		_gradient.scale.x = _timer.time_left/timeoutLength
 	
 	#TODO Change temp input actions to real ones.
 	#Allow Answering
