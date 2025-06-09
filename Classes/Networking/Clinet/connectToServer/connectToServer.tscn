@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://y7llxom22jal"]
+[gd_scene load_steps=8 format=3 uid="uid://y7llxom22jal"]
 
 [ext_resource type="Theme" uid="uid://bseckuk4rs2ug" path="res://Art/Theme/QuestionBoxTheme.tres" id="1_44iq7"]
 [ext_resource type="Script" uid="uid://chi3x8qnvf0ro" path="res://Classes/Networking/Clinet/connectToServer/connect_to_server.gd" id="1_klnfo"]
 [ext_resource type="Theme" uid="uid://dqs6kiraonh5c" path="res://Art/Theme/StyledButtons.tres" id="2_xxukk"]
 [ext_resource type="Texture2D" uid="uid://bvhibnbuiec6s" path="res://Art/Assets/checkandX.png" id="4_q357s"]
 [ext_resource type="Script" uid="uid://luthqih2wcwp" path="res://Classes/LittleAdditions/ScaleableText/scaleable_textl.gd" id="5_7kbeu"]
+[ext_resource type="PackedScene" uid="uid://dytsvdyny2n08" path="res://Classes/LittleAdditions/HoldBack/holdBack.tscn" id="6_4q73f"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7kbeu"]
 atlas = ExtResource("4_q357s")
@@ -83,6 +84,9 @@ script = ExtResource("5_7kbeu")
 extraSpace = 2.0
 metadata/_custom_type_script = "uid://luthqih2wcwp"
 
+[node name="HoldBack" parent="." instance=ExtResource("6_4q73f")]
+
 [connection signal="resized" from="EnterCodeLabel" to="EnterCodeLabel" method="_on_resized"]
 [connection signal="pressed" from="joinButton" to="." method="connectionButton"]
 [connection signal="resized" from="joinFeedbackText" to="joinFeedbackText" method="_on_resized"]
+[connection signal="backout" from="HoldBack" to="." method="_on_hold_back_backout"]

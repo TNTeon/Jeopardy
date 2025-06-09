@@ -1,10 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://d172lbllpitqe"]
+[gd_scene load_steps=5 format=3 uid="uid://d172lbllpitqe"]
 
 [ext_resource type="Script" uid="uid://dyxjpmmv32rok" path="res://Classes/Category/category.gd" id="1_fmyv4"]
 [ext_resource type="Theme" uid="uid://bseckuk4rs2ug" path="res://Art/Theme/QuestionBoxTheme.tres" id="1_liv34"]
 [ext_resource type="Theme" uid="uid://dpeodv265m7jd" path="res://Art/Theme/QuestionTileTheme.tres" id="2_fmyv4"]
 [ext_resource type="PackedScene" uid="uid://y10b8tepf30m" path="res://Classes/TileQuestion/questionTiles.tscn" id="2_jxonx"]
-[ext_resource type="Script" uid="uid://luthqih2wcwp" path="res://Classes/LittleAdditions/ScaleableText/scaleable_textl.gd" id="5_ywx5r"]
 
 [node name="Category" type="Control"]
 layout_mode = 3
@@ -44,14 +43,10 @@ grow_vertical = 2
 scale = Vector2(1, 1.25)
 mouse_filter = 2
 theme = ExtResource("1_liv34")
-theme_override_font_sizes/bold_font_size = 161
+theme_override_font_sizes/bold_font_size = 15
 bbcode_enabled = true
 text = "[b]Hello world"
 horizontal_alignment = 1
 vertical_alignment = 1
-script = ExtResource("5_ywx5r")
-fontType = "bold_font"
-extraSpace = 0.9
-metadata/_custom_type_script = "uid://luthqih2wcwp"
 
 [connection signal="resized" from="VBoxContainer/TitlePanel/TitleText" to="VBoxContainer/TitlePanel/TitleText" method="_on_resized"]

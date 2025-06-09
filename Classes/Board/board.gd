@@ -41,12 +41,12 @@ func initialize():
 		newCat.initalize()
 
 
-func _on_hold_back_backout() -> void:
-	if loadedGame:
-		multiplayer.multiplayer_peer.close()
-		get_tree().change_scene_to_file("res://Classes/UI_Screens/CustomBoards/pickCustomBoard/pickCustomBoard.tscn")
-	else:
-		get_tree().change_scene_to_file("res://Classes/UI_Screens/TitleScreen/titleScreen.tscn")
+#func _on_hold_back_backout() -> void:
+	#if loadedGame:
+		#multiplayer.multiplayer_peer.close()
+		#get_tree().change_scene_to_file("res://Classes/UI_Screens/CustomBoards/pickCustomBoard/pickCustomBoard.tscn")
+	#else:
+		#get_tree().change_scene_to_file("res://Classes/UI_Screens/TitleScreen/titleScreen.tscn")
 
 func setSelectedTile(tile : QuestionTile):
 	selectedTile = tile

@@ -1,8 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://cdnbhcifirnp3"]
+[gd_scene load_steps=8 format=3 uid="uid://cdnbhcifirnp3"]
 
 [ext_resource type="Script" uid="uid://dn608khsq6vko" path="res://Classes/UI_Screens/CustomBoards/pickCustomBoard/pick_custom_board.gd" id="1_isefr"]
 [ext_resource type="Theme" uid="uid://bseckuk4rs2ug" path="res://Art/Theme/QuestionBoxTheme.tres" id="2_jndyo"]
-[ext_resource type="Script" uid="uid://luthqih2wcwp" path="res://Classes/LittleAdditions/ScaleableText/scaleable_textl.gd" id="3_an8xp"]
 [ext_resource type="Theme" uid="uid://dqs6kiraonh5c" path="res://Art/Theme/StyledButtons.tres" id="3_d36ke"]
 [ext_resource type="PackedScene" uid="uid://dytsvdyny2n08" path="res://Classes/LittleAdditions/HoldBack/holdBack.tscn" id="4_d36ke"]
 [ext_resource type="Script" uid="uid://b2wms6edixqgk" path="res://Classes/UI_Screens/CustomBoards/pickCustomBoard/set_name_window.gd" id="5_83kfx"]
@@ -56,9 +55,6 @@ theme_override_font_sizes/normal_font_size = 82
 text = "Saved Boards"
 horizontal_alignment = 1
 vertical_alignment = 1
-script = ExtResource("3_an8xp")
-extraSpace = 0.9
-metadata/_custom_type_script = "uid://luthqih2wcwp"
 
 [node name="ScrollContainer" type="ScrollContainer" parent="VSplitContainer"]
 layout_mode = 2
@@ -101,7 +97,7 @@ theme = ExtResource("3_d36ke")
 text = "Load Board"
 
 [node name="findFile" type="FileDialog" parent="LoadBoard"]
-title = "Find the saved board"
+title = "Open a File"
 initial_position = 4
 size = Vector2i(1050, 500)
 ok_button_text = "Open"

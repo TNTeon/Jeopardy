@@ -24,3 +24,6 @@ func gameAlreadyStarted():
 	join_feedback_text.visible = true
 	join_feedback_img.visible = true
 	join_feedback_text.text = "The game has alreay started"
+
+func _on_hold_back_backout():
+	get_tree().change_scene_to_file("res://Classes/UI_Screens/TitleScreen/titleScreen.tscn")

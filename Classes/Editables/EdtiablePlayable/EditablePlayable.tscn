@@ -81,7 +81,7 @@ text = "Exit"
 [node name="confirmExit" type="ConfirmationDialog" parent="HBoxContainer/VBoxContainer/ExitBut"]
 title = "Confirm Exit?"
 initial_position = 4
-size = Vector2i(400, 70)
+size = Vector2i(400, 80)
 always_on_top = true
 theme = ExtResource("2_abq41")
 ok_button_text = "Confirm Exit"

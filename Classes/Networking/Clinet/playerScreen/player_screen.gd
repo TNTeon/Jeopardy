@@ -10,6 +10,10 @@ signal buzzedIn
 func _ready():
 	buzz_button_ref.visible = false
 
+func _input(event):
+	if buzz_button_ref.visible and Input.is_action_just_pressed("buzzButton"):
+		buzz_button()
+
 ## Outgoing
 func buzz_button():
 	buzz_button_ref.release_focus()

@@ -49,4 +49,5 @@ func randomCategory():
 	return createResource(randomChoice)
 
 func _on_button_pressed():
+	TransferInformation.isHost = false
 	get_tree().change_scene_to_file("res://Classes/Networking/networkController.tscn")
